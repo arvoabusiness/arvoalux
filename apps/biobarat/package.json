@@ -1,0 +1,21 @@
+{
+  "name": "@arvoalux/brand-biobarat",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "NODE_OPTIONS=\"--no-network-family-autoselection\" next dev",
+    "build": "NODE_OPTIONS=\"--no-network-family-autoselection\" next build",
+    "start": "NODE_OPTIONS=\"--no-network-family-autoselection\" next start"
+  },
+  "dependencies": {
+    "@arvoalux/core": "*",
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "arvoalux-platform",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev:arvoalux": "npm run dev -w @arvoalux/brand-arvoalux",
+    "dev:biobarat": "npm run dev -w @arvoalux/brand-biobarat",
+    "build": "npm run build --workspaces --if-present",
+    "new-brand": "node scripts/new-brand.mjs"
+  }
+}
