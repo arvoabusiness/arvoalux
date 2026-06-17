@@ -16,10 +16,30 @@ function tokensFor(brandHandle: string) {
   };
 }
 
+/**
+ * Cache control for a Storefront read.
+ * - Catalog reads (home/product/collection) are cached + tagged so a Shopify
+ *   webhook can purge them on demand. This is what keeps the Storefront API
+ *   from being hammered across 9 storefronts on the Basic plan's lower limits.
+ * - Cart reads/mutations must always be live → pass `{ noStore: true }`.
+ */
+export type StorefrontCache = {
+  noStore?: boolean;
+  revalidate?: number;
+  tags?: string[];
+};
+
+/** Shared cache-tag conventions so reads and the revalidation route agree. */
+export const cacheTags = {
+  brand: (handle: string) => `brand:${handle}`,
+  product: (handle: string) => `product:${handle}`,
+};
+
 export async function storefront<T>(
   brandHandle: string,
   query: string,
-  variables: Record<string, unknown> = {}
+  variables: Record<string, unknown> = {},
+  cacheOpts: StorefrontCache = {}
 ): Promise<T> {
   const { publicToken, privateToken } = tokensFor(brandHandle);
   const headers: Record<string, string> = { "Content-Type": "application/json" };
@@ -31,7 +51,14 @@ export async function storefront<T>(
     method: "POST",
     headers,
     body: JSON.stringify({ query, variables }),
-    cache: "no-store",
+    ...(cacheOpts.noStore
+      ? { cache: "no-store" as const }
+      : {
+          next: {
+            revalidate: cacheOpts.revalidate ?? 300,
+            tags: cacheOpts.tags ?? [],
+          },
+        }),
   });
 
   const json = await res.json();

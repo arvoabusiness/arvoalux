@@ -25,16 +25,22 @@ export async function addToCart(formData: FormData) {
     const data = await storefront<{ cartLinesAdd: { cart: Cart | null } }>(
       brandHandle,
       CART_LINES_ADD,
-      { cartId: existing, lines: [{ merchandiseId: variantId, quantity: 1 }] }
+      { cartId: existing, lines: [{ merchandiseId: variantId, quantity: 1 }] },
+      { noStore: true }
     );
     cart = data.cartLinesAdd.cart;
   }
 
   if (!cart) {
-    const data = await storefront<{ cartCreate: { cart: Cart } }>(brandHandle, CART_CREATE, {
-      lines: [{ merchandiseId: variantId, quantity: 1 }],
-      attributes: [{ key: "brand", value: brandHandle }],
-    });
+    const data = await storefront<{ cartCreate: { cart: Cart } }>(
+      brandHandle,
+      CART_CREATE,
+      {
+        lines: [{ merchandiseId: variantId, quantity: 1 }],
+        attributes: [{ key: "brand", value: brandHandle }],
+      },
+      { noStore: true }
+    );
     cart = data.cartCreate.cart;
     jar.set(cartCookie(brandHandle), cart.id, {
       path: "/",
@@ -51,7 +57,9 @@ export async function getCart(brandHandle: string): Promise<Cart | null> {
   const id = jar.get(cartCookie(brandHandle))?.value;
   if (!id) return null;
   try {
-    const data = await storefront<{ cart: Cart | null }>(brandHandle, CART_QUERY, { id });
+    const data = await storefront<{ cart: Cart | null }>(brandHandle, CART_QUERY, { id }, {
+      noStore: true,
+    });
     return data.cart;
   } catch {
     return null;

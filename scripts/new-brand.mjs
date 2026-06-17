@@ -18,7 +18,7 @@ if (existsSync(root)) {
   process.exit(1);
 }
 
-const dirs = ["app/products/[handle]", "app/cart"];
+const dirs = ["app/products/[handle]", "app/cart", "app/api/revalidate"];
 dirs.forEach((d) => mkdirSync(join(root, d), { recursive: true }));
 
 const f = (rel, content) => writeFileSync(join(root, rel), content);
@@ -43,12 +43,13 @@ f("tsconfig.json", JSON.stringify({
   exclude: ["node_modules"],
 }, null, 2) + "\n");
 f("next-env.d.ts", `/// <reference types="next" />\n/// <reference types="next/image-types/global" />\n`);
-f(".env.example", `SHOPIFY_STORE_DOMAIN=arvoalux-platform-dev.myshopify.com\nSHOPIFY_API_VERSION=2026-01\nSHOPIFY_PRIVATE_TOKEN=\n`);
+f(".env.example", `SHOPIFY_STORE_DOMAIN=arvoalux-platform-dev.myshopify.com\nSHOPIFY_API_VERSION=2026-01\nSHOPIFY_PRIVATE_TOKEN=\nSHOPIFY_REVALIDATION_SECRET=\n`);
 
 f("app/layout.tsx", `import { BrandLayout } from "@arvoalux/core";\nimport "@arvoalux/core/styles.css";\nimport { brand } from "@/brand.config";\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return <BrandLayout brand={brand}>{children}</BrandLayout>;\n}\n`);
-f("app/page.tsx", `import { HomePage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const dynamic = "force-dynamic";\n\nexport default function Page() {\n  return <HomePage brand={brand} />;\n}\n`);
-f("app/products/[handle]/page.tsx", `import { ProductPage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const dynamic = "force-dynamic";\n\nexport default async function Page({ params }: { params: Promise<{ handle: string }> }) {\n  const { handle } = await params;\n  return <ProductPage brand={brand} handle={handle} />;\n}\n`);
+f("app/page.tsx", `import { HomePage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const revalidate = 300;\n\nexport default function Page() {\n  return <HomePage brand={brand} />;\n}\n`);
+f("app/products/[handle]/page.tsx", `import { ProductPage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const revalidate = 300;\n\nexport default async function Page({ params }: { params: Promise<{ handle: string }> }) {\n  const { handle } = await params;\n  return <ProductPage brand={brand} handle={handle} />;\n}\n`);
 f("app/cart/page.tsx", `import { CartPage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const dynamic = "force-dynamic";\n\nexport default function Page() {\n  return <CartPage brand={brand} />;\n}\n`);
+f("app/api/revalidate/route.ts", `import { handleShopifyRevalidate } from "@arvoalux/core";\n\n// Shopify webhook → purge this brand's cached catalog reads. See core/revalidate.ts.\nexport async function POST(request: Request) {\n  return handleShopifyRevalidate(request);\n}\n`);
 
 f("brand.config.ts", `import { defineBrand } from "@arvoalux/core";\n\nexport const brand = defineBrand({\n  handle: "${handle}",\n  name: "${name}",\n  tagline: "TODO: tagline",\n  domains: ["${handle}.example.com"],\n  collectionHandle: "brand-${handle}",\n  theme: {\n    bg: "#ffffff", surface: "#f5f5f5", fg: "#161616", muted: "#6b6b6b",\n    accent: "#2f7d32", accentFg: "#ffffff", radius: "10px",\n    fontHref: "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap",\n    fontDisplay: "'Inter', sans-serif", fontBody: "'Inter', sans-serif",\n  },\n});\n`);
 

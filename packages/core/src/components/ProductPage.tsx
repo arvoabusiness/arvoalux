@@ -1,5 +1,5 @@
 import type { Brand } from "../types";
-import { storefront, PRODUCT_QUERY, formatPrice } from "../shopify";
+import { storefront, PRODUCT_QUERY, cacheTags, formatPrice } from "../shopify";
 import { addToCart } from "../cart";
 
 type Variant = {
@@ -18,9 +18,12 @@ type Product = {
 };
 
 export async function ProductPage({ brand, handle }: { brand: Brand; handle: string }) {
-  const data = await storefront<{ product: Product | null }>(brand.handle, PRODUCT_QUERY, {
-    handle,
-  });
+  const data = await storefront<{ product: Product | null }>(
+    brand.handle,
+    PRODUCT_QUERY,
+    { handle },
+    { tags: [cacheTags.brand(brand.handle), cacheTags.product(handle)] }
+  );
   const product = data.product;
 
   if (!product) {

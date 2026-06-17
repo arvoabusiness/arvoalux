@@ -2,6 +2,7 @@ import type { Brand } from "../types";
 import {
   storefront,
   BRAND_PRODUCTS_QUERY,
+  cacheTags,
   formatPrice,
   type ProductCard,
 } from "../shopify";
@@ -13,7 +14,12 @@ export async function HomePage({ brand }: { brand: Brand }) {
   try {
     const data = await storefront<{
       collection: { products: { nodes: ProductCard[] } } | null;
-    }>(brand.handle, BRAND_PRODUCTS_QUERY, { collection: brand.collectionHandle });
+    }>(
+      brand.handle,
+      BRAND_PRODUCTS_QUERY,
+      { collection: brand.collectionHandle },
+      { tags: [cacheTags.brand(brand.handle)] }
+    );
     products = data.collection?.products.nodes ?? [];
     if (!data.collection) {
       error = `Collection "${brand.collectionHandle}" not found in Shopify.`;
