@@ -1,4 +1,5 @@
 import "server-only";
+import type { Money } from "./catalog";
 
 const STORE = process.env.SHOPIFY_STORE_DOMAIN!;
 const API_VERSION = process.env.SHOPIFY_API_VERSION ?? "2026-01";
@@ -75,8 +76,12 @@ const PRODUCT_CARD = /* GraphQL */ `
     id
     handle
     title
+    vendor
+    availableForSale
     featuredImage { url(transform: { maxWidth: 800 }) altText }
     priceRange { minVariantPrice { amount currencyCode } }
+    compareAtPriceRange { minVariantPrice { amount currencyCode } }
+    variants(first: 1) { nodes { id } }
   }
 `;
 
@@ -90,16 +95,61 @@ export const BRAND_PRODUCTS_QUERY = /* GraphQL */ `
   }
 `;
 
+/** Products inside any collection (category page reuses the brand fragment). */
+export const COLLECTION_PRODUCTS_QUERY = /* GraphQL */ `
+  ${PRODUCT_CARD}
+  query CollectionProducts($handle: String!, $first: Int = 24) {
+    collection(handle: $handle) {
+      title
+      description
+      products(first: $first) { nodes { ...ProductCard } }
+    }
+  }
+`;
+
+/** Full-text product search across the storefront. */
+export const SEARCH_PRODUCTS_QUERY = /* GraphQL */ `
+  ${PRODUCT_CARD}
+  query SearchProducts($query: String!, $first: Int = 36) {
+    products(first: $first, query: $query) { nodes { ...ProductCard } }
+  }
+`;
+
+/** Storefront collections — feeds the homepage category grid and the drawer. */
+export const COLLECTIONS_QUERY = /* GraphQL */ `
+  query Collections($first: Int = 50) {
+    collections(first: $first) {
+      nodes {
+        id
+        handle
+        title
+        image { url(transform: { maxWidth: 200 }) altText }
+      }
+    }
+  }
+`;
+
 export const PRODUCT_QUERY = /* GraphQL */ `
   query Product($handle: String!) {
     product(handle: $handle) {
       id
       title
+      vendor
       descriptionHtml
       tags
+      availableForSale
       featuredImage { url(transform: { maxWidth: 1200 }) altText }
+      images(first: 8) { nodes { url(transform: { maxWidth: 1200 }) altText } }
+      priceRange { minVariantPrice { amount currencyCode } }
+      compareAtPriceRange { minVariantPrice { amount currencyCode } }
       variants(first: 20) {
-        nodes { id title availableForSale price { amount currencyCode } }
+        nodes {
+          id
+          title
+          availableForSale
+          price { amount currencyCode }
+          compareAtPrice { amount currencyCode }
+        }
       }
     }
   }
@@ -115,12 +165,14 @@ const CART_FIELDS = /* GraphQL */ `
       nodes {
         id
         quantity
+        cost { totalAmount { amount currencyCode } }
         merchandise {
           ... on ProductVariant {
             id
             title
             price { amount currencyCode }
-            product { title handle }
+            image { url(transform: { maxWidth: 200 }) altText }
+            product { title handle featuredImage { url(transform: { maxWidth: 200 }) altText } }
           }
         }
       }
@@ -153,15 +205,38 @@ export const CART_LINES_ADD = /* GraphQL */ `
   }
 `;
 
+export const CART_LINES_UPDATE = /* GraphQL */ `
+  ${CART_FIELDS}
+  mutation CartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+    cartLinesUpdate(cartId: $cartId, lines: $lines) {
+      cart { ...CartFields }
+      userErrors { field message }
+    }
+  }
+`;
+
+export const CART_LINES_REMOVE = /* GraphQL */ `
+  ${CART_FIELDS}
+  mutation CartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+      cart { ...CartFields }
+      userErrors { field message }
+    }
+  }
+`;
+
 /* ---------- types ---------- */
 
-export type ProductCard = {
-  id: string;
-  handle: string;
-  title: string;
-  featuredImage: { url: string; altText: string | null } | null;
-  priceRange: { minVariantPrice: { amount: string; currencyCode: string } };
-};
+// Pure types + helpers live in catalog.ts (no server-only) so client components
+// can use them too. Re-exported here for existing `from "./shopify"` imports.
+export {
+  type Money,
+  type ProductCard,
+  type CollectionSummary,
+  discountPercent,
+  visibleCollections,
+  formatPrice,
+} from "./catalog";
 
 export type Cart = {
   id: string;
@@ -172,20 +247,18 @@ export type Cart = {
     nodes: {
       id: string;
       quantity: number;
+      cost: { totalAmount: Money };
       merchandise: {
         id: string;
         title: string;
-        price: { amount: string; currencyCode: string };
-        product: { title: string; handle: string };
+        price: Money;
+        image: { url: string; altText: string | null } | null;
+        product: {
+          title: string;
+          handle: string;
+          featuredImage: { url: string; altText: string | null } | null;
+        };
       };
     }[];
   };
 };
-
-export function formatPrice(amount: string, currency: string) {
-  return new Intl.NumberFormat("hu-HU", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: currency === "HUF" ? 0 : 2,
-  }).format(Number(amount));
-}
