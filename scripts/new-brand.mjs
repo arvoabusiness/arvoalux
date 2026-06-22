@@ -18,7 +18,13 @@ if (existsSync(root)) {
   process.exit(1);
 }
 
-const dirs = ["app/products/[handle]", "app/cart", "app/api/revalidate"];
+const dirs = [
+  "app/products/[handle]",
+  "app/collections/[handle]",
+  "app/search",
+  "app/cart",
+  "app/api/revalidate",
+];
 dirs.forEach((d) => mkdirSync(join(root, d), { recursive: true }));
 
 const f = (rel, content) => writeFileSync(join(root, rel), content);
@@ -32,10 +38,19 @@ f("package.json", JSON.stringify({
     start: 'NODE_OPTIONS="--no-network-family-autoselection" next start',
   },
   dependencies: { "@arvoalux/core": "*", next: "^15.3.0", react: "^19.0.0", "react-dom": "^19.0.0" },
-  devDependencies: { "@types/node": "^22.0.0", "@types/react": "^19.0.0", typescript: "^5.6.0" },
+  devDependencies: {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    autoprefixer: "^10.4.20",
+    postcss: "^8.4.49",
+    tailwindcss: "^3.4.17",
+    typescript: "^5.6.0",
+  },
 }, null, 2) + "\n");
 
 f("next.config.mjs", `const nextConfig = { transpilePackages: ["@arvoalux/core"] };\nexport default nextConfig;\n`);
+f("tailwind.config.js", `const preset = require("../../packages/core/tailwind-preset.cjs");\n\n/** @type {import('tailwindcss').Config} */\nmodule.exports = {\n  presets: [preset],\n  content: [\n    "./app/**/*.{js,ts,jsx,tsx}",\n    "../../packages/core/src/**/*.{js,ts,jsx,tsx}",\n  ],\n};\n`);
+f("postcss.config.cjs", `module.exports = {\n  plugins: {\n    tailwindcss: {},\n    autoprefixer: {},\n  },\n};\n`);
 f("tsconfig.json", JSON.stringify({
   extends: "../../tsconfig.base.json",
   compilerOptions: { plugins: [{ name: "next" }], paths: { "@/*": ["./*"] } },
@@ -48,6 +63,8 @@ f(".env.example", `SHOPIFY_STORE_DOMAIN=arvoalux-platform-dev.myshopify.com\nSHO
 f("app/layout.tsx", `import { BrandLayout } from "@arvoalux/core";\nimport "@arvoalux/core/styles.css";\nimport { brand } from "@/brand.config";\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return <BrandLayout brand={brand}>{children}</BrandLayout>;\n}\n`);
 f("app/page.tsx", `import { HomePage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const revalidate = 300;\n\nexport default function Page() {\n  return <HomePage brand={brand} />;\n}\n`);
 f("app/products/[handle]/page.tsx", `import { ProductPage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const revalidate = 300;\n\nexport default async function Page({ params }: { params: Promise<{ handle: string }> }) {\n  const { handle } = await params;\n  return <ProductPage brand={brand} handle={handle} />;\n}\n`);
+f("app/collections/[handle]/page.tsx", `import { CollectionPage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const revalidate = 300;\n\nexport default async function Page({ params }: { params: Promise<{ handle: string }> }) {\n  const { handle } = await params;\n  return <CollectionPage brand={brand} handle={handle} />;\n}\n`);
+f("app/search/page.tsx", `import { SearchPage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const dynamic = "force-dynamic";\n\nexport default async function Page({ searchParams }: { searchParams: Promise<{ q?: string }> }) {\n  const { q } = await searchParams;\n  return <SearchPage brand={brand} query={q ?? ""} />;\n}\n`);
 f("app/cart/page.tsx", `import { CartPage } from "@arvoalux/core";\nimport { brand } from "@/brand.config";\n\nexport const dynamic = "force-dynamic";\n\nexport default function Page() {\n  return <CartPage brand={brand} />;\n}\n`);
 f("app/api/revalidate/route.ts", `import { handleShopifyRevalidate } from "@arvoalux/core";\n\n// Shopify webhook → purge this brand's cached catalog reads. See core/revalidate.ts.\nexport async function POST(request: Request) {\n  return handleShopifyRevalidate(request);\n}\n`);
 
