@@ -95,6 +95,15 @@ export const BRAND_PRODUCTS_QUERY = /* GraphQL */ `
   }
 `;
 
+export const ALL_PRODUCTS_QUERY = /* GraphQL */ `
+  ${PRODUCT_CARD}
+  query AllProducts($first: Int = 24) {
+    products(first: $first, sortKey: BEST_SELLING) {
+      nodes { ...ProductCard }
+    }
+  }
+`;
+
 /** Products inside any collection (category page reuses the brand fragment). */
 export const COLLECTION_PRODUCTS_QUERY = /* GraphQL */ `
   ${PRODUCT_CARD}

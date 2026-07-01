@@ -2,6 +2,7 @@ import type { Brand } from "../../types";
 import {
   storefront,
   BRAND_PRODUCTS_QUERY,
+  ALL_PRODUCTS_QUERY,
   cacheTags,
   type ProductCard as ProductCardData,
 } from "../../shopify";
@@ -18,6 +19,18 @@ export async function FeaturedProductsSection({ brand }: { brand: Brand }) {
       { tags: [cacheTags.brand(brand.handle)] }
     );
     products = data.collection?.products.nodes ?? [];
+
+    // Fallback: real stores may lack the `brand-<handle>` automated collection,
+    // so pull the newest products instead of letting the section vanish.
+    if (products.length === 0) {
+      const all = await storefront<{ products: { nodes: ProductCardData[] } }>(
+        brand.handle,
+        ALL_PRODUCTS_QUERY,
+        { first: 8 },
+        { tags: [cacheTags.brand(brand.handle)] }
+      );
+      products = all.products.nodes;
+    }
   } catch {
     products = [];
   }

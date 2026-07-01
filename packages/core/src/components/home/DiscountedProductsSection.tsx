@@ -2,6 +2,7 @@ import type { Brand } from "../../types";
 import {
   storefront,
   BRAND_PRODUCTS_QUERY,
+  ALL_PRODUCTS_QUERY,
   cacheTags,
   discountPercent,
   type ProductCard as ProductCardData,
@@ -18,9 +19,21 @@ export async function DiscountedProductsSection({ brand }: { brand: Brand }) {
       { collection: brand.collectionHandle, first: 24 },
       { tags: [cacheTags.brand(brand.handle)] }
     );
-    products = (data.collection?.products.nodes ?? [])
-      .filter((p) => discountPercent(p) !== null)
-      .slice(0, 8);
+    let pool = data.collection?.products.nodes ?? [];
+
+    // Fallback: real stores may lack the `brand-<handle>` automated collection,
+    // so scan the newest products for sale items instead.
+    if (pool.length === 0) {
+      const all = await storefront<{ products: { nodes: ProductCardData[] } }>(
+        brand.handle,
+        ALL_PRODUCTS_QUERY,
+        { first: 24 },
+        { tags: [cacheTags.brand(brand.handle)] }
+      );
+      pool = all.products.nodes;
+    }
+
+    products = pool.filter((p) => discountPercent(p) !== null).slice(0, 8);
   } catch {
     products = [];
   }

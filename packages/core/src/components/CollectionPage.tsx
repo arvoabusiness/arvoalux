@@ -2,6 +2,7 @@ import type { Brand } from "../types";
 import {
   storefront,
   COLLECTION_PRODUCTS_QUERY,
+  ALL_PRODUCTS_QUERY,
   cacheTags,
   type ProductCard as ProductCardData,
 } from "../shopify";
@@ -26,6 +27,17 @@ export async function CollectionPage({ brand, handle }: { brand: Brand; handle: 
       title = data.collection.title;
       description = data.collection.description;
       products = data.collection.products.nodes;
+    } else if (handle === brand.collectionHandle) {
+      // The brand's canonical "all products" collection (`brand-<handle>`) is a
+      // multi-brand-store concept that a single-brand real store won't have.
+      // Fall back to every product so the "see all products" link still works.
+      const all = await storefront<{ products: { nodes: ProductCardData[] } }>(
+        brand.handle,
+        ALL_PRODUCTS_QUERY,
+        { first: 48 },
+        { tags: [cacheTags.brand(brand.handle)] }
+      );
+      products = all.products.nodes;
     }
   } catch {
     products = [];
