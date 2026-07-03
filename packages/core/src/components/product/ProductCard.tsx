@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
-import { formatPrice, discountPercent, type ProductCard as ProductCardData } from "../../shopify";
+// Import the pure helpers/types from catalog (no `server-only`) so this card can
+// render inside client components like PaginatedProductGrid.
+import { formatPrice, discountPercent, type ProductCard as ProductCardData } from "../../catalog";
 import { addToCart } from "../../cart";
 
 /**
