@@ -6,8 +6,13 @@ import {
   cacheTags,
   type ProductCard as ProductCardData,
 } from "../../shopify";
-import { ProductCard } from "../product/ProductCard";
+import { PaginatedProductGrid } from "../product/PaginatedProductGrid";
 import { SectionHeading } from "./SectionHeading";
+
+// Products shown per page in the Featured grid.
+const PAGE_SIZE = 12;
+// Pool fetched up front so pagination has multiple pages to move through.
+const POOL_SIZE = 48;
 
 export async function FeaturedProductsSection({ brand }: { brand: Brand }) {
   let products: ProductCardData[] = [];
@@ -15,7 +20,7 @@ export async function FeaturedProductsSection({ brand }: { brand: Brand }) {
     const data = await storefront<{ collection: { products: { nodes: ProductCardData[] } } | null }>(
       brand.handle,
       BRAND_PRODUCTS_QUERY,
-      { collection: brand.collectionHandle, first: 8 },
+      { collection: brand.collectionHandle, first: POOL_SIZE },
       { tags: [cacheTags.brand(brand.handle)] }
     );
     products = data.collection?.products.nodes ?? [];
@@ -26,7 +31,7 @@ export async function FeaturedProductsSection({ brand }: { brand: Brand }) {
       const all = await storefront<{ products: { nodes: ProductCardData[] } }>(
         brand.handle,
         ALL_PRODUCTS_QUERY,
-        { first: 8 },
+        { first: POOL_SIZE },
         { tags: [cacheTags.brand(brand.handle)] }
       );
       products = all.products.nodes;
@@ -41,11 +46,7 @@ export async function FeaturedProductsSection({ brand }: { brand: Brand }) {
     <section className="py-12 md:py-16 bg-white" data-testid="featured-products-section">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading title="Kiemelt termékek" ctaLabel="Összes termék" ctaHref={`/collections/${brand.collectionHandle}`} />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {products.map((p) => (
-            <ProductCard key={p.id} product={p} brandHandle={brand.handle} />
-          ))}
-        </div>
+        <PaginatedProductGrid products={products} brandHandle={brand.handle} pageSize={PAGE_SIZE} />
       </div>
     </section>
   );
