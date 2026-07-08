@@ -7,6 +7,7 @@
     "dev:arvoalux": "npm run dev -w @arvoalux/brand-arvoalux",
     "dev:biobarat": "npm run dev -w @arvoalux/brand-biobarat",
     "build": "npm run build --workspaces --if-present",
-    "new-brand": "node scripts/new-brand.mjs"
+    "new-brand": "node scripts/new-brand.mjs",
+    "deploy": "NODE_OPTIONS=\"--no-network-family-autoselection\" vercel build --prod && NODE_OPTIONS=\"--no-network-family-autoselection\" vercel deploy --prebuilt --prod"
   }
 }
