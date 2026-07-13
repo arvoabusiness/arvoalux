@@ -12,6 +12,7 @@
   :root {
     --accent: #41594a;
     --accent-fg: #ffffff;
+    --muted: #6b7280;
     --radius: 0.75rem;
     --font-display: "Manrope", sans-serif;
     --font-body: "Inter", sans-serif;
@@ -63,4 +64,25 @@
 .product-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* Manufacturer (vendor) line on product pages */
+.vendor {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Social media links in the footer */
+.social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.social a {
+  color: var(--muted);
+  transition: color 0.15s;
+}
+.social a:hover {
+  color: var(--accent);
 }
