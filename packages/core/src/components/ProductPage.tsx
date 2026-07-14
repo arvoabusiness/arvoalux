@@ -69,10 +69,10 @@ export async function ProductPage({ brand, handle }: { brand: Brand; handle: str
           <ProductGallery images={images} title={product.title} />
 
           <div className="max-w-[700px]">
-            {product.vendor && (
-              <span className="text-xs uppercase tracking-wider text-gray-400 font-medium">{product.vendor}</span>
+            <h1 className="text-2xl lg:text-3xl font-extrabold text-gray-900 mb-1" data-testid="product-title">{product.title}</h1>
+            {product.vendor && product.vendor.toLowerCase() !== brand.name.toLowerCase() && (
+              <p className="vendor">Gyártó: {product.vendor}</p>
             )}
-            <h1 className="text-2xl lg:text-3xl font-extrabold text-gray-900 mt-1 mb-4" data-testid="product-title">{product.title}</h1>
 
             <div className="flex items-baseline gap-3 mb-6">
               <span className="text-3xl font-extrabold text-brand" data-testid="product-price">{formatPrice(price.amount, price.currencyCode)}</span>

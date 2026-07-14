@@ -1,7 +1,7 @@
 import { Truck, Gift, Shield } from "lucide-react";
 
 const items = [
-  { icon: Truck, title: "Ingyenes szállítás", sub: "14 000 Ft felett", justify: "md:justify-start" },
+  { icon: Truck, title: "Ingyenes szállítás", sub: "17 990 Ft felett", justify: "md:justify-start" },
   { icon: Gift, title: "Gyors feladás", sub: "24 órán belül", justify: "md:justify-center" },
   { icon: Shield, title: "Biztonságos vásárlás", sub: "Garantáltan", justify: "md:justify-end" },
 ];
