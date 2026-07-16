@@ -22,17 +22,7 @@ export type CollectionSummary = {
   handle: string;
   title: string;
   image: { url: string; altText: string | null } | null;
-  /** Handle of the parent collection (from the `custom.parent` metafield), or null for top-level. */
-  parent: string | null;
 };
-
-/** Raw collection node as returned by COLLECTIONS_QUERY — parent arrives as a metafield object. */
-export type RawCollectionNode = Omit<CollectionSummary, "parent"> & {
-  parent: { value: string | null } | null;
-};
-
-/** A top-level category with its direct subcategories, built from the flat list. */
-export type CategoryNode = CollectionSummary & { children: CollectionSummary[] };
 
 /**
  * Discount percent off the compare-at price, or null when not on sale.
@@ -45,48 +35,9 @@ export function discountPercent(p: ProductCard): number | null {
   return Math.round(((compare - price) / compare) * 100);
 }
 
-/**
- * Drop the per-brand `brand-<handle>` collections and Shopify's default
- * frontpage, and flatten the `custom.parent` metafield into a plain handle.
- */
-export function visibleCollections(nodes: RawCollectionNode[]): CollectionSummary[] {
-  return nodes
-    .filter((c) => c.handle !== "frontpage" && !c.handle.startsWith("brand-"))
-    .map((c) => ({
-      id: c.id,
-      handle: c.handle,
-      title: c.title,
-      image: c.image,
-      parent: c.parent?.value ?? null,
-    }));
-}
-
-/**
- * Group a flat collection list into a two-level tree using the `parent` handle.
- * A collection whose parent isn't in the visible set is treated as top-level, so
- * nothing is ever dropped. Children are sorted alphabetically; roots keep the
- * Shopify order.
- */
-export function buildCategoryTree(cols: CollectionSummary[]): CategoryNode[] {
-  const byHandle = new Set(cols.map((c) => c.handle));
-  const childrenOf = new Map<string, CollectionSummary[]>();
-  for (const c of cols) {
-    if (c.parent && byHandle.has(c.parent)) {
-      const list = childrenOf.get(c.parent) ?? [];
-      list.push(c);
-      childrenOf.set(c.parent, list);
-    }
-  }
-  const roots: CategoryNode[] = [];
-  for (const c of cols) {
-    if (!c.parent || !byHandle.has(c.parent)) {
-      const children = (childrenOf.get(c.handle) ?? []).sort((a, b) =>
-        a.title.localeCompare(b.title, "hu")
-      );
-      roots.push({ ...c, children });
-    }
-  }
-  return roots;
+/** Drop the per-brand `brand-<handle>` collections and Shopify's default frontpage. */
+export function visibleCollections(nodes: CollectionSummary[]): CollectionSummary[] {
+  return nodes.filter((c) => c.handle !== "frontpage" && !c.handle.startsWith("brand-"));
 }
 
 export function formatPrice(amount: string, currency: string) {

@@ -48,58 +48,25 @@ export async function storefront<T>(
   else if (publicToken) headers["X-Shopify-Storefront-Access-Token"] = publicToken;
   else throw new Error("No Storefront API token configured. Check the app's .env.");
 
-  // Retry only transient *connection* failures (timeouts/resets), and only for
-  // cached reads — never for cart mutations (`noStore`), where a retry after the
-  // request may have reached Shopify could double-apply. GraphQL/HTTP errors are
-  // deterministic and are thrown without retry.
-  //
-  // A healthy Shopify response is ~300ms, so we abort a stalled attempt at 8s
-  // (before undici's 10s connect timeout) and cycle quickly — this rides out the
-  // short connectivity drops seen in flaky dev networks. No effect in production.
-  const maxAttempts = cacheOpts.noStore ? 1 : 2;
-  const perAttemptTimeoutMs = 6000;
-  let lastNetworkError: unknown;
+  const res = await fetch(`https://${STORE}/api/${API_VERSION}/graphql.json`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ query, variables }),
+    ...(cacheOpts.noStore
+      ? { cache: "no-store" as const }
+      : {
+          next: {
+            revalidate: cacheOpts.revalidate ?? 300,
+            tags: cacheOpts.tags ?? [],
+          },
+        }),
+  });
 
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    const ac = new AbortController();
-    const timer = setTimeout(() => ac.abort(), perAttemptTimeoutMs);
-    let res: Response;
-    try {
-      res = await fetch(`https://${STORE}/api/${API_VERSION}/graphql.json`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ query, variables }),
-        signal: ac.signal,
-        ...(cacheOpts.noStore
-          ? { cache: "no-store" as const }
-          : {
-              next: {
-                revalidate: cacheOpts.revalidate ?? 300,
-                tags: cacheOpts.tags ?? [],
-              },
-            }),
-      });
-    } catch (err) {
-      // Network-level failure (connect timeout / abort / reset) — safe to retry.
-      lastNetworkError = err;
-      if (attempt < maxAttempts) {
-        await new Promise((r) => setTimeout(r, 400 * attempt));
-        continue;
-      }
-      throw err;
-    } finally {
-      clearTimeout(timer);
-    }
-
-    const json = await res.json();
-    if (!res.ok || json.errors) {
-      throw new Error(`Storefront API error: ${JSON.stringify(json.errors ?? json)}`);
-    }
-    return json.data as T;
+  const json = await res.json();
+  if (!res.ok || json.errors) {
+    throw new Error(`Storefront API error: ${JSON.stringify(json.errors ?? json)}`);
   }
-
-  // Unreachable in practice (loop either returns or throws), but keeps TS happy.
-  throw lastNetworkError ?? new Error("Storefront request failed");
+  return json.data as T;
 }
 
 /* ---------- queries ---------- */
@@ -157,20 +124,15 @@ export const SEARCH_PRODUCTS_QUERY = /* GraphQL */ `
   }
 `;
 
-/**
- * Storefront collections — feeds the homepage category grid and the drawer.
- * Fetches up to 250 (the API max) so no category is cut off, plus the
- * `custom.parent` metafield that drives the category → subcategory hierarchy.
- */
+/** Storefront collections — feeds the homepage category grid and the drawer. */
 export const COLLECTIONS_QUERY = /* GraphQL */ `
-  query Collections($first: Int = 250) {
+  query Collections($first: Int = 50) {
     collections(first: $first) {
       nodes {
         id
         handle
         title
         image { url(transform: { maxWidth: 200 }) altText }
-        parent: metafield(namespace: "custom", key: "parent") { value }
       }
     }
   }
@@ -280,11 +242,8 @@ export {
   type Money,
   type ProductCard,
   type CollectionSummary,
-  type RawCollectionNode,
-  type CategoryNode,
   discountPercent,
   visibleCollections,
-  buildCategoryTree,
   formatPrice,
 } from "./catalog";
 
