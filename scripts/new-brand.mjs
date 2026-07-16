@@ -33,9 +33,9 @@ f("package.json", JSON.stringify({
   name: `@arvoalux/brand-${handle}`,
   private: true, version: "0.1.0",
   scripts: {
-    dev: 'NODE_OPTIONS="--no-network-family-autoselection" next dev',
-    build: 'NODE_OPTIONS="--no-network-family-autoselection" next build',
-    start: 'NODE_OPTIONS="--no-network-family-autoselection" next start',
+    dev: 'NODE_OPTIONS="--dns-result-order=ipv4first" next dev',
+    build: 'NODE_OPTIONS="--dns-result-order=ipv4first" next build',
+    start: 'NODE_OPTIONS="--dns-result-order=ipv4first" next start',
   },
   dependencies: { "@arvoalux/core": "*", next: "^15.3.0", react: "^19.0.0", "react-dom": "^19.0.0" },
   devDependencies: {

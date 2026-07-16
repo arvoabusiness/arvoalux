@@ -7,6 +7,7 @@ import {
   cacheTags,
   visibleCollections,
   type CollectionSummary,
+  type RawCollectionNode,
 } from "../shopify";
 import { Header } from "./layout/Header";
 import { Footer } from "./layout/Footer";
@@ -29,10 +30,10 @@ export async function BrandLayout({ brand, children }: { brand: Brand; children:
   // Cached + brand-tagged so all consumers share one request per render.
   let collections: CollectionSummary[] = [];
   try {
-    const data = await storefront<{ collections: { nodes: CollectionSummary[] } }>(
+    const data = await storefront<{ collections: { nodes: RawCollectionNode[] } }>(
       brand.handle,
       COLLECTIONS_QUERY,
-      { first: 50 },
+      { first: 250 },
       { tags: [cacheTags.brand(brand.handle)] }
     );
     collections = visibleCollections(data.collections.nodes);
