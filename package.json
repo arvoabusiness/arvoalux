@@ -8,6 +8,6 @@
     "dev:biobarat": "npm run dev -w @arvoalux/brand-biobarat",
     "build": "npm run build --workspaces --if-present",
     "new-brand": "node scripts/new-brand.mjs",
-    "deploy": "NODE_OPTIONS=\"--no-network-family-autoselection\" vercel build --prod && NODE_OPTIONS=\"--no-network-family-autoselection\" vercel deploy --prebuilt --prod"
+    "deploy": "NODE_OPTIONS=\"--dns-result-order=ipv4first\" vercel build --prod && NODE_OPTIONS=\"--dns-result-order=ipv4first\" vercel deploy --prebuilt --prod"
   }
 }
