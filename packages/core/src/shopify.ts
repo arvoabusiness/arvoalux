@@ -1,5 +1,5 @@
 import "server-only";
-import type { Money } from "./catalog";
+import type { Money, SearchSuggestion } from "./catalog";
 
 const STORE = process.env.SHOPIFY_STORE_DOMAIN!;
 const API_VERSION = process.env.SHOPIFY_API_VERSION ?? "2026-01";
@@ -127,6 +127,55 @@ export const BRAND_PRODUCTS_QUERY = /* GraphQL */ `
     }
   }
 `;
+
+/**
+ * Title-prefix product search powering the header autocomplete. Uses a
+ * `title:<term>*` query (prefix match on the product title) which gives precise,
+ * "as-you-type" results — unlike Shopify's `predictiveSearch`, which depends on a
+ * separate search index that can be empty/stale. Lightweight fields so it can run
+ * on every (debounced) keystroke.
+ */
+export const SEARCH_SUGGESTIONS_QUERY = /* GraphQL */ `
+  query SearchSuggestions($query: String!, $first: Int = 6) {
+    products(first: $first, query: $query) {
+      nodes {
+        id
+        handle
+        title
+        featuredImage { url(transform: { maxWidth: 120 }) altText }
+        priceRange { minVariantPrice { amount currencyCode } }
+      }
+    }
+  }
+`;
+
+/**
+ * Product suggestions for the search-bar autocomplete. Returns [] for very short
+ * or failing queries so the caller (an API route) never throws. Short-cached so
+ * repeated keystrokes for the same term don't re-hit Shopify.
+ */
+export async function predictiveSearchProducts(
+  brandHandle: string,
+  query: string
+): Promise<SearchSuggestion[]> {
+  const term = query.trim();
+  if (term.length < 2) return [];
+  // Strip characters that would break Shopify's search-query syntax, then match
+  // as a title prefix.
+  const safe = term.replace(/["\\():*~^{}[\]]/g, " ").trim();
+  if (!safe) return [];
+  try {
+    const data = await storefront<{ products: { nodes: SearchSuggestion[] } }>(
+      brandHandle,
+      SEARCH_SUGGESTIONS_QUERY,
+      { query: `title:${safe}*`, first: 6 },
+      { revalidate: 60, tags: [cacheTags.brand(brandHandle)] }
+    );
+    return data.products.nodes;
+  } catch {
+    return [];
+  }
+}
 
 export const ALL_PRODUCTS_QUERY = /* GraphQL */ `
   ${PRODUCT_CARD}
@@ -282,6 +331,7 @@ export {
   type CollectionSummary,
   type RawCollectionNode,
   type CategoryNode,
+  type SearchSuggestion,
   discountPercent,
   visibleCollections,
   buildCategoryTree,

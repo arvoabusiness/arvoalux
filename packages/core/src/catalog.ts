@@ -34,6 +34,15 @@ export type RawCollectionNode = Omit<CollectionSummary, "parent"> & {
 /** A top-level category with its direct subcategories, built from the flat list. */
 export type CategoryNode = CollectionSummary & { children: CollectionSummary[] };
 
+/** A single product suggestion for the search-bar autocomplete dropdown. */
+export type SearchSuggestion = {
+  id: string;
+  handle: string;
+  title: string;
+  featuredImage: { url: string; altText: string | null } | null;
+  priceRange: { minVariantPrice: Money };
+};
+
 /**
  * Discount percent off the compare-at price, or null when not on sale.
  * Storefront returns compareAt as "0.0" (not null) when there's no sale.

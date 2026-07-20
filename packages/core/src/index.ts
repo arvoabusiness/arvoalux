@@ -4,8 +4,10 @@ export {
   cacheTags,
   discountPercent,
   visibleCollections,
+  predictiveSearchProducts,
   type ProductCard as ProductCardData,
   type CollectionSummary,
+  type SearchSuggestion,
 } from "./shopify";
 export { handleShopifyRevalidate } from "./revalidate";
 export { BrandLayout } from "./components/BrandLayout";
