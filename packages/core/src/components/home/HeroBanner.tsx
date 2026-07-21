@@ -134,13 +134,16 @@ export function HeroBanner() {
           </Link>
         </div>
 
-        {/* Tablet / mobile fallback grid */}
+        {/* Tablet / mobile fallback grid — first feature tile + promo span full
+            width, the rest fall into 2-column pairs (no awkward empty cells). */}
         <div className="grid lg:hidden grid-cols-2 gap-3 sm:gap-4">
-          {bannerData.map((banner) => (
+          {bannerData.map((banner, index) => (
             <Link
               key={banner.id}
               href={banner.href}
-              className={`relative overflow-hidden rounded-2xl group min-h-[180px] ${banner.isPromo ? "col-span-2 min-h-[200px]" : ""}`}
+              className={`relative overflow-hidden rounded-2xl group ${
+                banner.isPromo || index === 0 ? "col-span-2 min-h-[200px]" : "min-h-[180px]"
+              }`}
               style={{ backgroundColor: banner.bgColor }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

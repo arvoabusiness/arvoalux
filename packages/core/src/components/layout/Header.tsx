@@ -2,14 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Search, ShoppingBag, User, Heart, Grid2X2, Tag, Phone, Truck, FileText, Info } from "lucide-react";
+import { ShoppingBag, User, Heart, Grid2X2, Tag, Phone, Truck, FileText, Info } from "lucide-react";
 import type { Brand } from "../../types";
 import type { CollectionSummary } from "../../shopify";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { CategoryDrawer } from "../category/CategoryDrawer";
 import { BrandWordmark } from "../brand/BrandWordmark";
+import { SearchBar } from "./SearchBar";
 
 const utilityItems = [
   { icon: Truck, text: "Ingyenes szállítás", highlight: "17 990 Ft", suffix: "felett" },
@@ -19,15 +18,8 @@ const utilityItems = [
 ];
 
 export function Header({ brand, collections }: { brand: Brand; collections: CollectionSummary[] }) {
-  const [searchQuery, setSearchQuery] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const router = useRouter();
   const saleHref = `/collections/${brand.collectionHandle}`;
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-  };
 
   return (
     <>
@@ -78,20 +70,9 @@ export function Header({ brand, collections }: { brand: Brand; collections: Coll
               </div>
 
               {/* Mobile search */}
-              <form onSubmit={handleSearch} className="sm:hidden flex-1 mr-3">
-                <div className="relative flex items-center">
-                  <input
-                    type="text"
-                    placeholder="Milyen terméket keresel?"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-[42px] pl-4 pr-12 rounded-full bg-[#f2f2f0] border-0 text-[14px] text-gray-700 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-brand/30"
-                  />
-                  <Button type="submit" size="icon" className="absolute right-1 w-9 h-9 rounded-full bg-ink hover:bg-ink-dark">
-                    <Search className="w-4 h-4 text-white" />
-                  </Button>
-                </div>
-              </form>
+              <div className="sm:hidden flex-1 mr-3">
+                <SearchBar size="mobile" />
+              </div>
 
               {/* Desktop nav */}
               <div className="hidden lg:flex items-center gap-1">
@@ -106,20 +87,9 @@ export function Header({ brand, collections }: { brand: Brand; collections: Coll
               </div>
 
               {/* Desktop search */}
-              <form onSubmit={handleSearch} className="flex-1 mx-4 lg:mx-8 hidden sm:flex">
-                <div className="relative w-full">
-                  <Input
-                    type="text"
-                    placeholder="Milyen terméket keresel?"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full h-12 pl-5 pr-14 rounded-full bg-gray-100 border-0 text-gray-700 placeholder:text-gray-500 focus:ring-2 focus:ring-brand focus:bg-white"
-                  />
-                  <Button type="submit" size="icon" className="absolute right-1 top-1/2 -translate-y-1/2 rounded-full bg-ink hover:bg-ink-dark w-10 h-10">
-                    <Search className="w-5 h-5 text-white" />
-                  </Button>
-                </div>
-              </form>
+              <div className="flex-1 mx-4 lg:mx-8 hidden sm:flex">
+                <SearchBar size="desktop" />
+              </div>
 
               {/* Right actions */}
               <div className="hidden lg:flex items-center gap-2">
