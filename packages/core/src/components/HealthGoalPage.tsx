@@ -4,6 +4,7 @@ import {
   storefront,
   BRAND_PRODUCTS_QUERY,
   cacheTags,
+  sellable,
   type ProductCard as ProductCardData,
 } from "../shopify";
 import { ProductCard } from "./product/ProductCard";
@@ -38,7 +39,7 @@ export async function HealthGoalPage({
       { collection: collectionHandle, first: 12 },
       { tags: [cacheTags.brand(brand.handle)] }
     );
-    products = data.collection?.products.nodes ?? [];
+    products = sellable(data.collection?.products.nodes ?? []);
   } catch (e) {
     error = e instanceof Error ? e.message : "Storefront API request failed.";
   }
