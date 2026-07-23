@@ -60,7 +60,7 @@ export function ProductCard({
 
       {/* Content */}
       <div className="p-3 sm:p-4">
-        {product.vendor && (
+        {product.vendor && product.vendor.toLowerCase() !== brandHandle && (
           <span className="text-[11px] text-gray-400 uppercase tracking-wide font-medium">
             {product.vendor}
           </span>
