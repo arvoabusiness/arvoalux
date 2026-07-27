@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ProductCard } from "./ProductCard";
-import type { ProductCard as ProductCardData } from "../../catalog";
+import { sellable, type ProductCard as ProductCardData } from "../../catalog";
 
 /**
  * Product grid that pages through a pre-fetched pool client-side. The full list
@@ -22,9 +22,10 @@ export function PaginatedProductGrid({
   const [page, setPage] = useState(1);
   const topRef = useRef<HTMLDivElement>(null);
 
-  const pageCount = Math.ceil(products.length / pageSize);
+  const items = sellable(products);
+  const pageCount = Math.ceil(items.length / pageSize);
   const start = (page - 1) * pageSize;
-  const visible = products.slice(start, start + pageSize);
+  const visible = items.slice(start, start + pageSize);
 
   function goTo(next: number) {
     setPage(next);

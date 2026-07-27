@@ -1,6 +1,6 @@
 import { ProductCard } from "./ProductCard";
 import { Skeleton } from "../ui/skeleton";
-import type { ProductCard as ProductCardData } from "../../shopify";
+import { sellable, type ProductCard as ProductCardData } from "../../catalog";
 
 export function ProductGrid({
   products,
@@ -30,7 +30,8 @@ export function ProductGrid({
     );
   }
 
-  if (!products || products.length === 0) {
+  const items = sellable(products ?? []);
+  if (items.length === 0) {
     return (
       <div className="text-center py-12">
         <p className="text-gray-500">Nincs megjeleníthető termék</p>
@@ -43,7 +44,7 @@ export function ProductGrid({
       className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ${className}`}
       data-testid="product-grid"
     >
-      {products.map((product) => (
+      {items.map((product) => (
         <ProductCard key={product.id} product={product} brandHandle={brandHandle} />
       ))}
     </div>

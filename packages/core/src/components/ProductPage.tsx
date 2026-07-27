@@ -35,7 +35,9 @@ export async function ProductPage({ brand, handle }: { brand: Brand; handle: str
   );
   const product = data.product;
 
-  if (!product) {
+  // Treat not-ready products (no valid price, e.g. the pulled SAA & CRP test) as
+  // not found, so their direct product URL 404s too — matching the grids/search.
+  if (!product || Number(product.priceRange.minVariantPrice.amount) <= 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 text-center py-20">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Termék nem található</h2>

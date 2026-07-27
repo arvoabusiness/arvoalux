@@ -98,6 +98,17 @@ export function buildCategoryTree(cols: CollectionSummary[]): CategoryNode[] {
   return roots;
 }
 
+/**
+ * Products that are actually for sale. Hides not-ready items — currently any
+ * product with no real price (0), e.g. the SAA & CRP rapid test the client asked
+ * to pull. Reversible: a product reappears the moment it has a valid price.
+ */
+export function sellable<T extends { priceRange: { minVariantPrice: Money } }>(
+  products: T[]
+): T[] {
+  return products.filter((p) => Number(p.priceRange.minVariantPrice.amount) > 0);
+}
+
 export function formatPrice(amount: string, currency: string) {
   return new Intl.NumberFormat("hu-HU", {
     style: "currency",

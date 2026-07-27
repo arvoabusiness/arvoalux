@@ -1,4 +1,5 @@
 import "server-only";
+import { sellable } from "./catalog";
 import type { Money, SearchSuggestion } from "./catalog";
 
 const STORE = process.env.SHOPIFY_STORE_DOMAIN!;
@@ -171,7 +172,7 @@ export async function predictiveSearchProducts(
       { query: `title:${safe}*`, first: 6 },
       { revalidate: 60, tags: [cacheTags.brand(brandHandle)] }
     );
-    return data.products.nodes;
+    return sellable(data.products.nodes);
   } catch {
     return [];
   }
@@ -335,6 +336,7 @@ export {
   discountPercent,
   visibleCollections,
   buildCategoryTree,
+  sellable,
   formatPrice,
 } from "./catalog";
 
