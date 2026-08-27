@@ -3,44 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-
-const blogPosts = [
-  {
-    id: 1,
-    date: "2026. Január 14.",
-    title: "Milyen vitaminokra van szükségünk télen?",
-    image: "https://images.unsplash.com/photo-1627394376504-24507bf9f7eb?w=600&q=80",
-    href: "#",
-  },
-  {
-    id: 2,
-    date: "2026. Január 8.",
-    title: "Torokfájás, köhögés, orrdugulás: mit érdemes tudni?",
-    image: "https://images.unsplash.com/photo-1611178239338-bc6232793df1?w=600&q=80",
-    href: "#",
-  },
-  {
-    id: 3,
-    date: "2025. December 28.",
-    title: "Magnézium: mikor és hogyan érdemes szedni?",
-    image: "https://images.unsplash.com/photo-1770782773560-2b8180f9032d?w=600&q=80",
-    href: "#",
-  },
-  {
-    id: 4,
-    date: "2025. December 15.",
-    title: "Biztonságos méregtelenítés és emésztésjavítás",
-    image: "https://images.unsplash.com/photo-1642116892223-500a772219f2?w=600&q=80",
-    href: "#",
-  },
-  {
-    id: 5,
-    date: "2025. December 3.",
-    title: "D-vitamin a téli hónapokban – Mennyi kell és miért hiányzik?",
-    image: "https://images.unsplash.com/photo-1688547978797-fe7f52697265?w=600&q=80",
-    href: "#",
-  },
-];
+import { blogPosts } from "../../blog";
 
 export function BlogSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -76,7 +39,7 @@ export function BlogSection() {
         <div className="text-center mb-8">
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-gray-900 mb-2">Blog</h2>
           <Link
-            href="#"
+            href="/blog"
             className="inline-flex items-center gap-0.5 text-gray-500 hover:text-brand text-[15px] transition-colors"
           >
             Tovább a bloghoz
@@ -91,16 +54,16 @@ export function BlogSection() {
         >
           {blogPosts.map((post) => (
             <Link
-              key={post.id}
-              href={post.href}
+              key={post.slug}
+              href={`/blog/${post.slug}`}
               className="flex-shrink-0 w-[75vw] sm:w-[45vw] lg:w-[calc(33.333%-12px)] snap-start group"
-              data-testid={`blog-card-${post.id}`}
+              data-testid={`blog-card-${post.slug}`}
             >
               <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
                 <div className="aspect-[16/10] overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={post.image}
+                    src={post.cover}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"

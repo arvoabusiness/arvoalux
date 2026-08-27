@@ -4,6 +4,7 @@ import {
   COLLECTION_PRODUCTS_QUERY,
   ALL_PRODUCTS_QUERY,
   cacheTags,
+  cleanCollectionTitle,
   type ProductCard as ProductCardData,
 } from "../shopify";
 import { ProductGrid } from "./product/ProductGrid";
@@ -24,7 +25,7 @@ export async function CollectionPage({ brand, handle }: { brand: Brand; handle: 
       { tags: [cacheTags.brand(brand.handle)] }
     );
     if (data.collection) {
-      title = data.collection.title;
+      title = cleanCollectionTitle(handle, data.collection.title);
       description = data.collection.description;
       products = data.collection.products.nodes;
     } else if (handle === brand.collectionHandle) {
