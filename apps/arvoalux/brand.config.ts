@@ -1,24 +1,24 @@
 import { defineBrand } from "@arvoalux/core";
 
 const fonts =
-  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&display=swap";
+  "https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap";
 
 export const brand = defineBrand({
   handle: "arvoalux",
   name: "Arvoalux",
-  tagline: "Prémium wellness, mindennap.",
+  tagline: "Egészség, jól választva.",
   domains: ["arvoalux.hu", "www.arvoalux.hu"],
   collectionHandle: "brand-arvoalux",
   theme: {
-    bg: "#0e1f17",
-    surface: "#16291f",
-    fg: "#f2ead7",
-    muted: "#9fb0a4",
-    accent: "#d8b25c",
-    accentFg: "#10130c",
-    radius: "2px",
+    bg: "#F6F3EA",
+    surface: "#FFFFFF",
+    fg: "#1D2522",
+    muted: "#70877E",
+    accent: "#2F4B43",
+    accentFg: "#FFFFFF",
+    radius: "12px",
     fontHref: fonts,
-    fontDisplay: "'Cormorant Garamond', serif",
-    fontBody: "'Jost', sans-serif",
+    fontDisplay: "'Lato', sans-serif",
+    fontBody: "'Lato', sans-serif",
   },
 });
