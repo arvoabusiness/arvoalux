@@ -3,18 +3,20 @@ import { sellable } from "./catalog";
 import type { Money, SearchSuggestion } from "./catalog";
 
 const STORE = process.env.SHOPIFY_STORE_DOMAIN!;
-const API_VERSION = process.env.SHOPIFY_API_VERSION ?? "2026-01";
+const API_VERSION = process.env.SHOPIFY_STOREFRONT_API_VERSION ?? process.env.SHOPIFY_API_VERSION ?? "2026-04";
 
-// Each brand app has its own .env. Token resolution allows either a single
-// shared token (SHOPIFY_PRIVATE_TOKEN) or a per-brand one
-// (SHOPIFY_PRIVATE_TOKEN_<HANDLE>) when brands use separate Headless storefronts.
+// Each brand app has its own .env. Prefer the explicit Storefront names and
+// retain the old names for backward compatibility with existing deployments.
 function tokensFor(brandHandle: string) {
   const key = brandHandle.toUpperCase().replace(/-/g, "_");
   return {
     publicToken:
       process.env[`SHOPIFY_PUBLIC_TOKEN_${key}`] ?? process.env.SHOPIFY_PUBLIC_TOKEN,
     privateToken:
-      process.env[`SHOPIFY_PRIVATE_TOKEN_${key}`] ?? process.env.SHOPIFY_PRIVATE_TOKEN,
+      process.env[`SHOPIFY_STOREFRONT_PRIVATE_TOKEN_${key}`] ??
+      process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN ??
+      process.env[`SHOPIFY_PRIVATE_TOKEN_${key}`] ??
+      process.env.SHOPIFY_PRIVATE_TOKEN,
   };
 }
 
