@@ -38,22 +38,21 @@ Done once by whoever administers the store. Order matters.
   Shopify — those point to Vercel (the Next apps). Shopify only needs the one
   neutral checkout domain.
 
-### A3. One Headless storefront per brand (catalog isolation)
-Because each brand has its own products (decision #4), isolate them:
-- Install the **Headless** sales channel.
-- Create **one storefront per brand** (9 total). Each gets its own
-  **public + private Storefront API token**.
-- Publish **only that brand's products + its `brand-<handle>` collection** to
-  that brand's storefront. Result: a brand's API literally cannot return another
-  brand's products — isolation on top of collection filtering.
-- The code already supports this: `SHOPIFY_PRIVATE_TOKEN_<HANDLE>` overrides the
-  shared token per brand (`packages/core/src/shopify.ts`). Use per-brand tokens
-  for launch; the shared token stays as a dev fallback.
+### A3. Shared Shopify catalog across all storefronts
+All 9 storefronts intentionally use the same Shopify product catalog. Brand
+separation is UI/config/domain-level, not product-catalog isolation:
+- Install/configure the Headless sales channel for the shared catalog.
+- The 9 storefront apps may use the same approved Storefront API token during
+  the shared-catalog rollout; per-brand tokens are optional, not required.
+- Do not filter or publish products by `brand-<handle>` unless the founder later
+  changes this decision.
+- The code still supports `SHOPIFY_PRIVATE_TOKEN_<HANDLE>` overrides, but the
+  shared token is the intended current configuration.
 
-### A4. Products & collections
-- Tag every product `brand:<handle>` (e.g. `brand:biobarat`).
-- Smart collections `brand-<handle>` already auto-collect by tag (see
-  `scripts/seed.mjs`). Run/extend the seed or create real products.
+### A4. Shared products & collections
+- All storefronts read the shared Shopify catalog and may expose the same products.
+- Brand-specific collections are optional merchandising surfaces, not isolation
+  boundaries and must not hide the shared catalog unless explicitly requested.
 - Inventory stays central (one stock number per variant), feeding Zoho later.
 
 ### A5. Discounts (namespacing)
