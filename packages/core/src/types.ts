@@ -16,7 +16,9 @@ export type Brand = {
   name: string;
   tagline: string;
   domains: string[];
-  collectionHandle: string; // Shopify automated collection: brand-<handle>
+  collectionHandle: string;
+  logoSrc?: string;
+  logoAlt?: string;
   theme: BrandTheme;
 };
 

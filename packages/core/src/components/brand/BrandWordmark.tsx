@@ -7,10 +7,14 @@ import Link from "next/link";
  */
 export function BrandWordmark({
   name,
+  logoSrc,
+  logoAlt,
   size = "md",
   link = true,
 }: {
   name: string;
+  logoSrc?: string;
+  logoAlt?: string;
   size?: "sm" | "md" | "lg";
   link?: boolean;
 }) {
@@ -21,12 +25,23 @@ export function BrandWordmark({
   } as const;
   const s = sizes[size] ?? sizes.md;
 
+  const logoWidths = { sm: "w-[112px]", md: "w-[160px]", lg: "w-[200px]" } as const;
   const mark = (
-    <span className="inline-flex flex-col" data-testid="brand-wordmark">
-      <span className={`${s.text} font-heading font-extrabold tracking-[0.08em] text-brand leading-none uppercase`}>
-        {name}
-      </span>
-      <span className={`${s.line} w-full bg-brand rounded-full`} />
+    <span className="inline-flex items-center" data-testid="brand-wordmark">
+      {logoSrc ? (
+        <img
+          src={logoSrc}
+          alt={logoAlt ?? name}
+          className={`${logoWidths[size]} h-auto max-h-12 object-contain object-left`}
+        />
+      ) : (
+        <span className="inline-flex flex-col">
+          <span className={`${s.text} font-heading font-extrabold tracking-[0.08em] text-brand leading-none uppercase`}>
+            {name}
+          </span>
+          <span className={`${s.line} w-full bg-brand rounded-full`} />
+        </span>
+      )}
     </span>
   );
 

@@ -8,6 +8,8 @@ export const brand = defineBrand({
   name: "Arvoalux",
   tagline: "Egészség, jól választva.",
   domains: ["arvoalux.hu", "www.arvoalux.hu"],
+  logoSrc: "/arvoa-lux-logo-forest.png",
+  logoAlt: "Arvoa Lux",
   collectionHandle: "brand-arvoalux",
   theme: {
     bg: "#F6F3EA",

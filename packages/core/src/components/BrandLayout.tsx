@@ -19,6 +19,10 @@ export async function BrandLayout({ brand, children }: { brand: Brand; children:
   // Only the brand identity bits drive the shared light design: the accent
   // colour, radius and fonts. Page chrome stays neutral/structural.
   const vars = {
+    "--brand-bg": t.bg,
+    "--brand-surface": t.surface,
+    "--brand-fg": t.fg,
+    "--brand-muted": t.muted,
     "--accent": t.accent,
     "--accent-fg": t.accentFg,
     "--radius": t.radius,
@@ -53,7 +57,7 @@ export async function BrandLayout({ brand, children }: { brand: Brand; children:
         />
         <title>{`${brand.name} — ${brand.tagline}`}</title>
       </head>
-      <body>
+      <body style={{ backgroundColor: t.bg, color: t.fg }}>
         <Header brand={brand} collections={collections} />
         <main className="flex-1 pb-[60px] md:pb-0">{children}</main>
         <Footer brand={brand} />

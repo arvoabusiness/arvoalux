@@ -65,8 +65,8 @@ export function Header({ brand, collections }: { brand: Brand; collections: Coll
           <div className="flex items-stretch h-[60px] sm:h-[85px]">
             <div className="flex-1 flex items-center min-w-0 px-3 sm:px-4">
               <div className="flex-shrink-0 mr-1 sm:mr-2 lg:mr-4">
-                <span className="sm:hidden"><BrandWordmark name={brand.name} size="sm" /></span>
-                <span className="hidden sm:inline-flex"><BrandWordmark name={brand.name} size="md" /></span>
+                <span className="sm:hidden"><BrandWordmark name={brand.name} logoSrc={brand.logoSrc} logoAlt={brand.logoAlt} size="sm" /></span>
+                <span className="hidden sm:inline-flex"><BrandWordmark name={brand.name} logoSrc={brand.logoSrc} logoAlt={brand.logoAlt} size="md" /></span>
               </div>
 
               {/* Mobile search */}
