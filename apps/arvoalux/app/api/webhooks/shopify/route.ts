@@ -1,5 +1,5 @@
 import "server-only";
-import { createHmac, timingSafeEqual } from "node:crypto";
+import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 import { Pool } from "pg";
 
 export const dynamic = "force-dynamic";
@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 let pool: Pool | undefined;
 function db(): Pool {
   if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is not configured");
-  pool ??= new Pool({ connectionString: process.env.DATABASE_URL, max: 1, ssl: { rejectUnauthorized: false } });
+  pool ??= new Pool({ connectionString: process.env.DATABASE_URL, max: 1 });
   return pool;
 }
 
@@ -41,12 +41,13 @@ export async function POST(request: Request) {
   if (!eventId) return Response.json({ error: "Missing event id" }, { status: 400 });
   try {
     await ensureTable();
+    const bodySha256 = createHash("sha256").update(body).digest("hex");
     const result = await db().query(
       `INSERT INTO shopify_webhook_events (event_id, topic, body_sha256)
-       VALUES ($1, $2, encode(digest($3, 'sha256'), 'hex'))
+       VALUES ($1, $2, $3)
        ON CONFLICT (event_id) DO NOTHING
        RETURNING event_id`,
-      [eventId, topic, body],
+      [eventId, topic, bodySha256],
     );
     if (result.rowCount === 0) return Response.json({ accepted: true, duplicate: true, event_id: eventId });
     return Response.json({ accepted: true, duplicate: false, status: "received", event_id: eventId, topic }, { status: 202 });
