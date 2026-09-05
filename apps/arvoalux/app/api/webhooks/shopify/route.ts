@@ -41,6 +41,22 @@ function statusFor(topic: string, payload: Record<string, unknown>): string {
   if (topic === "ORDERS_CANCELLED") return orderId(payload) ? "pending_reconciliation" : "dead_letter";
   return "received";
 }
+async function writeAirtableEvent(eventId: string, topic: string, orderId: string | null, status: string, bodySha256: string) {
+  const token = process.env.AIRTABLE_API_KEY;
+  const base = process.env.AIRTABLE_BASE_ID;
+  const table = process.env.AIRTABLE_EVENTS_TABLE_ID;
+  if (!token || !base || !table) return false;
+  const response = await fetch(`https://api.airtable.com/v0/${base}/${table}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ fields: {
+      "Event ID": eventId, Provider: "shopify", Topic: topic, "External ID": orderId ?? "",
+      Status: status, "Payload Hash": bodySha256, "Received At": new Date().toISOString(), Error: ""
+    }}),
+  });
+  return response.ok;
+}
+
 export async function POST(request: Request) {
   const secret = process.env.SHOPIFY_WEBHOOK_SECRET ?? process.env.SHOPIFY_CLIENT_SECRET;
   if (!secret) return Response.json({ error: "Webhook secret is not configured" }, { status: 503 });
@@ -62,6 +78,7 @@ export async function POST(request: Request) {
       [eventId, topic, bodySha256, JSON.stringify(payload), oid, status],
     );
     if (result.rowCount === 0) return Response.json({ accepted: true, duplicate: true, event_id: eventId });
+    try { await writeAirtableEvent(eventId, topic, oid, status, bodySha256); } catch (error) { console.error("AIRTABLE_AUDIT_ERROR", error instanceof Error ? error.message.slice(0, 160) : "unknown"); }
     if (status === "dead_letter") return Response.json({ accepted: true, status, event_id: eventId }, { status: 202 });
     return Response.json({ accepted: true, duplicate: false, status, event_id: eventId, topic, order_id: oid }, { status: 202 });
   } catch (error) {
