@@ -51,7 +51,8 @@ export async function POST(request: Request) {
     );
     if (result.rowCount === 0) return Response.json({ accepted: true, duplicate: true, event_id: eventId });
     return Response.json({ accepted: true, duplicate: false, status: "received", event_id: eventId, topic }, { status: 202 });
-  } catch {
+  } catch (error) {
+    console.error("WEBHOOK_DB_ERROR", { name: error instanceof Error ? error.name : "UnknownError", message: error instanceof Error ? error.message.slice(0, 180) : "Unknown database error" });
     return Response.json({ error: "Persistent event store unavailable" }, { status: 503 });
   }
 }
