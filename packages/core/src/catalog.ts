@@ -55,6 +55,26 @@ export function discountPercent(p: ProductCard): number | null {
 }
 
 /**
+ * One-off display corrections for collections whose title is corrupted in
+ * Shopify. Remove an entry once the collection is renamed in Shopify Admin.
+ * (`asvanyok-es-amp`'s title is stored as the truncated "Ásványok &amp".)
+ */
+const COLLECTION_TITLE_OVERRIDES: Record<string, string> = {
+  "asvanyok-es-amp": "Ásványok & zsírsavak",
+};
+
+/** Decode stray HTML entities and apply any one-off title override. */
+export function cleanCollectionTitle(handle: string, title: string): string {
+  if (COLLECTION_TITLE_OVERRIDES[handle]) return COLLECTION_TITLE_OVERRIDES[handle];
+  return (title ?? "")
+    .replace(/&amp;?/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">");
+}
+
+/**
  * Drop the per-brand `brand-<handle>` collections and Shopify's default
  * frontpage, and flatten the `custom.parent` metafield into a plain handle.
  */
@@ -64,7 +84,7 @@ export function visibleCollections(nodes: RawCollectionNode[]): CollectionSummar
     .map((c) => ({
       id: c.id,
       handle: c.handle,
-      title: c.title,
+      title: cleanCollectionTitle(c.handle, c.title),
       image: c.image,
       parent: c.parent?.value ?? null,
     }));

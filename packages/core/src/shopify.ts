@@ -337,6 +337,7 @@ export {
   type SearchSuggestion,
   discountPercent,
   visibleCollections,
+  cleanCollectionTitle,
   buildCategoryTree,
   sellable,
   formatPrice,
