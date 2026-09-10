@@ -4,6 +4,8 @@ import type { Brand } from "../types";
 import {
   storefront,
   COLLECTIONS_QUERY,
+  COLLECTIONS_QUERY_TOKENLESS,
+  hasStorefrontToken,
   cacheTags,
   visibleCollections,
   type CollectionSummary,
@@ -32,7 +34,7 @@ export async function BrandLayout({ brand, children }: { brand: Brand; children:
   try {
     const data = await storefront<{ collections: { nodes: RawCollectionNode[] } }>(
       brand.handle,
-      COLLECTIONS_QUERY,
+      hasStorefrontToken(brand.handle) ? COLLECTIONS_QUERY : COLLECTIONS_QUERY_TOKENLESS,
       { first: 250 },
       { tags: [cacheTags.brand(brand.handle)] }
     );

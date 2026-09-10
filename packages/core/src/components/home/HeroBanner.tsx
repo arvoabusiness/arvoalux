@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { Brand } from "../../types";
 import {
-  getHeroBanners,
   type HeroBannerItem,
   type HeroSlot,
 } from "./heroCampaigns";
+import { loadHeroBanners } from "./heroData";
 
 const desktopSlotClasses: Record<HeroSlot, string> = {
   "top-left": "col-span-3",
@@ -28,24 +28,29 @@ function BannerContent({ banner, brandName, compact = false, desktop = false }: 
   compact?: boolean;
   desktop?: boolean;
 }) {
-  const titleClass = `font-heading font-bold leading-tight text-white drop-shadow-md ${compact ? "text-lg" : banner.isPrimary ? "text-3xl sm:text-4xl" : "text-2xl"}`;
+  const titleClass = `font-heading font-bold leading-[1.18] text-[#173c2b] ${compact ? "text-xs sm:text-sm" : banner.isPrimary ? "text-2xl sm:text-3xl" : "text-base sm:text-lg"}`;
   const ctaLabel = compact ? banner.mobileCta : desktop ? banner.cta : banner.mobileCta;
+  const copyWidthClass = compact
+    ? banner.imageScale === "xlarge"
+      ? "max-w-full sm:max-w-[38%]"
+      : "max-w-full sm:max-w-[44%]"
+    : banner.imageScale === "large"
+      ? "max-w-[42%]"
+      : "max-w-[48%]";
   return (
-    <div className={`relative z-10 flex h-full flex-col justify-end ${compact ? "p-4" : "p-5 sm:p-6"}`}>
+    <div className={`relative z-10 flex h-full flex-col justify-end ${compact ? "p-3" : "p-5 sm:p-6"}`}>
       {banner.isPrimary && (
-        <span className="mb-auto w-fit rounded-full border border-white/70 bg-black/45 px-3 py-1 text-xs font-bold tracking-wide text-white">
+        <span className="mb-auto w-fit rounded-full border border-[#b9923f]/40 bg-white/80 px-3 py-1 text-xs font-bold tracking-wide text-[#173c2b] backdrop-blur-sm">
           {brandName}
         </span>
       )}
-      <div className={compact ? "max-w-[82%]" : "max-w-[72%]"}>
+      {compact && <span aria-hidden="true" className="h-[116px] flex-shrink-0 sm:hidden" />}
+      <div data-hero-copy className={copyWidthClass}>
         <h2 className={titleClass}>{banner.title}</h2>
-        <p className={`mt-1 font-medium text-white ${compact ? "text-xs" : "text-sm sm:text-base"}`}>
+        <p className={`mt-1 font-medium text-gray-700 ${compact ? "text-xs" : "text-xs sm:text-sm"}`}>
           {banner.subtitle}
         </p>
-        {banner.description && (
-          <p className={`mt-1 text-white ${compact ? "text-xs" : "text-sm"}`}>{banner.description}</p>
-        )}
-        <span className={`inline-flex min-h-11 items-center rounded-full bg-white py-2 font-bold text-gray-950 shadow-sm ${compact ? "mt-3 gap-1 px-2 text-xs" : "mt-4 gap-2 px-4 text-sm"}`}>
+        <span className={`inline-flex min-h-11 items-center rounded-full bg-[#173c2b] py-2 font-bold text-[#fffaf0] shadow-sm ${compact ? "mt-2 gap-1 px-2 text-xs" : "mt-4 gap-2 px-4 text-sm"}`}>
           {ctaLabel}<Arrow />
         </span>
       </div>
@@ -58,29 +63,41 @@ function HeroTile({ banner, brandName, desktop = false }: {
   brandName: string;
   desktop?: boolean;
 }) {
-  const compact = banner.slot.startsWith("bottom-small") || (!desktop && !banner.isPrimary);
+  const compact = banner.slot.startsWith("bottom-") || (!desktop && !banner.isPrimary);
+  const imageScaleClass = banner.imageScale === "xlarge"
+    ? "scale-[1.2]"
+    : banner.imageScale === "large"
+      ? "scale-[1.1]"
+      : "scale-100";
+  const imageLayoutClass = compact
+    ? "right-3 top-3 h-[112px] w-[calc(100%-1.5rem)] object-center origin-center sm:right-2 sm:top-2 sm:h-[calc(100%-1rem)] sm:w-[42%] sm:object-right sm:origin-right"
+    : "right-2 top-2 h-[calc(100%-1rem)] w-[38%] object-right origin-right sm:w-[42%]";
   return (
     <Link
       href={banner.href}
       data-hero-slot={banner.slot}
       aria-label={`${banner.title}: ${banner.cta}`}
-      className={`group relative block h-full overflow-hidden rounded-2xl bg-gray-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-white ${desktop ? desktopSlotClasses[banner.slot] : "min-h-[180px]"}`}
+      className={`group relative block h-full overflow-hidden rounded-2xl border border-[#173c2b]/10 bg-[#f7f2e7] shadow-[0_12px_32px_rgba(23,60,43,0.08)] transition-shadow hover:shadow-[0_16px_38px_rgba(23,60,43,0.14)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#b9923f] focus-visible:ring-offset-4 focus-visible:ring-offset-white ${desktop ? desktopSlotClasses[banner.slot] : "min-h-[180px]"}`}
       style={{ backgroundColor: banner.bgColor }}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={banner.image}
-        alt={banner.imageAlt}
-        className="absolute inset-0 h-full w-full object-contain object-right"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-transparent" />
+      {banner.image && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          data-hero-image
+          src={banner.image}
+          alt={banner.imageAlt}
+          className={`absolute object-contain mix-blend-multiply ${imageLayoutClass} ${imageScaleClass}`}
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/72 to-transparent" />
       <BannerContent banner={banner} brandName={brandName} compact={compact} desktop={desktop} />
     </Link>
   );
 }
 
-export function HeroBanner({ brand }: { brand: Brand }) {
-  const banners = getHeroBanners(brand.handle);
+export async function HeroBanner({ brand }: { brand: Brand }) {
+  const banners = await loadHeroBanners(brand.handle);
+  if (banners.length !== 7) return null;
   const mobileBanners = [...banners].sort((left, right) => Number(Boolean(right.isPrimary)) - Number(Boolean(left.isPrimary)));
 
   return (
@@ -104,7 +121,7 @@ export function HeroBanner({ brand }: { brand: Brand }) {
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:hidden">
           {mobileBanners.map((banner) => (
-            <div key={banner.id} className={banner.isPrimary ? "col-span-2 min-h-[200px]" : "min-h-[180px]"}>
+            <div key={banner.id} className={banner.isPrimary ? "col-span-2 min-h-[240px]" : "min-h-[320px] sm:min-h-[240px]"}>
               <HeroTile banner={banner} brandName={brand.name} />
             </div>
           ))}

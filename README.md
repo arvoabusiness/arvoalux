@@ -5,7 +5,8 @@ domain, but all the logic and UI live once in a shared `@arvoalux/core`
 package. Fix or improve something in core → every brand inherits it on its next
 deploy. Each app still deploys independently and can diverge in design.
 
-All brand apps point at **one shared Shopify store**.
+Each brand app must bind to its own owner-authorized Shopify store or sales
+channel. Shared code does not imply a shared catalog, credential, or ad account.
 
 ```
 arvoalux-platform/
@@ -46,25 +47,25 @@ diverges in look and feel.
 npm install
 ```
 
-Start simple with **one shared token** for all brands (same as the single-app
-setup). Set it once and it's written into every app's `.env`:
+Configure each app independently. Arvoa Lux core product and collection reads use
+Shopify Storefront API 2026-07 tokenless access by default:
 
 ```bash
-SHOPIFY_STORE_DOMAIN=arvoalux-platform-dev.myshopify.com \
-SHOPIFY_PRIVATE_TOKEN=shpat_xxx \
-node scripts/sync-env.mjs
+SHOPIFY_STORE_DOMAIN=arvoalux.myshopify.com \
+SHOPIFY_STOREFRONT_API_VERSION=2026-07 \
+npm run dev:arvoalux
 ```
 
-Then run an app:
+Only when an auth-only Storefront field is required, set the explicit
+`SHOPIFY_STOREFRONT_PRIVATE_TOKEN` (or
+`SHOPIFY_STOREFRONT_PRIVATE_TOKEN_<HANDLE>`) for that app. Never use
+`SHOPIFY_PRIVATE_TOKEN` or a revalidation secret as Storefront authentication.
+
+Run another app only after binding its own authorized store/channel:
 
 ```bash
-npm run dev:arvoalux   # http://localhost:3000
 npm run dev -w @arvoalux/brand-biobarat -- -p 3001
 ```
-
-Later, if you want a brand to use its own Headless storefront token, add
-`SHOPIFY_PRIVATE_TOKEN_<HANDLE>` to that app's `.env` — it overrides the shared
-one for that brand only. No code change needed.
 
 Each app is single-brand, so no host/middleware routing — the app *is* the
 brand. In production each app gets its own domain.
@@ -101,6 +102,8 @@ node --env-file=.env.seed scripts/seed.mjs
 ## Deploy
 
 - One project/deployment per brand app (e.g. a Vercel project each), each with
-  its own domain and its own `SHOPIFY_PRIVATE_TOKEN` env.
-- All apps share the same `SHOPIFY_STORE_DOMAIN`.
-- Bumping core and redeploying an app picks up the shared change.
+  its own domain and owner-authorized `SHOPIFY_STORE_DOMAIN`.
+- Storefront tokens are optional for core reads; when needed, use only explicit
+  `SHOPIFY_STOREFRONT_PRIVATE_TOKEN` names scoped to that brand/project.
+- Never copy Arvoa Lux catalog credentials into another brand project.
+- Bumping core and redeploying an app picks up the shared code change.

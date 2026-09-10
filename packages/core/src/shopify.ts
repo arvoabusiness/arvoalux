@@ -3,10 +3,10 @@ import { sellable } from "./catalog";
 import type { Money, SearchSuggestion } from "./catalog";
 
 const STORE = process.env.SHOPIFY_STORE_DOMAIN!;
-const API_VERSION = process.env.SHOPIFY_STOREFRONT_API_VERSION ?? process.env.SHOPIFY_API_VERSION ?? "2026-04";
+const API_VERSION = process.env.SHOPIFY_STOREFRONT_API_VERSION ?? process.env.SHOPIFY_API_VERSION ?? "2026-07";
 
-// Each brand app has its own .env. Prefer the explicit Storefront names and
-// retain the old names for backward compatibility with existing deployments.
+// Each brand app has its own .env. Only explicit Storefront token names may
+// authorize Storefront API requests; revalidation secrets are intentionally excluded.
 function tokensFor(brandHandle: string) {
   const key = brandHandle.toUpperCase().replace(/-/g, "_");
   return {
@@ -14,10 +14,13 @@ function tokensFor(brandHandle: string) {
       process.env[`SHOPIFY_PUBLIC_TOKEN_${key}`] ?? process.env.SHOPIFY_PUBLIC_TOKEN,
     privateToken:
       process.env[`SHOPIFY_STOREFRONT_PRIVATE_TOKEN_${key}`] ??
-      process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN ??
-      process.env[`SHOPIFY_PRIVATE_TOKEN_${key}`] ??
-      process.env.SHOPIFY_PRIVATE_TOKEN,
+      process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN,
   };
+}
+
+export function hasStorefrontToken(brandHandle: string): boolean {
+  const { publicToken, privateToken } = tokensFor(brandHandle);
+  return Boolean(publicToken || privateToken);
 }
 
 /**
@@ -46,10 +49,12 @@ export async function storefront<T>(
   cacheOpts: StorefrontCache = {}
 ): Promise<T> {
   const { publicToken, privateToken } = tokensFor(brandHandle);
+  if (!STORE) throw new Error("No Shopify store domain configured. Check the app's environment.");
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   if (privateToken) headers["Shopify-Storefront-Private-Token"] = privateToken;
   else if (publicToken) headers["X-Shopify-Storefront-Access-Token"] = publicToken;
-  else throw new Error("No Storefront API token configured. Check the app's .env.");
+  // Shopify 2026-07 permits tokenless access for core products, collections,
+  // search and cart. Auth-only fields still fail closed through json.errors.
 
   // Retry only transient *connection* failures (timeouts/resets), and only for
   // cached reads — never for cart mutations (`noStore`), where a retry after the
@@ -223,6 +228,20 @@ export const COLLECTIONS_QUERY = /* GraphQL */ `
         title
         image { url(transform: { maxWidth: 200 }) altText }
         parent: metafield(namespace: "custom", key: "parent") { value }
+      }
+    }
+  }
+`;
+
+/** Public-only collection query for tokenless Storefront access. */
+export const COLLECTIONS_QUERY_TOKENLESS = /* GraphQL */ `
+  query CollectionsTokenless($first: Int = 250) {
+    collections(first: $first) {
+      nodes {
+        id
+        handle
+        title
+        image { url(transform: { maxWidth: 200 }) altText }
       }
     }
   }
