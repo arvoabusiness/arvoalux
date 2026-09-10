@@ -5,9 +5,9 @@ import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
 import {
-  getHeroCampaigns,
+  getHeroBanners,
   heroBrandHandles,
-  supportingHeroCampaigns,
+  type HeroSlot,
 } from "../src/components/home/heroCampaigns.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -22,82 +22,129 @@ const expectedHandles = [
   "provitaminok",
   "vitaminbolt",
 ];
+const expectedSlots: HeroSlot[] = [
+  "top-left",
+  "top-center",
+  "top-right",
+  "bottom-wide",
+  "bottom-small-1",
+  "bottom-small-2",
+  "bottom-small-3",
+];
+const bannedCommercialClaims = /EXTRA17|(?:^|\s)-?\d{1,2}\s*%|\b\d[\d\s.,]*\s*Ft\b|\bCsak\b|bestseller|legnépszerűbb|gyógyít|megelőzi/i;
+const bannedQuickSearch = /Gyorskeresések|GYORSKERESÉS|Keresés:\s/i;
 
-const expectedPrimaryTitles: Record<string, string> = {
-  arvoalux: "Keresés: multivitamin — Arvoalux",
-  biobarat: "Keresés: immun — BioBarát",
-  boltbio: "Keresés: probiotikum — BoltBio",
-  nagykervitamin: "Keresés: C-vitamin — Nagy Kervitamin",
-  napivitamin: "Keresés: multivitamin — Napi Vitamin",
-  nutrimarket: "Keresés: omega-3 — NutriMarket",
-  prevenciobolt: "Keresés: D-vitamin — Prevenciobolt",
-  provitaminok: "Keresés: magnézium — ProVitaminok",
-  vitaminbolt: "Keresés: kollagén — VitaminBolt",
-};
+function source(file: string) {
+  return readFileSync(resolve(here, file), "utf8");
+}
 
-const unsupportedClaim = /EXTRA17|(?:^|\s)-?\d{1,2}\s*%|\b\d[\d\s.,]*\s*Ft\b|\bTODO\b/i;
-const unsupportedPromise = /természetesebb|népszerű|választó|hasonlítsd|összehasonlít|elérhetőség|szűkítsd|aktuális ár|prémium|szezonhoz illő|kategóriában|szezonális/i;
-
-test("defines a distinct primary autumn campaign for all nine storefronts", () => {
+test("defines the locked seven-banner mosaic for all nine storefronts", () => {
   assert.deepEqual([...heroBrandHandles].sort(), [...expectedHandles].sort());
-  const titles = new Set<string>();
   for (const handle of expectedHandles) {
-    const campaigns = getHeroCampaigns(handle);
-    assert.equal(campaigns.length, 4);
-    assert.equal(campaigns[0].brandHandle, handle);
-    assert.equal(campaigns[0].title, expectedPrimaryTitles[handle]);
-    assert.match(campaigns[0].href, /^\/search\?q=\S+/);
-    assert.ok(!unsupportedClaim.test(JSON.stringify(campaigns)));
-    titles.add(campaigns[0].title);
-  }
-  assert.equal(titles.size, 9);
-});
-
-test("uses three shared evidence-safe supporting need-state banners", () => {
-  assert.equal(supportingHeroCampaigns.length, 3);
-  for (const campaign of supportingHeroCampaigns) {
-    assert.match(campaign.href, /^\/search\?q=\S+/);
-    assert.equal(campaign.season, "autumn");
-    assert.ok(!unsupportedClaim.test(JSON.stringify(campaign)));
+    const banners = getHeroBanners(handle);
+    assert.equal(banners.length, 7, handle);
+    assert.deepEqual(banners.map((banner) => banner.slot), expectedSlots, handle);
+    assert.equal(banners.filter((banner) => banner.isPrimary).length, 1, handle);
+    assert.equal(banners.find((banner) => banner.isPrimary)?.slot, "top-center", handle);
+    assert.ok(banners.every((banner) => banner.mobileCta === "Megnézem"), handle);
   }
 });
 
-test("passes brand context into HeroBanner and removes unsupported hardcoded offers", () => {
-  const homePage = readFileSync(resolve(here, "../src/components/HomePage.tsx"), "utf8");
-  const hero = readFileSync(resolve(here, "../src/components/home/HeroBanner.tsx"), "utf8");
-  assert.match(homePage, /<HeroBanner\s+brand=\{brand\}\s*\/>/);
-  assert.ok(!unsupportedClaim.test(hero));
-  assert.doesNotMatch(hero, /images\.unsplash\.com/);
-});
-
-test("does not promise popularity, comparison, selection tools, or explicit availability", () => {
+test("uses only verified focused category destinations", () => {
+  const expectedQueries: Record<string, string> = {
+    "organic-magnesium": "magnézium",
+    "adult-multivitamin": "multivitamin",
+    "omega-three": "omega-3",
+    "c-vitamin": "C-vitamin",
+    "d-three-vitamin": "D-vitamin",
+    "vegan-probiotics": "probiotikum",
+    "collagen-complex": "kollagén",
+  };
   for (const handle of expectedHandles) {
-    assert.doesNotMatch(JSON.stringify(getHeroCampaigns(handle)), unsupportedPromise, handle);
-  }
-  const hero = readFileSync(resolve(here, "../src/components/home/HeroBanner.tsx"), "utf8");
-  assert.doesNotMatch(hero, unsupportedPromise);
-});
-
-test("each campaign CTA starts one focused search term", () => {
-  for (const handle of expectedHandles) {
-    for (const campaign of getHeroCampaigns(handle)) {
-      const query = new URL(campaign.href, "https://example.test").searchParams.get("q");
-      assert.ok(query, `${handle}:${campaign.id} must include q`);
-      assert.equal(query.trim().split(/\s+/).length, 1, `${handle}:${campaign.id} combines search terms`);
+    for (const banner of getHeroBanners(handle)) {
+      assert.match(banner.href, /^\/search\?q=[^\s&]+$/);
+      const query = new URL(banner.href, "https://example.test").searchParams.get("q");
+      assert.equal(query, expectedQueries[banner.id]);
+      assert.equal(banner.cta, "Kínálat megtekintése");
+      assert.ok(banner.title.trim());
+      assert.ok(banner.cta.trim());
+      assert.doesNotMatch(JSON.stringify(banner), bannedCommercialClaims, `${handle}:${banner.slot}`);
+      assert.doesNotMatch(JSON.stringify(banner), bannedQuickSearch, `${handle}:${banner.slot}`);
     }
   }
 });
 
-test("uses a high-contrast universal keyboard focus treatment", () => {
-  const hero = readFileSync(resolve(here, "../src/components/home/HeroBanner.tsx"), "utf8");
-  assert.doesNotMatch(hero, /focus-visible:ring-brand/);
-  assert.doesNotMatch(hero, /focus-visible:ring-gray-950/);
-  assert.match(hero, /focus-visible:ring-black/);
-  assert.match(hero, /focus-visible:ring-offset-4/);
+test("restores the original desktop 3 plus 4 grid geometry", () => {
+  const hero = source("../src/components/home/HeroBanner.tsx");
+  assert.match(hero, /grid-cols-12\s+grid-rows-\[280px_220px\]\s+gap-4/);
+  assert.match(hero, /"top-left": "col-span-3"/);
+  assert.match(hero, /"top-center": "col-span-5"/);
+  assert.match(hero, /"top-right": "col-span-4"/);
+  assert.match(hero, /"bottom-wide": "col-span-4"/);
+  assert.match(hero, /"bottom-small-1": "col-span-3"/);
+  assert.match(hero, /"bottom-small-2": "col-span-2"/);
+  assert.match(hero, /"bottom-small-3": "col-span-3"/);
 });
 
-test("keeps primary small text at full opacity on a guaranteed dark surface", () => {
-  const hero = readFileSync(resolve(here, "../src/components/home/HeroBanner.tsx"), "utf8");
-  assert.match(hero, /brand: "bg-gray-950 text-white"/);
-  assert.doesNotMatch(hero, /opacity-(70|75|80|85)/);
+test("removes the rejected quick-search hero and its decorative card system", () => {
+  const hero = source("../src/components/home/HeroBanner.tsx");
+  const campaigns = source("../src/components/home/heroCampaigns.ts");
+  assert.doesNotMatch(hero, bannedQuickSearch);
+  assert.doesNotMatch(campaigns, bannedQuickSearch);
+  assert.doesNotMatch(hero, /SupportingCard|CampaignIcon|rounded-3xl/);
+});
+
+test("keeps brand context while leaving header navigation and downstream sections untouched", () => {
+  const homePage = source("../src/components/HomePage.tsx");
+  assert.match(homePage, /<HeroBanner\s+brand=\{brand\}\s*\/>/);
+  assert.match(homePage, /<HomepageCategorySection\s+brand=\{brand\}\s*\/>/);
+  assert.match(homePage, /<DeliveryInfoBar\s*\/>/);
+  assert.match(homePage, /<FeaturedProductsSection\s+brand=\{brand\}\s*\/>/);
+});
+
+test("keeps verified package details and prevents product-image cropping", () => {
+  const banners = getHeroBanners("arvoalux");
+  const magnesium = banners.find((banner) => banner.id === "organic-magnesium");
+  const omega = banners.find((banner) => banner.id === "omega-three");
+  const cVitamin = banners.find((banner) => banner.id === "c-vitamin");
+  assert.equal(magnesium?.description, "JutaVit");
+  assert.doesNotMatch(magnesium?.imageAlt ?? "", /120/);
+  assert.equal(omega?.subtitle, "1200 mg halolaj + E-vitamin");
+  assert.equal(omega?.title, "Omega-3");
+  assert.equal(omega?.imageAlt, "JutaVit Omega-3, 1200 mg halolajjal és E-vitaminnal, 100 kapszula");
+  assert.equal(cVitamin?.description, "JutaVit · 100 db");
+  assert.equal(banners.find((banner) => banner.id === "collagen-complex")?.description, "60 filmtabletta");
+  const hero = source("../src/components/home/HeroBanner.tsx");
+  assert.match(hero, /object-contain/);
+  assert.match(hero, /object-contain object-right/);
+  assert.doesNotMatch(hero, /object-cover/);
+  assert.doesNotMatch(hero, /group-hover:scale/);
+});
+
+test("uses natural Hungarian announcement copy", () => {
+  const hero = source("../src/components/home/HeroBanner.tsx");
+  assert.match(hero, /Fedezd fel vitaminjainkat és étrend-kiegészítőinket\./);
+  assert.doesNotMatch(hero, /vitamin- és étrend-kiegészítő kínálatunkat/);
+});
+
+test("preserves exactly one semantic section h1 and uses h2 for duplicated grids", () => {
+  const hero = source("../src/components/home/HeroBanner.tsx");
+  assert.match(hero, /<h1 className="sr-only">/);
+  const bannerContent = hero.match(/function BannerContent[\s\S]*?function HeroTile/)?.[0] ?? "";
+  assert.doesNotMatch(bannerContent, /<h1/);
+  assert.match(bannerContent, /<h2/);
+  assert.match(hero, /const ctaLabel = compact \? banner\.mobileCta/);
+});
+
+test("keeps mobile ordering campaign-first with touch-safe links and no horizontal overflow", () => {
+  const hero = source("../src/components/home/HeroBanner.tsx");
+  assert.match(hero, /mobileBanners/);
+  assert.match(hero, /banner\.isPrimary/);
+  assert.match(hero, /!desktop && !banner\.isPrimary/);
+  assert.match(hero, /gap-1 px-2 text-xs/);
+  assert.match(hero, /min-h-\[200px\]/);
+  assert.match(hero, /block h-full/);
+  assert.match(hero, /overflow-hidden/);
+  assert.doesNotMatch(hero, /overflow-x-(auto|scroll)/);
+  assert.match(hero, /focus-visible:ring-black/);
 });
