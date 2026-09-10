@@ -1,172 +1,120 @@
 import Link from "next/link";
+import type { Brand } from "../../types";
+import {
+  getHeroCampaigns,
+  type HeroCampaign,
+  type HeroIcon,
+  type HeroTone,
+} from "./heroCampaigns";
 
-type Banner = {
-  id: number;
-  title: string;
-  subtitle: string;
-  description?: string;
-  price?: string;
-  href: string;
-  cta: string;
-  image: string;
-  bgColor: string;
-  isPromo?: boolean;
+const toneClasses: Record<HeroTone, string> = {
+  brand: "bg-gray-950 text-white",
+  amber: "bg-amber-100 text-amber-950",
+  sky: "bg-sky-100 text-sky-950",
+  sage: "bg-emerald-100 text-emerald-950",
 };
 
-// Decorative promo tiles. Background colours are intentional design accents
-// (not brand-driven) — the mosaic look is shared across brands.
-const bannerData: Banner[] = [
-  { id: 1, title: "Magnézium-biszglicinát", subtitle: "300 mg", description: "180 kapszula", href: "/search?q=magn%C3%A9zium", cta: "A kínálatra", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80", bgColor: "#5BBFB3" },
-  { id: 2, title: "-17", subtitle: "Extra megtakarítások hete", description: "Kód: EXTRA17", href: "/search?q=akci%C3%B3", cta: "A kínálatra", image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&q=80", bgColor: "#C4D94A", isPromo: true },
-  { id: 3, title: "Fekete maca komplex", subtitle: "5000 mg", price: "7.490 Ft", href: "/search?q=maca", cta: "A kínálatra", image: "https://images.unsplash.com/photo-1516195851888-6f1a981a862e?w=600&q=80", bgColor: "#FAF5F0" },
-  { id: 4, title: "BIO kókuszolaj", subtitle: "hidegen sajtolt, extra szűz", price: "7.490 Ft", href: "/search?q=k%C3%B3kusz", cta: "A kínálatra", image: "https://images.unsplash.com/photo-1550259114-ad7188f0a967?w=600&q=80", bgColor: "#FDF6E9" },
-  { id: 5, title: "GLP-1 Modulation", subtitle: "komplex az anyagcsere támogatására", description: "120 kapszula", href: "/search?q=komplex", cta: "A kínálatra", image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=500&q=80", bgColor: "#E8F4E5" },
-  { id: 6, title: "Krill olaj", subtitle: "1200 mg", description: "120 lágy kapszula", href: "/search?q=krill", cta: "A kínálatra", image: "https://images.unsplash.com/photo-1556306535-38febf6782e7?w=500&q=80", bgColor: "#4BA3C3" },
-  { id: 7, title: "Berberin HCL", subtitle: "500 mg", description: "180 kapszula", href: "/search?q=berberin", cta: "A kínálatra", image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=500&q=80", bgColor: "#E8A4B8" },
-] as const;
+const accentClasses: Record<HeroTone, string> = {
+  brand: "bg-white/15 border-white/25",
+  amber: "bg-amber-300/55 border-amber-700/10",
+  sky: "bg-sky-300/55 border-sky-700/10",
+  sage: "bg-emerald-300/55 border-emerald-700/10",
+};
 
-const Arrow = ({ className = "w-4 h-4 ml-1" }: { className?: string }) => (
-  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-  </svg>
-);
-
-export function HeroBanner() {
+function Arrow() {
   return (
-    <section className="bg-white" data-testid="hero-banner">
-      {/* Promo strip — brand-coloured */}
-      <div className="bg-brand text-brand-fg py-2.5 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-sm text-center">
-          <svg className="w-5 h-5 text-amber-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clipRule="evenodd" />
-          </svg>
-          <span className="font-medium">HETI AKCIÓ - Használd ki a 17% kedvezményt a kínálatunkban található összes termékre.</span>
-          <span className="hidden sm:inline-flex items-center gap-1 bg-white/20 px-3 py-1 rounded text-xs font-bold flex-shrink-0">
-            Adja hozzá a/az EXTRA17 kódot
-          </span>
+    <svg aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-5-5 5 5-5 5" />
+    </svg>
+  );
+}
+
+function CampaignIcon({ icon }: { icon: HeroIcon }) {
+  const paths: Record<HeroIcon, React.ReactNode> = {
+    spark: <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Zm6 12 .9 2.1L21 17l-2.1.9L18 20l-.9-2.1L15 17l2.1-.9L18 14Z" />,
+    sun: <><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></>,
+    moon: <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" />,
+    drop: <path d="M12 2S5.5 9.1 5.5 14.2a6.5 6.5 0 0 0 13 0C18.5 9.1 12 2 12 2Z" />,
+    leaf: <><path d="M20 4C11 4 5 8.8 5 15a5 5 0 0 0 5 5c6.2 0 10-7 10-16Z" /><path d="M4 20c2.5-5 6.5-8.5 12-11" /></>,
+  };
+  return (
+    <svg aria-hidden="true" className="h-11 w-11" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      {paths[icon]}
+    </svg>
+  );
+}
+
+function SupportingCard({ campaign }: { campaign: HeroCampaign }) {
+  return (
+    <Link
+      href={campaign.href}
+      className={`group relative min-h-48 overflow-hidden rounded-3xl p-5 shadow-sm ring-1 ring-black/5 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-white ${toneClasses[campaign.tone]}`}
+      aria-label={`${campaign.title}: ${campaign.cta}`}
+    >
+      <div aria-hidden="true" className={`absolute -right-8 -top-10 h-36 w-36 rounded-full border ${accentClasses[campaign.tone]}`} />
+      <div className="relative flex h-full flex-col">
+        <span className="text-xs font-bold tracking-[0.16em]">{campaign.eyebrow}</span>
+        <div className="mt-4 flex items-start justify-between gap-4">
+          <div>
+            <h2 className="font-heading text-2xl font-bold leading-tight">{campaign.title}</h2>
+            <p className="mt-2 max-w-sm text-sm leading-6">{campaign.description}</p>
+          </div>
+          <CampaignIcon icon={campaign.icon} />
         </div>
+        <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold">
+          {campaign.cta}<Arrow />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+export function HeroBanner({ brand }: { brand: Brand }) {
+  const [primary, ...supporting] = getHeroCampaigns(brand.handle);
+
+  return (
+    <section className="bg-white" data-testid="hero-banner" aria-labelledby="hero-title">
+      <div className="border-y border-gray-800 bg-gray-950 px-4 py-2.5 text-white">
+        <p className="mx-auto max-w-7xl text-center text-sm font-semibold">
+          Gyorskeresések · C-vitamin, magnézium és omega-3
+        </p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-5">
-        {/* Desktop mosaic */}
-        <div className="hidden lg:grid grid-cols-12 grid-rows-[280px_220px] gap-4">
-          <Link href={bannerData[0].href} className="col-span-3 relative overflow-hidden rounded-2xl group" style={{ backgroundColor: bannerData[0].bgColor }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={bannerData[0].image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-500" />
-            <div className="relative h-full p-5 flex flex-col">
-              <div>
-                <h3 className="font-heading font-bold text-2xl text-white leading-tight drop-shadow-sm">{bannerData[0].title}</h3>
-                <p className="text-white/90 text-lg font-medium">{bannerData[0].subtitle}</p>
-                <p className="text-white/80 text-sm mt-1">{bannerData[0].description}</p>
+      <div className="mx-auto max-w-7xl px-4 py-5 sm:py-7">
+        <div className="grid gap-4 lg:grid-cols-12 lg:grid-rows-2">
+          <Link
+            href={primary.href}
+            className={`group relative min-h-[340px] overflow-hidden rounded-3xl border-t-8 border-brand p-6 shadow-sm transition hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-white sm:p-9 lg:col-span-7 lg:row-span-2 lg:min-h-[500px] ${toneClasses[primary.tone]}`}
+            aria-label={`${primary.title}: ${primary.cta}`}
+          >
+            <div aria-hidden="true" className="absolute -right-24 -top-24 h-80 w-80 rounded-full border border-white/25 bg-white/10" />
+            <div aria-hidden="true" className="absolute -bottom-36 -left-20 h-80 w-80 rounded-full border border-white/20 bg-black/5" />
+            <div className="relative flex h-full flex-col">
+              <div className="flex items-center justify-between gap-4">
+                <span className="rounded-full border border-current/20 bg-white/10 px-3 py-1 text-xs font-bold tracking-[0.16em]">
+                  {primary.eyebrow}
+                </span>
+                <CampaignIcon icon={primary.icon} />
               </div>
-              <div className="mt-auto">
-                <span className="text-white text-sm font-medium inline-flex items-center group-hover:underline">{bannerData[0].cta}<Arrow /></span>
+              <div className="mt-auto max-w-xl pt-20">
+                <p className="text-sm font-semibold">{brand.name}</p>
+                <h1 id="hero-title" className="mt-2 font-heading text-4xl font-bold leading-[1.06] sm:text-5xl lg:text-6xl">
+                  {primary.title}
+                </h1>
+                <p className="mt-4 max-w-lg text-base leading-7 sm:text-lg">{primary.description}</p>
+                <span className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-gray-950 shadow-sm">
+                  {primary.cta}<Arrow />
+                </span>
               </div>
             </div>
           </Link>
 
-          <Link href={bannerData[1].href} className="col-span-5 relative overflow-hidden rounded-2xl group" style={{ backgroundColor: bannerData[1].bgColor }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={bannerData[1].image} alt="" className="absolute right-0 bottom-0 w-1/2 h-full object-contain opacity-60 group-hover:scale-105 transition-transform duration-500" />
-            <div className="relative h-full p-6 flex flex-col items-center justify-center text-center">
-              <span className="text-green-800 text-sm font-medium mb-1">{bannerData[1].subtitle}</span>
-              <div className="font-heading font-black text-7xl text-white drop-shadow-lg flex items-start">{bannerData[1].title}<span className="text-4xl mt-2">%</span></div>
-              <div className="bg-white/95 rounded-lg px-4 py-2 mt-3 mb-4 shadow-sm"><span className="font-bold text-green-800">{bannerData[1].description}</span></div>
-              <span className="px-6 py-2.5 bg-white text-gray-800 rounded-lg font-semibold shadow-md border border-gray-200">{bannerData[1].cta}</span>
-            </div>
-          </Link>
-
-          <Link href={bannerData[2].href} className="col-span-4 relative overflow-hidden rounded-2xl group" style={{ backgroundColor: bannerData[2].bgColor }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={bannerData[2].image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
-            <div className="absolute inset-0 bg-gradient-to-l from-black/40 via-transparent to-transparent" />
-            <div className="relative h-full p-5 flex flex-col justify-end items-end text-right">
-              <h3 className="font-heading font-bold text-2xl text-white drop-shadow-md">{bannerData[2].title}</h3>
-              <p className="text-white/90 font-medium">{bannerData[2].subtitle}</p>
-              <p className="text-white text-sm mt-1">Csak</p>
-              <p className="text-white font-bold text-2xl">{bannerData[2].price}</p>
-            </div>
-          </Link>
-
-          <Link href={bannerData[3].href} className="col-span-4 relative overflow-hidden rounded-2xl group" style={{ backgroundColor: bannerData[3].bgColor }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={bannerData[3].image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-            <div className="relative h-full p-5 flex flex-col justify-end">
-              <h3 className="font-heading font-bold text-2xl text-amber-900 drop-shadow-sm">{bannerData[3].title}</h3>
-              <p className="text-amber-800 font-medium text-sm">{bannerData[3].subtitle}</p>
-              <p className="text-amber-900 text-sm mt-2">Csak</p>
-              <p className="text-amber-900 font-bold text-2xl">{bannerData[3].price}</p>
-            </div>
-          </Link>
-
-          <Link href={bannerData[4].href} className="col-span-3 relative overflow-hidden rounded-2xl group" style={{ backgroundColor: bannerData[4].bgColor }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={bannerData[4].image} alt="" className="absolute right-0 bottom-0 w-1/2 h-full object-contain opacity-50 group-hover:scale-105 transition-transform duration-500" />
-            <div className="relative h-full p-4 flex flex-col justify-end">
-              <h3 className="font-heading font-bold text-xl text-green-900">{bannerData[4].title}</h3>
-              <p className="text-green-800 text-xs leading-tight">{bannerData[4].subtitle}</p>
-              <p className="text-green-700 text-xs mt-1">{bannerData[4].description}</p>
-              <span className="text-green-800 text-xs font-medium inline-flex items-center mt-2 group-hover:underline">{bannerData[4].cta}<Arrow className="w-3 h-3 ml-1" /></span>
-            </div>
-          </Link>
-
-          <Link href={bannerData[5].href} className="col-span-2 relative overflow-hidden rounded-2xl group" style={{ backgroundColor: bannerData[5].bgColor }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={bannerData[5].image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-500" />
-            <div className="relative h-full p-4 flex flex-col justify-end">
-              <h3 className="font-heading font-bold text-lg text-white drop-shadow-sm">{bannerData[5].title}</h3>
-              <p className="text-white/90 text-sm font-medium">{bannerData[5].subtitle}</p>
-              <p className="text-white/80 text-xs mt-1">{bannerData[5].description}</p>
-              <span className="text-white text-xs font-medium inline-flex items-center mt-2 group-hover:underline">{bannerData[5].cta}<Arrow className="w-3 h-3 ml-1" /></span>
-            </div>
-          </Link>
-
-          <Link href={bannerData[6].href} className="col-span-3 relative overflow-hidden rounded-2xl group" style={{ backgroundColor: bannerData[6].bgColor }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={bannerData[6].image} alt="" className="absolute right-0 bottom-0 w-1/2 h-full object-contain opacity-50 group-hover:scale-105 transition-transform duration-500" />
-            <div className="relative h-full p-4 flex flex-col justify-end">
-              <h3 className="font-heading font-bold text-xl text-emerald-900">{bannerData[6].title}</h3>
-              <p className="text-emerald-800 text-sm font-medium">{bannerData[6].subtitle}</p>
-              <p className="text-emerald-700 text-xs mt-1">{bannerData[6].description}</p>
-              <span className="text-emerald-800 text-xs font-medium inline-flex items-center mt-2 group-hover:underline">{bannerData[6].cta}<Arrow className="w-3 h-3 ml-1" /></span>
-            </div>
-          </Link>
-        </div>
-
-        {/* Tablet / mobile fallback grid — first feature tile + promo span full
-            width, the rest fall into 2-column pairs (no awkward empty cells). */}
-        <div className="grid lg:hidden grid-cols-2 gap-3 sm:gap-4">
-          {bannerData.map((banner, index) => (
-            <Link
-              key={banner.id}
-              href={banner.href}
-              className={`relative overflow-hidden rounded-2xl group ${
-                banner.isPromo || index === 0 ? "col-span-2 min-h-[200px]" : "min-h-[180px]"
-              }`}
-              style={{ backgroundColor: banner.bgColor }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={banner.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="relative h-full p-4 flex flex-col justify-end">
-                {banner.isPromo ? (
-                  <div className="text-center flex flex-col items-center justify-center h-full">
-                    <span className="text-green-800 text-sm font-medium">{banner.subtitle}</span>
-                    <div className="font-heading font-bold text-5xl text-white drop-shadow-lg">{banner.title}<span className="text-3xl">%</span></div>
-                    <div className="bg-white/90 rounded-lg px-3 py-1 mt-2 mb-3"><span className="font-bold text-green-800 text-sm">{banner.description}</span></div>
-                    <span className="px-4 py-1.5 bg-white text-gray-800 rounded-lg text-sm font-medium">{banner.cta}</span>
-                  </div>
-                ) : (
-                  <>
-                    <h3 className="font-heading font-bold text-xl text-white drop-shadow-md">{banner.title}</h3>
-                    <p className="text-white/90 text-sm">{banner.subtitle}</p>
-                    {banner.price && <p className="text-white font-bold text-lg mt-1">{banner.price}</p>}
-                  </>
-                )}
-              </div>
-            </Link>
-          ))}
+          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-2">
+            {supporting.slice(0, 2).map((campaign) => <SupportingCard key={campaign.id} campaign={campaign} />)}
+          </div>
+          <div className="lg:col-span-5">
+            <SupportingCard campaign={supporting[2]} />
+          </div>
         </div>
       </div>
     </section>

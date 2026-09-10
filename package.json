@@ -7,6 +7,7 @@
     "dev:arvoalux": "npm run dev -w @arvoalux/brand-arvoalux",
     "dev:biobarat": "npm run dev -w @arvoalux/brand-biobarat",
     "build": "npm run build --workspaces --if-present",
+    "test:hero": "node --test packages/core/test/heroCampaigns.test.ts",
     "new-brand": "node scripts/new-brand.mjs",
     "deploy": "NODE_OPTIONS=\"--dns-result-order=ipv4first\" vercel build --prod && NODE_OPTIONS=\"--dns-result-order=ipv4first\" vercel deploy --prebuilt --prod"
   }

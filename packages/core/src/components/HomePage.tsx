@@ -10,7 +10,7 @@ import { BlogSection } from "./home/BlogSection";
 export function HomePage({ brand }: { brand: Brand }) {
   return (
     <div data-testid="home-page">
-      <HeroBanner />
+      <HeroBanner brand={brand} />
       <HomepageCategorySection brand={brand} />
       <DeliveryInfoBar />
       <FeaturedProductsSection brand={brand} />
