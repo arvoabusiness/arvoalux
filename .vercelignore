@@ -28,3 +28,10 @@ reports/
 **/.hermes*
 **/.env*
 scripts/
+# Include only the source reconciliation prebuild and lossless asset chunks.
+!scripts/
+scripts/*
+!scripts/integrate-contentsquare.cjs
+!scripts/source-assets.json
+!scripts/source-assets/
+!scripts/source-assets/*.b64
