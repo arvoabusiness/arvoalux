@@ -18,3 +18,5 @@ export { ProductPage } from "./components/ProductPage";
 export { CartPage } from "./components/CartPage";
 export { CollectionPage } from "./components/CollectionPage";
 export { SearchPage } from "./components/SearchPage";
+
+export {CategoryLandingPage} from "./components/CategoryLandingPage";

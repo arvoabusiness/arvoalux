@@ -1,0 +1,37 @@
+# Exclude local artifacts, secrets and internal non-runtime documents.
+.git
+node_modules
+**/node_modules
+.next
+**/.next
+.env*
+**/.env*
+*.log
+*.tsbuildinfo
+**/*.tsbuildinfo
+*.docx
+docs/
+README.md
+emergent-server.py
+# Review evidence and internal working material must never be uploaded.
+reports/
+**/reports/**
+**/test/**
+**/tests/**
+**/*.md
+**/*.log
+**/*.zip
+**/*.patch
+**/*.pdf
+**/*.docx
+**/*.png.bak
+**/.hermes*
+**/.env*
+scripts/
+# Include only the source reconciliation prebuild and lossless asset chunks.
+!scripts/
+scripts/*
+!scripts/integrate-contentsquare.cjs
+!scripts/source-assets.json
+!scripts/source-assets/
+!scripts/source-assets/*.b64

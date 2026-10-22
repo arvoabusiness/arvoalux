@@ -30,6 +30,55 @@
   }
 }
 
+/* September 28 owner-approved ArvoaLux identity only. Keep shared behavior and
+   the current seven-visible-tile geometry; no prototype scripts or forms. */
+html[data-brand="arvoalux"] {
+  --al-forest: #2F4B43;
+  --al-forest-strong: #213A34;
+  --al-ivory: #F6F3EA;
+  --al-ink: #1D2522;
+  --al-sage: #70877E;
+  --al-mist: #E6ECE8;
+  --al-gold: #C4A36A;
+  --al-border: #D8DEDA;
+  --al-radius-card: 12px;
+  --al-radius-control: 10px;
+  --al-content-max: 1360px;
+}
+html[data-brand="arvoalux"] body {
+  font-family: Lato, sans-serif;
+  color: var(--al-ink);
+  background: white;
+}
+html[data-brand="arvoalux"] :is(h1,h2,h3,h4,h5,h6,button,input,select,textarea) {
+  font-family: Lato, sans-serif;
+  letter-spacing: 0;
+}
+html[data-brand="arvoalux"] :is(button,input,select,textarea) {
+  border-radius: var(--al-radius-control);
+}
+html[data-brand="arvoalux"] :is(.product-card,[data-hero-slot]) {
+  border-radius: var(--al-radius-card);
+  border-color: var(--al-border);
+}
+html[data-brand="arvoalux"] .bg-ink { background-color: var(--al-forest); }
+html[data-brand="arvoalux"] .hover\:bg-ink-dark:hover { background-color: var(--al-forest-strong); }
+html[data-brand="arvoalux"] :is(footer,[data-testid="hero-banner"]) { background-color: var(--al-ivory); }
+html[data-brand="arvoalux"] header input { background-color: var(--al-mist); }
+html[data-brand="arvoalux"] [data-hero-copy] h2 { color: var(--al-forest); }
+html[data-brand="arvoalux"] [data-hero-copy] > span {
+  background-color: var(--al-forest);
+  color: white;
+  border-radius: var(--al-radius-control);
+}
+html[data-brand="arvoalux"] [data-testid="hero-banner"] > .bg-brand svg { color: var(--al-gold); }
+html[data-brand="arvoalux"] :is(.max-w-7xl,.max-w-\[1400px\]) { max-width: var(--al-content-max); }
+html[data-brand="arvoalux"] .arvoalux-logo { display: block; width: auto; object-fit: contain; }
+html[data-brand="arvoalux"] .arvoalux-logo-sm { height: 28px; max-width: 110px; }
+html[data-brand="arvoalux"] .arvoalux-logo-md { height: 36px; max-width: 160px; }
+html[data-brand="arvoalux"] .arvoalux-logo-lg { height: 44px; max-width: 190px; }
+html[data-brand="arvoalux"] :focus-visible { outline: 2px solid var(--al-forest); outline-offset: 3px; }
+
 /* Hide scrollbars on horizontal carousels */
 @layer utilities {
   .scrollbar-hide {
@@ -86,3 +135,32 @@
 .social a:hover {
   color: var(--accent);
 }
+
+.customer-access{max-width:1100px;margin:0 auto;background:#fff;color:var(--ink);font-family:var(--font-body);padding-bottom:24px}.customer-access-panel{padding:24px 20px 28px}.customer-access-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--panel);padding-bottom:20px;margin-bottom:20px}.customer-access h1,.customer-access h2{font-size:24px;line-height:32px;font-weight:700;margin:0}.customer-access-close{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:50%;color:var(--ink)}.customer-access form>label{display:block;margin:16px 0 8px;font-size:16px}.customer-access form>label>span{color:#b42318}.customer-access input[type=email],.customer-access-password input{width:100%;height:54px;border:1px solid #ccc;border-radius:var(--radius-control);padding:12px 16px;font-size:16px;background:#fff;color:var(--ink)}.customer-access-password{position:relative}.customer-access-password input{padding-right:60px}.customer-access-password button{position:absolute;right:5px;top:5px;height:44px;width:44px;display:flex;align-items:center;justify-content:center;color:var(--ink)}.customer-access-options{display:flex;justify-content:space-between;gap:16px;align-items:center;margin:20px 0}.customer-access-options label{display:flex;align-items:center;gap:8px;font-size:14px;min-height:44px}.customer-access-options input{width:18px;height:18px}.customer-access-options a,.customer-access-back{color:var(--primary);text-decoration:underline;font-size:14px;min-height:44px;display:inline-flex;align-items:center}.customer-access-primary,.customer-access-register{width:100%;min-height:54px;border-radius:var(--radius-control);font-size:20px;line-height:28px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px 16px}.customer-access-primary{background:var(--primary);color:var(--primary-foreground);border:2px solid var(--primary)}.customer-access-primary:disabled{opacity:.65;cursor:not-allowed}.customer-access-membership{background:var(--canvas);padding:28px 20px 40px}.customer-access-membership h2{border-bottom:1px solid var(--panel);padding-bottom:20px}.customer-access-membership ul{padding:0;list-style:none;margin:20px 0;display:grid;gap:16px}.customer-access-membership li{display:flex;gap:12px;align-items:flex-start}.customer-access-membership li svg{flex-shrink:0;color:var(--primary)}.customer-access-register{background:#fff;color:var(--ink);border:2px solid var(--primary);margin-top:20px;text-decoration:none}.customer-access-status,.customer-access-availability,.customer-access-membership p{font-size:14px;line-height:21px;color:var(--ink)}.customer-access :focus-visible{outline:3px solid var(--focus);outline-offset:4px}.customer-access-back{margin-top:20px}@media(min-width:900px){.customer-access{display:grid;grid-template-columns:1fr 1fr;margin:48px auto;border:1px solid var(--panel);border-radius:var(--radius-card);overflow:hidden}.customer-access-panel,.customer-access-membership{padding:32px}.customer-access:not(:has(.customer-access-membership)){display:block;max-width:580px}}
+.customer-access input[type=text]{width:100%;height:54px;border:1px solid #ccc;border-radius:var(--radius-control);padding:12px 16px;font-size:16px;background:#fff;color:var(--ink)}
+
+.customer-name-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.customer-name-row label{display:block;margin:8px 0;font-size:16px}.customer-name-row label span,.customer-account-card label span{color:var(--primary)}.customer-consents{margin:24px 0}.customer-consents label{display:flex;align-items:flex-start;gap:8px;margin:16px 0}.customer-register-login{margin-top:20px;text-decoration:none}.customer-account.customer-access{display:block;max-width:720px;min-height:65vh;border:0;border-radius:0}.customer-account-heading{padding:24px;display:flex;justify-content:space-between;background:var(--canvas)}.customer-account-status{padding:0 24px}.customer-account-status:empty{display:none}.customer-account-menu{display:grid;padding:16px 24px}.customer-account-menu a{padding:10px 0;min-height:44px;color:var(--ink);text-decoration:none;font-size:18px}.customer-account-signout{border-top:1px solid var(--panel);padding:20px 24px}.customer-account-signout button{display:flex;align-items:center;gap:12px;min-height:44px}.customer-account-content{padding:24px}.customer-account-back{display:inline-block;margin-bottom:20px;color:var(--primary)}.customer-account-card{border:1px solid var(--panel);border-top:7px solid var(--primary);border-radius:var(--radius-card);padding:24px}.customer-account-card h2{text-align:center;margin-bottom:32px;font-size:22px}.customer-account-card p{line-height:1.6;margin:24px 0}.customer-account-card form label{display:block;margin:20px 0}.customer-account-card input:not([type=checkbox]){display:block;width:100%;height:54px;border:1px solid #ccc;border-radius:var(--radius-control);padding:12px 16px;font-size:16px;margin-top:8px}.customer-account-card input:disabled{background:var(--canvas)}.customer-account-card select{width:100%;height:54px;border:1px solid #ccc;border-radius:var(--radius-control);padding:12px 16px}.customer-account-card .customer-access-primary{gap:10px}.customer-account-actions{display:grid;gap:18px;margin-top:24px}.customer-account-actions .customer-access-register{margin:0}.customer-newsletter-check{display:flex;align-items:center;gap:12px;min-height:44px}@media(max-width:600px){.customer-account-content{padding:20px 16px}.customer-account-card{padding:20px}.customer-name-row{gap:10px}}
+
+html[data-brand="arvoalux"] .customer-access{--primary:var(--accent);--primary-foreground:var(--accent-fg);--ink:#1D2522;--canvas:#F6F3EA;--panel:#e5e7eb;--focus:#2F4B43;--radius-control:var(--radius);--radius-card:var(--radius)}
+
+/* Mobile cards: price above purchase controls; desktop keeps its existing button. */
+.commerce-mobile-add{display:none}
+@media(max-width:639px){
+ .product-card .commerce-card-price{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+ .product-card .commerce-card-actions{width:100%}
+ .product-card .commerce-desktop-add{display:none}
+ .commerce-mobile-add{display:block}
+ .commerce-card-buy{width:100%;min-height:44px;border-radius:10px;background:var(--accent);color:var(--accent-fg);display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:700;padding:8px 4px}
+ .commerce-card-buy:disabled{opacity:.55}.commerce-card-buy.commerce-card-added{opacity:1;background:#00876c;color:white}
+ .commerce-card-quantity{display:flex;width:100%;height:44px;border:1px solid #ddd;border-radius:10px;overflow:hidden;align-items:center;justify-content:space-between}
+ .commerce-card-quantity button{width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#292929;color:white;flex-shrink:0}
+ .commerce-card-quantity button:disabled{opacity:.5}.commerce-card-quantity span{font-weight:700}
+ .commerce-card-error{font-size:12px;color:#a22525;margin-top:6px}
+}
+
+html[data-brand="arvoalux"] button[data-testid="cart-btn"] { border-radius: 0; }
+
+.customer-consents label > span { flex: 1; min-width: 0; line-height: 1.6; }
+.customer-consents label > input[type="checkbox"] { flex: 0 0 18px; width: 18px; height: 18px; margin: 3px 0 0; padding: 0; border-radius: 2px; accent-color: var(--primary, var(--accent)); }
+
+.customer-access .customer-consents label{display:flex;align-items:flex-start;gap:8px}.customer-access .customer-consents label>span{font-size:16px;line-height:24px;flex:1;min-width:0}.customer-access .customer-consents label>input[type="checkbox"]{display:block;position:static;flex:0 0 18px;width:18px;height:18px;min-height:18px;margin:3px 0 0!important;padding:0;align-self:flex-start;transform:none;box-sizing:border-box}

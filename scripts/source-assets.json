@@ -1,0 +1,66 @@
+[
+  {
+    "path": "apps/arvoalux/public/category-banners/essentials.png",
+    "sha256": "8b612add2dc63152eb93321ec3b5297325bfb633055577d14bcfbd66b104f27e",
+    "bytes": 1947945,
+    "parts": [
+      "scripts/source-assets/essentials.0.b64",
+      "scripts/source-assets/essentials.1.b64",
+      "scripts/source-assets/essentials.2.b64",
+      "scripts/source-assets/essentials.3.b64",
+      "scripts/source-assets/essentials.4.b64"
+    ]
+  },
+  {
+    "path": "apps/arvoalux/public/category-banners/family.png",
+    "sha256": "d527da31013900fbc9f08789fc38c71946cdf05145be1310da371c60d25540ea",
+    "bytes": 2244292,
+    "parts": [
+      "scripts/source-assets/family.0.b64",
+      "scripts/source-assets/family.1.b64",
+      "scripts/source-assets/family.2.b64",
+      "scripts/source-assets/family.3.b64",
+      "scripts/source-assets/family.4.b64",
+      "scripts/source-assets/family.5.b64"
+    ]
+  },
+  {
+    "path": "apps/arvoalux/public/category-banners/pets.png",
+    "sha256": "971d38a12db38555633451dfea77751a5382b4e30e0749256611790e47972310",
+    "bytes": 2514122,
+    "parts": [
+      "scripts/source-assets/pets.0.b64",
+      "scripts/source-assets/pets.1.b64",
+      "scripts/source-assets/pets.2.b64",
+      "scripts/source-assets/pets.3.b64",
+      "scripts/source-assets/pets.4.b64",
+      "scripts/source-assets/pets.5.b64",
+      "scripts/source-assets/pets.6.b64"
+    ]
+  },
+  {
+    "path": "apps/arvoalux/public/category-banners/skincare.png",
+    "sha256": "cd787109da0abb9e236635d68bec5237452b640c029be1216073cadec78fd972",
+    "bytes": 2349873,
+    "parts": [
+      "scripts/source-assets/skincare.0.b64",
+      "scripts/source-assets/skincare.1.b64",
+      "scripts/source-assets/skincare.2.b64",
+      "scripts/source-assets/skincare.3.b64",
+      "scripts/source-assets/skincare.4.b64",
+      "scripts/source-assets/skincare.5.b64"
+    ]
+  },
+  {
+    "path": "apps/arvoalux/public/category-banners/wellness.png",
+    "sha256": "06334fec2fecfc0903457f74e69ca2e70845369edd2c32e67e313c0b486b837a",
+    "bytes": 1905132,
+    "parts": [
+      "scripts/source-assets/wellness.0.b64",
+      "scripts/source-assets/wellness.1.b64",
+      "scripts/source-assets/wellness.2.b64",
+      "scripts/source-assets/wellness.3.b64",
+      "scripts/source-assets/wellness.4.b64"
+    ]
+  }
+]

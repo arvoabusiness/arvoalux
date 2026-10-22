@@ -1,0 +1,786 @@
+{
+  "gid://shopify/Product/16031779586431": {
+    "sourceId": "4325",
+    "variantId": "gid://shopify/ProductVariant/58906723025279",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SWIFT-SE-LITE-WHITE",
+    "gtin": "6976973850079"
+  },
+  "gid://shopify/Product/16031779651967": {
+    "sourceId": "4308",
+    "variantId": "gid://shopify/ProductVariant/58906723090815",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SWIFT-SP-F",
+    "gtin": "6976973851687"
+  },
+  "gid://shopify/Product/16031779783039": {
+    "sourceId": "4284",
+    "variantId": "gid://shopify/ProductVariant/58906723221887",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SWIFT-SE-F-2",
+    "gtin": "6976973851823"
+  },
+  "gid://shopify/Product/16031779881343": {
+    "sourceId": "4450",
+    "variantId": "gid://shopify/ProductVariant/58906723451263",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "AD-2126",
+    "gtin": "850044118762"
+  },
+  "gid://shopify/Product/16031780143487": {
+    "sourceId": "4408",
+    "variantId": "gid://shopify/ProductVariant/58906724335999",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SE2-PURPLE",
+    "gtin": "6976973855982"
+  },
+  "gid://shopify/Product/16031780209023": {
+    "sourceId": "4407",
+    "variantId": "gid://shopify/ProductVariant/58906724401535",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SE2-PINK",
+    "gtin": "6976973855968"
+  },
+  "gid://shopify/Product/16031780307327": {
+    "sourceId": "4369",
+    "variantId": "gid://shopify/ProductVariant/58906724499839",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SWIFT-SE-LITE-PURPLE",
+    "gtin": "6976973850888"
+  },
+  "gid://shopify/Product/16031780372863": {
+    "sourceId": "4319",
+    "variantId": "gid://shopify/ProductVariant/58906724663679",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SWIFT-SP-S",
+    "gtin": "6976973851700"
+  },
+  "gid://shopify/Product/16031780471167": {
+    "sourceId": "4306",
+    "variantId": "gid://shopify/ProductVariant/58906724729215",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SWIFT-SE-L-2",
+    "gtin": "6976973851830"
+  },
+  "gid://shopify/Product/16031782240639": {
+    "sourceId": "4302",
+    "variantId": "gid://shopify/ProductVariant/58906730004863",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LF-SWIFT-SE-P-2",
+    "gtin": "6976973851854"
+  },
+  "gid://shopify/Product/16031782338943": {
+    "sourceId": "4270",
+    "variantId": "gid://shopify/ProductVariant/58906731839871",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "LFTB01-A-PINK",
+    "gtin": "6976973853704"
+  },
+  "gid://shopify/Product/16031782437247": {
+    "sourceId": "4259",
+    "variantId": "gid://shopify/ProductVariant/58906731938175",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "NPMGUN-K5",
+    "gtin": "712376778925"
+  },
+  "gid://shopify/Product/16031782502783": {
+    "sourceId": "4254",
+    "variantId": "gid://shopify/ProductVariant/58906732003711",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "NPMGUN-J11",
+    "gtin": "712376778918"
+  },
+  "gid://shopify/Product/16031782601087": {
+    "sourceId": "4249",
+    "variantId": "gid://shopify/ProductVariant/58906733838719",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "MGB-2403",
+    "gtin": "712376778949"
+  },
+  "gid://shopify/Product/16031784075647": {
+    "sourceId": "4116",
+    "variantId": "gid://shopify/ProductVariant/58906735444351",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "BP5S",
+    "gtin": "856362005142"
+  },
+  "gid://shopify/Product/16031784993151": {
+    "sourceId": "4010",
+    "variantId": "gid://shopify/ProductVariant/58906736427391",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "XKAM-SPA18-ZOLD",
+    "gtin": "712376778123"
+  },
+  "gid://shopify/Product/16031785976191": {
+    "sourceId": "3976",
+    "variantId": "gid://shopify/ProductVariant/58906737607039",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "ER-3",
+    "gtin": "6934440102144"
+  },
+  "gid://shopify/Product/16031786762623": {
+    "sourceId": "3925",
+    "variantId": "gid://shopify/ProductVariant/58906738524543",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "BPW1",
+    "gtin": "6944249302089"
+  },
+  "gid://shopify/Product/16031787319679": {
+    "sourceId": "3859",
+    "variantId": "gid://shopify/ProductVariant/58906739048831",
+    "warranty": "1 év",
+    "vatRate": 27,
+    "sku": "MGPC- 101MM-KEK",
+    "gtin": "712376777928"
+  },
+  "gid://shopify/Product/16031787385215": {
+    "sourceId": "3794",
+    "variantId": "gid://shopify/ProductVariant/58906739114367",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "NP-BS02",
+    "gtin": "712376778802"
+  },
+  "gid://shopify/Product/16031787745663": {
+    "sourceId": "3715",
+    "variantId": "gid://shopify/ProductVariant/58906739474815",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "HS2S PRO",
+    "gtin": "850044118038"
+  },
+  "gid://shopify/Product/16031788335487": {
+    "sourceId": "3671",
+    "variantId": "gid://shopify/ProductVariant/58906740130175",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "SLP10",
+    "gtin": "6945040110736"
+  },
+  "gid://shopify/Product/16031788499327": {
+    "sourceId": "3664",
+    "variantId": "gid://shopify/ProductVariant/58906740326783",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "NE-M01L",
+    "gtin": "6945040107446"
+  },
+  "gid://shopify/Product/16031790858623": {
+    "sourceId": "3612",
+    "variantId": "gid://shopify/ProductVariant/58906743177599",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "MC-100A",
+    "gtin": "4897010954340"
+  },
+  "gid://shopify/Product/16031790989695": {
+    "sourceId": "3597",
+    "variantId": "gid://shopify/ProductVariant/58906743308671",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "B-CURE-CLASSIC",
+    "gtin": "7290014180000"
+  },
+  "gid://shopify/Product/16031791055231": {
+    "sourceId": "3581",
+    "variantId": "gid://shopify/ProductVariant/58906743374207",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "ER1-LW",
+    "gtin": "6934440101918"
+  },
+  "gid://shopify/Product/16031791120767": {
+    "sourceId": "3551",
+    "variantId": "gid://shopify/ProductVariant/58906743439743",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "VO2-MAX",
+    "gtin": "6934440101031"
+  },
+  "gid://shopify/Product/16031791284607": {
+    "sourceId": "3527",
+    "variantId": "gid://shopify/ProductVariant/58906743603583",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "MGF-K68",
+    "gtin": "712376778543"
+  },
+  "gid://shopify/Product/16031791579519": {
+    "sourceId": "3448",
+    "variantId": "gid://shopify/ProductVariant/58906743898495",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "MGF-868",
+    "gtin": "712376778536"
+  },
+  "gid://shopify/Product/16031791776127": {
+    "sourceId": "3431",
+    "variantId": "gid://shopify/ProductVariant/58906744193407",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "MGP-129M",
+    "gtin": "712376777225"
+  },
+  "gid://shopify/Product/16031791907199": {
+    "sourceId": "3355",
+    "variantId": "gid://shopify/ProductVariant/58906744324479",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "XF-5120",
+    "gtin": "712376778444"
+  },
+  "gid://shopify/Product/16031791972735": {
+    "sourceId": "3307",
+    "variantId": "gid://shopify/ProductVariant/58906744422783",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "BP2-C",
+    "gtin": "6934440101390"
+  },
+  "gid://shopify/Product/16031792038271": {
+    "sourceId": "3327",
+    "variantId": "gid://shopify/ProductVariant/58906744488319",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "TH12-TH",
+    "gtin": "6971049341277"
+  },
+  "gid://shopify/Product/16031792136575": {
+    "sourceId": "3287",
+    "variantId": "gid://shopify/ProductVariant/58906744586623",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "BP2A",
+    "gtin": "6934440101017"
+  },
+  "gid://shopify/Product/16031792300415": {
+    "sourceId": "3158",
+    "variantId": "gid://shopify/ProductVariant/58906744750463",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "MGF-836",
+    "gtin": "712376777669"
+  },
+  "gid://shopify/Product/16031792365951": {
+    "sourceId": "3091",
+    "variantId": "gid://shopify/ProductVariant/58906744815999",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "MGC-168",
+    "gtin": "712376777379"
+  },
+  "gid://shopify/Product/16031792628095": {
+    "sourceId": "2975",
+    "variantId": "gid://shopify/ProductVariant/58906745340287",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "ER2-SC",
+    "gtin": "6934440101925"
+  },
+  "gid://shopify/Product/16031792726399": {
+    "sourceId": "2933",
+    "variantId": "gid://shopify/ProductVariant/58906745438591",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "BG5S-KIT-LITE",
+    "gtin": "856362005159"
+  },
+  "gid://shopify/Product/16031792791935": {
+    "sourceId": "2895",
+    "variantId": "gid://shopify/ProductVariant/58906745504127",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "PO4",
+    "gtin": "6934440184829"
+  },
+  "gid://shopify/Product/16031794692479": {
+    "sourceId": "2836",
+    "variantId": "gid://shopify/ProductVariant/58906753204607",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "BP1",
+    "gtin": "6934440101130"
+  },
+  "gid://shopify/Product/16031794758015": {
+    "sourceId": "2697",
+    "variantId": "gid://shopify/ProductVariant/58906753270143",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "ER1",
+    "gtin": "6934440101291"
+  },
+  "gid://shopify/Product/16031794954623": {
+    "sourceId": "2664",
+    "variantId": "gid://shopify/ProductVariant/58906753466751",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "MGBK-2606H",
+    "gtin": "712376777393"
+  },
+  "gid://shopify/Product/16031795872127": {
+    "sourceId": "1936",
+    "variantId": "gid://shopify/ProductVariant/58906754384255",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "PB-20",
+    "gtin": "6934440163343"
+  },
+  "gid://shopify/Product/16031796953471": {
+    "sourceId": "1765",
+    "variantId": "gid://shopify/ProductVariant/58906755465599",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "NB-218C",
+    "gtin": "3760051330095"
+  },
+  "gid://shopify/Product/16031797051775": {
+    "sourceId": "1709",
+    "variantId": "gid://shopify/ProductVariant/58906755563903",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "PT3",
+    "gtin": "856362005043"
+  },
+  "gid://shopify/Product/16031800099199": {
+    "sourceId": "1269",
+    "variantId": "gid://shopify/ProductVariant/58906761298303",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "BPM1",
+    "gtin": "856362005050"
+  },
+  "gid://shopify/Product/16031800295807": {
+    "sourceId": "892",
+    "variantId": "gid://shopify/ProductVariant/58906761494911",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "PO3M",
+    "gtin": "855111003910"
+  },
+  "gid://shopify/Product/16031800459647": {
+    "sourceId": "865",
+    "variantId": "gid://shopify/ProductVariant/58906761658751",
+    "warranty": "2 év",
+    "vatRate": 27,
+    "sku": "BP7S",
+    "gtin": "855111003941"
+  },
+  "gid://shopify/Product/16031779258751": {
+    "sourceId": "4573",
+    "variantId": "gid://shopify/ProductVariant/58906722566527",
+    "sku": "M12-AI-12",
+    "gtin": "",
+    "warranty": "3 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031779324287": {
+    "sourceId": "4570",
+    "variantId": "gid://shopify/ProductVariant/58906722632063",
+    "sku": "M5-AI-5",
+    "gtin": "",
+    "warranty": "3 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031779422591": {
+    "sourceId": "4558",
+    "variantId": "gid://shopify/ProductVariant/58906722730367",
+    "sku": "F4-FEHER",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031779488127": {
+    "sourceId": "4549",
+    "variantId": "gid://shopify/ProductVariant/58906722795903",
+    "sku": "P1-FEHER",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031779946879": {
+    "sourceId": "4432",
+    "variantId": "gid://shopify/ProductVariant/58906723516799",
+    "sku": "LF-DIFFUZOR",
+    "gtin": "6973833030992",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031780045183": {
+    "sourceId": "4425",
+    "variantId": "gid://shopify/ProductVariant/58906723615103",
+    "sku": "LFTB01-POTFEJ-F-FEH",
+    "gtin": "6973833031661",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031782732159": {
+    "sourceId": "4236",
+    "variantId": "gid://shopify/ProductVariant/58906733969791",
+    "sku": "KT101",
+    "gtin": "",
+    "warranty": "1 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031782797695": {
+    "sourceId": "4232",
+    "variantId": "gid://shopify/ProductVariant/58906734035327",
+    "sku": "CMS50Q1",
+    "gtin": "",
+    "warranty": "1 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031782863231": {
+    "sourceId": "4225",
+    "variantId": "gid://shopify/ProductVariant/58906734133631",
+    "sku": "SP80B",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031782961535": {
+    "sourceId": "4218",
+    "variantId": "gid://shopify/ProductVariant/58906734231935",
+    "sku": "CPROBE-CL",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783092607": {
+    "sourceId": "4207",
+    "variantId": "gid://shopify/ProductVariant/58906734330239",
+    "sku": "WBP-02A",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783158143": {
+    "sourceId": "4199",
+    "variantId": "gid://shopify/ProductVariant/58906734395775",
+    "sku": "ECG-500",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783223679": {
+    "sourceId": "4192",
+    "variantId": "gid://shopify/ProductVariant/58906734461311",
+    "sku": "AIVIEW-VS",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783354751": {
+    "sourceId": "4180",
+    "variantId": "gid://shopify/ProductVariant/58906734592383",
+    "sku": "PC-303",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783420287": {
+    "sourceId": "4173",
+    "variantId": "gid://shopify/ProductVariant/58906734657919",
+    "sku": "SP-20",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783584127": {
+    "sourceId": "4166",
+    "variantId": "gid://shopify/ProductVariant/58906734821759",
+    "sku": "ECG-T180",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783682431": {
+    "sourceId": "4159",
+    "variantId": "gid://shopify/ProductVariant/58906734920063",
+    "sku": "ECG-S120",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783780735": {
+    "sourceId": "4153",
+    "variantId": "gid://shopify/ProductVariant/58906735018367",
+    "sku": "PO5-S-ZOKNI-L",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031783911807": {
+    "sourceId": "4152",
+    "variantId": "gid://shopify/ProductVariant/58906735149439",
+    "sku": "PO5-S-ZOKNI-M",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784010111": {
+    "sourceId": "4150",
+    "variantId": "gid://shopify/ProductVariant/58906735247743",
+    "sku": "MC-310-ANDROID",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784206719": {
+    "sourceId": "4109",
+    "variantId": "gid://shopify/ProductVariant/58906735575423",
+    "sku": "ER-3-7",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784272255": {
+    "sourceId": "4043",
+    "variantId": "gid://shopify/ProductVariant/58906735640959",
+    "sku": "PO3",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784370559": {
+    "sourceId": "4038",
+    "variantId": "gid://shopify/ProductVariant/58906735739263",
+    "sku": "PAT-FEKETE",
+    "gtin": "5999510550073",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784436095": {
+    "sourceId": "4035",
+    "variantId": "gid://shopify/ProductVariant/58906735804799",
+    "sku": "PAT-GYH-FEKETE",
+    "gtin": "5999510550011",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784534399": {
+    "sourceId": "4030",
+    "variantId": "gid://shopify/ProductVariant/58906736001407",
+    "sku": "PAT-GGYÜP",
+    "gtin": "5999510559458",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784665471": {
+    "sourceId": "4029",
+    "variantId": "gid://shopify/ProductVariant/58906736099711",
+    "sku": "PO5-S-SZENZOR",
+    "gtin": "",
+    "warranty": "1 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784731007": {
+    "sourceId": "4026",
+    "variantId": "gid://shopify/ProductVariant/58906736198015",
+    "sku": "APAP-CSO",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784829311": {
+    "sourceId": "4019",
+    "variantId": "gid://shopify/ProductVariant/58906736263551",
+    "sku": "PO5-S-ZOKNI-S",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031784894847": {
+    "sourceId": "4016",
+    "variantId": "gid://shopify/ProductVariant/58906736329087",
+    "sku": "PO5-ZOKNI",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031786402175": {
+    "sourceId": "3962",
+    "variantId": "gid://shopify/ProductVariant/58906738033023",
+    "sku": "BMC-FM2-L",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031786467711": {
+    "sourceId": "3961",
+    "variantId": "gid://shopify/ProductVariant/58906738098559",
+    "sku": "BMC-FM2-M",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031786566015": {
+    "sourceId": "3960",
+    "variantId": "gid://shopify/ProductVariant/58906738360703",
+    "sku": "NM4-L",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031786664319": {
+    "sourceId": "3959",
+    "variantId": "gid://shopify/ProductVariant/58906738426239",
+    "sku": "NM4-M",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031786860927": {
+    "sourceId": "3905",
+    "variantId": "gid://shopify/ProductVariant/58906738622847",
+    "sku": "FS-N07",
+    "gtin": "712376778901",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031786926463": {
+    "sourceId": "3903",
+    "variantId": "gid://shopify/ProductVariant/58906738688383",
+    "sku": "Oyeet-S2-feher",
+    "gtin": "712376778697",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031787024767": {
+    "sourceId": "3898",
+    "variantId": "gid://shopify/ProductVariant/58906738753919",
+    "sku": "Oyeet-S2-fekete",
+    "gtin": "712376778680",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031787123071": {
+    "sourceId": "3889",
+    "variantId": "gid://shopify/ProductVariant/58906738852223",
+    "sku": "V-O2",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031787483519": {
+    "sourceId": "3788",
+    "variantId": "gid://shopify/ProductVariant/58906739212671",
+    "sku": "Oyeet-S2-szurke",
+    "gtin": "712376778673",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031787549055": {
+    "sourceId": "3780",
+    "variantId": "gid://shopify/ProductVariant/58906739278207",
+    "sku": "Go2sleep SE",
+    "gtin": "6971727960660",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031787614591": {
+    "sourceId": "3771",
+    "variantId": "gid://shopify/ProductVariant/58906739343743",
+    "sku": "MGBC-302H",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031787680127": {
+    "sourceId": "3755",
+    "variantId": "gid://shopify/ProductVariant/58906739409279",
+    "sku": "ER1-LW-ELEKTRODA",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031790530943": {
+    "sourceId": "3623",
+    "variantId": "gid://shopify/ProductVariant/58906742686079",
+    "sku": "BCÁ",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031790629247": {
+    "sourceId": "3617",
+    "variantId": "gid://shopify/ProductVariant/58906742751615",
+    "sku": "EKG-ELEKTRODA",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031790694783": {
+    "sourceId": "3621",
+    "variantId": "gid://shopify/ProductVariant/58906742817151",
+    "sku": "VTM01",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031790793087": {
+    "sourceId": "3619",
+    "variantId": "gid://shopify/ProductVariant/58906742915455",
+    "sku": "PO5-SZENZOR",
+    "gtin": "",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031791186303": {
+    "sourceId": "3545",
+    "variantId": "gid://shopify/ProductVariant/58906743505279",
+    "sku": "IBREEZE-20A",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031796887935": {
+    "sourceId": "1771",
+    "variantId": "gid://shopify/ProductVariant/58906755400063",
+    "sku": "KN-550BT-UC",
+    "gtin": "856362005418",
+    "warranty": "",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031800033663": {
+    "sourceId": "1594",
+    "variantId": "gid://shopify/ProductVariant/58906761232767",
+    "sku": "BPST2",
+    "gtin": "",
+    "warranty": "2 év",
+    "vatRate": 27.0
+  },
+  "gid://shopify/Product/16031800361343": {
+    "sourceId": "880",
+    "variantId": "gid://shopify/ProductVariant/58906761560447",
+    "sku": "EGS-2003",
+    "gtin": "856362005197",
+    "warranty": "",
+    "vatRate": 5.0
+  },
+  "gid://shopify/Product/16031800525183": {
+    "sourceId": "862",
+    "variantId": "gid://shopify/ProductVariant/58906761757055",
+    "sku": "30G",
+    "gtin": "856362005210",
+    "warranty": "",
+    "vatRate": 27.0
+  }
+}

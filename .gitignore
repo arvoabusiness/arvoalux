@@ -7,3 +7,10 @@ node_modules/
 *.tsbuildinfo
 .vercel
 .env*
+
+# Exact large assets reassembled by scripts/integrate-contentsquare.cjs
+/apps/arvoalux/public/category-banners/essentials.png
+/apps/arvoalux/public/category-banners/family.png
+/apps/arvoalux/public/category-banners/pets.png
+/apps/arvoalux/public/category-banners/skincare.png
+/apps/arvoalux/public/category-banners/wellness.png

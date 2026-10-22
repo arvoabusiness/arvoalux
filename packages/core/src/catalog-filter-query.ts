@@ -1,0 +1,3 @@
+// Exact public catalog reads; no Admin fields, tokens, writes or customer records.
+export const FILTER_PRODUCTS_QUERY = `query CatalogFilterProducts($after: String) { products(first: 50, after: $after) { nodes { id title vendor descriptionHtml collections(first: 50) { nodes { id handle title } pageInfo { hasNextPage endCursor } } } pageInfo { hasNextPage endCursor } } }`;
+export const FILTER_MEMBERSHIPS_QUERY = `query CatalogFilterMemberships($id: ID!, $after: String) { product(id: $id) { collections(first: 50, after: $after) { nodes { id handle title } pageInfo { hasNextPage endCursor } } } }`;

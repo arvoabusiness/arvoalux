@@ -19,6 +19,7 @@ export function NewsletterPopup({ brand }: { brand: Brand }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (brand.handle === "arvoalux") return;
     if (sessionStorage.getItem(storageKey)) return;
     const timer = setTimeout(() => setVisible(true), 4000);
     return () => clearTimeout(timer);
@@ -38,7 +39,7 @@ export function NewsletterPopup({ brand }: { brand: Brand }) {
     close();
   };
 
-  if (!visible) return null;
+  if (brand.handle === "arvoalux" || !visible) return null;
 
   return (
     <>

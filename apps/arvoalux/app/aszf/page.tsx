@@ -1,0 +1,6 @@
+import type {Metadata} from 'next';
+import {brand} from '@/brand.config';
+import documents from './documents.json';
+import LegalNavigation from '../_components/LegalNavigation';
+export const metadata:Metadata={title:'Általános Szerződési Feltételek'};
+export default function Terms(){return <article className="max-w-4xl mx-auto px-4 py-10 pb-28" data-testid="terms-final" data-legal-version="aszf-20261013-v1"><h1 className="text-3xl font-bold mb-6">{brand.name} – Általános Szerződési Feltételek</h1><p>Hatályos: 2026. október 13. Verzió: aszf-20261013-v1.</p><p className="my-4"><a className="underline" href="/legal/ASZF-arvoalux-aszf-20261013-v1.pdf" download>ÁSZF és mellékletei letöltése ASZF-arvoalux-aszf-20261013-v1.pdf-ben</a></p><nav aria-label="A dokumentum részei"><ul>{documents.map(d=><li key={d.slug}><a className="underline" href={'#'+d.slug}>{d.title}</a></li>)}</ul></nav>{documents.map(d=><section key={d.slug} id={d.slug} className="my-8 scroll-mt-24"><h2 className="text-2xl font-bold mb-4">{d.title}</h2>{d.blocks.map(b=><div key={b.id} data-legal-block={b.id} className="mb-4">{b.kind==='heading'?<h3 className="text-xl font-semibold mt-6">{b.text}</h3>:<p className="whitespace-pre-line break-words">{b.text}</p>}</div>)}</section>)}<LegalNavigation/></article>;}

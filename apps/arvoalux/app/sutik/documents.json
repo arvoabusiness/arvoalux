@@ -1,0 +1,126 @@
+{
+  "slug": "sutik",
+  "title": "Sütitájékoztató",
+  "blocks": [
+    {
+      "id": "sutik-h0",
+      "kind": "heading",
+      "text": "Sütik és hasonló böngészős tárolás",
+      "unverified": false
+    },
+    {
+      "id": "sutik-p0",
+      "kind": "paragraph",
+      "text": "A sütik a böngészőben elhelyezett kis adatok. A kért kosár, fizetés folytatása és belépés működéséhez szükséges azonosítókat használunk. Ezek a funkció biztosítását szolgálják. A hírlevélhez adott hozzájárulás nem sütikhez adott hozzájárulás.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-h1",
+      "kind": "heading",
+      "text": "Kosár",
+      "unverified": false
+    },
+    {
+      "id": "sutik-p1",
+      "kind": "paragraph",
+      "text": "Név: __Host-arvoa-cart-<márka>. Cél: a választott termékekhez tartozó kosár azonosítása. Élettartam: az utolsó sikeres kosármódosítástól számított 10 nap. Saját weboldali süti, HttpOnly, Secure, SameSite=Lax, Path=/.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-h2",
+      "kind": "heading",
+      "text": "Fizetés folytatása",
+      "unverified": false
+    },
+    {
+      "id": "sutik-p2",
+      "kind": "paragraph",
+      "text": "Név: __Host-arvoa-payment-<márka>. Cél: a megkezdett fizetés és annak eredményének biztonságos összekapcsolása. Élettartam: legfeljebb 24 óra. Saját weboldali, HttpOnly, Secure, SameSite=Lax, Path=/.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-h3",
+      "kind": "heading",
+      "text": "Bejelentkezés",
+      "unverified": false
+    },
+    {
+      "id": "sutik-p3",
+      "kind": "paragraph",
+      "text": "A belépést biztosító sütik az arvoa_<márka> névelőtagot használják. A munkamenet beállított időtartama legfeljebb 7 nap; a munkamenet frissítése a belépés fenntartásához szükséges. Biztonságos, HttpOnly, SameSite=Lax, a saját weboldalhoz kötött azonosítók, másik márka weboldalán nem biztosítanak belépést. Csak az elérhető fiókfunkció használatakor alkalmazandó.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-h4",
+      "kind": "heading",
+      "text": "Szolgáltatói felületek",
+      "unverified": false
+    },
+    {
+      "id": "sutik-p4",
+      "kind": "paragraph",
+      "text": "A Stripe fizetési felületén és más külső szolgáltató saját felületén az adott szolgáltató sütikezelése is alkalmazandó. A külső felület adatvédelmi tájékoztatója a saját felületén érhető el. A puszta képletöltés, IP-cím vagy szerveroldali adatátadás nem feltétlenül süti; ezek adatkezelését az adatkezelési tájékoztató tartalmazza.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-h5",
+      "kind": "heading",
+      "text": "Választási lehetőségek",
+      "unverified": false
+    },
+    {
+      "id": "sutik-p5",
+      "kind": "paragraph",
+      "text": "A kért funkcióhoz feltétlenül szükséges tárolás nem igényel előzetes sütihasználati hozzájárulást. Ha opcionális analitikai vagy marketingcélú tárolást alkalmazunk, azt csak külön előzetes, önkéntes hozzájárulás után szabad bekapcsolni; az elutasítás nem akadályozhatja a vásárlást. A sütiket a böngésző beállításaiban megtekintheti, törölheti vagy letilthatja. Törlésük vagy tiltásuk megszüntetheti a kosarat vagy munkamenetet. A márkajelölés az adott weboldal rövid neve, például arvoalux vagy biobarat.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-h6",
+      "kind": "heading",
+      "text": "Adatkezelő és jogok",
+      "unverified": false
+    },
+    {
+      "id": "sutik-p6",
+      "kind": "paragraph",
+      "text": "Adatkezelő: Supreme Pharmatech Europe s.r.o., Senný trh 3116/7, 945 01 Komárno, Szlovákia; IČO 56139471. Kapcsolat: info@arvoalux.hu; +36 20 931 9009. A kapcsolódó személyes adatok kezelésének célját, jogalapját, címzettjeit, megőrzését és az Ön jogait az Adatkezelési tájékoztató tartalmazza.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-measurement-h0",
+      "kind": "heading",
+      "text": "Google Analytics és külön engedélyezhető hirdetési mérés",
+      "unverified": false
+    },
+    {
+      "id": "sutik-measurement-p0",
+      "kind": "paragraph",
+      "text": "Az arvoalux.hu oldalon három egyenértékű lehetőség választható: „Analitika és hirdetési mérés”, „Csak analitika” vagy „Csak szükséges sütik”. Alapállapotban mindkét opcionális cél tiltott. A korábbi, kizárólag analitikára adott választás nem engedélyez hirdetési mérést. A választás a Sütibeállítások gombbal bármikor módosítható vagy visszavonható; az elutasítás nem akadályozza a vásárlást.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-measurement-h1",
+      "kind": "heading",
+      "text": "Opcionális tárolás és élettartam",
+      "unverified": false
+    },
+    {
+      "id": "sutik-measurement-p1",
+      "kind": "paragraph",
+      "text": "A Google Analytics _ga és _ga_* sütijeinek beállított élettartama 90 nap. A hirdetési mérés külön engedélyezésekor a Google hirdetési kattintásazonosítókat és _gcl_* sütiket is használhat; ezek szokásos élettartama legfeljebb 90 nap. A döntést az arvoalux:analytics-consent:v1 nevű helyi böngészős tároló őrzi legfeljebb 90 napig, célonkénti választással, időponttal és szövegváltozattal. Az arvoa:purchase: kezdetű helyi bejegyzés az adott rendelés mérésének megismétlését akadályozza; a böngészős tároló törléséig marad meg. Visszavonáskor az érintett, a saját domainen hozzáférhető mérési sütiket töröljük, és az új mérést letiltjuk. Ez nem törli automatikusan a Google-nél korábban kezelt adatokat.",
+      "unverified": false
+    },
+    {
+      "id": "sutik-measurement-h2",
+      "kind": "heading",
+      "text": "A mérés célja és címzettje",
+      "unverified": false
+    },
+    {
+      "id": "sutik-measurement-p2",
+      "kind": "paragraph",
+      "text": "A Google Analytics az oldalhasználat és a vásárlás eseményét, értékét, pénznemét, technikai rendelés- és termékazonosítóit méri. Külön hirdetési mérési engedélynél a Google Ads kattintásazonosítója és a kampányadatok a vásárlási eredmény hozzárendelését is szolgálják. A beállítás nem engedélyez személyre szabott hirdetést, Google Signals funkciót, remarketinget vagy ügyféllista-feltöltést; a mérőkódnak nem adunk át nevet, e-mail-címet, telefonszámot vagy címet. A Google technikai böngésző- és hálózati adatokat is kap. Részletek és jogok az Adatkezelési tájékoztatóban. Google tájékoztató: https://policies.google.com/privacy?hl=hu ; https://policies.google.com/technologies/ads?hl=hu .",
+      "unverified": false
+    }
+  ]
+}

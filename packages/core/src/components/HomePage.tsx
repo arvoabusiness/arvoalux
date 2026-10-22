@@ -5,18 +5,18 @@ import { DeliveryInfoBar } from "./home/DeliveryInfoBar";
 import { FeaturedProductsSection } from "./home/FeaturedProductsSection";
 import { DiscountedProductsSection } from "./home/DiscountedProductsSection";
 import { HealthCategoriesSection } from "./home/HealthCategoriesSection";
-import { BlogSection } from "./home/BlogSection";
+import { MagazineNewsletter } from "./home/MagazineNewsletter";
 
 export function HomePage({ brand }: { brand: Brand }) {
   return (
     <div data-testid="home-page">
-      <HeroBanner />
+      <HeroBanner brand={brand} />
       <HomepageCategorySection brand={brand} />
-      <DeliveryInfoBar />
+      {brand.handle !== "arvoalux" && <DeliveryInfoBar brandHandle={brand.handle} />}
       <FeaturedProductsSection brand={brand} />
       <DiscountedProductsSection brand={brand} />
-      <HealthCategoriesSection />
-      <BlogSection />
+      <HealthCategoriesSection brandHandle={brand.handle} />
+      <MagazineNewsletter brand={brand} />
     </div>
   );
 }

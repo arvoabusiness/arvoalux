@@ -1,0 +1,162 @@
+{
+  "slug": "adatkezeles",
+  "title": "Adatkezelési tájékoztató",
+  "blocks": [
+    {
+      "id": "adatkezeles-h0",
+      "kind": "heading",
+      "text": "Hatály",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p0",
+      "kind": "paragraph",
+      "text": "Webáruház: arvoalux.hu. A közzétételtől alkalmazandó tájékoztató; verzió: adatkezeles-20261020-v2.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h1",
+      "kind": "heading",
+      "text": "Adatkezelő és hatály",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p1",
+      "kind": "paragraph",
+      "text": "Az adatkezelő Supreme Pharmatech Europe s.r.o., Senný trh 3116/7, 945 01 Komárno, Szlovákia; IČO: 56139471. Adatvédelmi kapcsolattartás: info@arvoalux.hu; +36-20/931-9009. A jelen tájékoztató az arvoalux.hu, biobarat.eu, boltbio.hu, nagykervitamin.hu, napivitamin.eu, nutrimarket.hu, prevenciobolt.hu, provitaminok.hu és unipatikatt.hu márkák weboldalának böngészésére, keresésére, kosarára, vásárlói fiókjára, rendelésére, kapcsolattartására és az adott márkához kért hírlevelére vonatkozik. A felsorolt márkák üzemeltetője és adatkezelője azonos. A tájékoztató az adott weboldalon elérhető szolgáltatások használatára vonatkozik.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h2",
+      "kind": "heading",
+      "text": "Böngészés, képek és keresés",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p2",
+      "kind": "paragraph",
+      "text": "A kiszolgáláshoz szükséges IP-cím, kérésidő, kért erőforrás, böngészőadat és technikai hibaadat a tárhelyszolgáltatóhoz kerülhet. A termékkatalógus Shopify-alapú; a Shopify képhálózatához közvetlen böngészőkérés is történhet. A keresőkifejezést a saját szerver a Shopify termékkatalógus-szolgáltatásának továbbítja; gépelés közben is megjelenhetnek keresési javaslatok. A keresőkifejezés a böngésző előzményeiben és technikai naplókban is megmaradhat. Cél a kért katalógus és keresés biztosítása, valamint a hibák és visszaélések kezelése; jogalap GDPR 6. cikk (1) f), a működő és biztonságos weboldalhoz fűződő jogos érdek. A keresőbe ne írjon diagnózist, leletet vagy más személyes egészségügyi adatot.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h3",
+      "kind": "heading",
+      "text": "Kosár és rendelés",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p3",
+      "kind": "paragraph",
+      "text": "A kosár a kiválasztott termékeket, mennyiséget és kuponkódot kezeli; a márkához rendelt kosárazonosító saját sütiben, a kosártartalom Shopifyban szerepel. A rendeléshez név, e-mail, telefon, szállítási és számlázási cím, megrendelt tételek, választott átvételi pont és fizetési mód szükséges. Cél a rendelés előkészítése és teljesítése; jogalap GDPR 6. cikk (1) b). A vásárlás egyéni ügyfélfiók nélkül is lehetséges. A kért szolgáltatáshoz szükséges mezők hiányában a rendelést nem tudjuk teljesíteni. A rendelés azonosítóját, állapotát és a teljesítéshez szükséges adatokat saját kiszolgálón és a használt kereskedelmi rendszerben kezeljük.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h4",
+      "kind": "heading",
+      "text": "Fizetés, számlázás és kézbesítés",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p4",
+      "kind": "paragraph",
+      "text": "Bankkártyás fizetésnél a Stripe fizetési felületére irányítjuk. A kártyaadatokat ott adja meg; a webáruház a fizetési azonosítót és állapotot kezeli. A Stripe a fizetés lebonyolításakor adatfeldolgozóként, bizonyos jogszabályi és csalásmegelőzési céloknál önálló adatkezelőként jár el. Utánvét esetén a kézbesítéshez és az összeg beszedéséhez szükséges nevet, elérhetőséget, címet vagy átvételi pontot, rendelésazonosítót és beszedendő összeget a kiválasztott szállítási mód teljesítésében közreműködő fuvarozónak és szállításszervezőnek adjuk át. A konkrét szállítási módot és szolgáltatót a rendelési felület és visszaigazolás mutatja. A számlázási adatokat a számla elkészítéséhez közreműködő számlázási, könyvelési és adózási szolgáltatók, valamint jogszabály szerint az illetékes hatóságok ismerhetik meg. A számlázás és számviteli megőrzés jogalapja GDPR 6. cikk (1) c); a fizetés és kézbesítés szervezéséé b). A számlát papíron helyezzük a csomagba. Egy technikai integráció megléte nem jelent adatátadást minden felsorolt szolgáltatónak.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h5",
+      "kind": "heading",
+      "text": "Vásárlói fiók",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p5",
+      "kind": "paragraph",
+      "text": "Amennyiben az adott weboldalon a fióklétrehozás elérhető, önkéntes fióklétrehozáskor a nevet, e-mail-címet, a jelszó biztonságosan származtatott ellenőrzési adatát, e-mail-megerősítési állapotot, munkamenet-adatokat, technikai biztonsági adatokat és a szükséges hozzájárulási nyilvántartást kezeljük. A fiókszolgáltatás jogalapja a GDPR 6. cikk (1) b); visszaélésvédelemé a GDPR 6. cikk (1) f). A Better Auth szoftver és MongoDB adatbázis szolgálja a fiók működését. A márkák adatbázisai elkülönülnek. A megerősítő és jelszó-visszaállító leveleket a Resend SMTP útján küldjük; ezek szolgáltatási levelek. A fiók nem jelent automatikus hírlevél-feliratkozást. A fiók törlését az adatvédelmi kapcsolattartási címen is kérheti. A törlés nem törli a külön megőrzési kötelezettség alá eső rendelési vagy számviteli iratokat.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h6",
+      "kind": "heading",
+      "text": "Hírlevél",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p6",
+      "kind": "paragraph",
+      "text": "Csak az adott márkához kért, külön, önkéntes hírlevél-hozzájárulás és az e-mail-cím megerősítése után történhet feliratkozás. Az e-mail-címet, márkajelölést, a hozzájárulás időpontját és szövegváltozatát, megerősítési időpontját és feliratkozási állapotát kezeljük. Jogalap GDPR 6. cikk (1) a). A Mailchimp egy közös listát kezel külön márkajelölésekkel; ez nem jelent mind a kilenc márka hírleveléhez adott hozzájárulást. A hozzájárulás visszavonható a levél leiratkozási hivatkozásával vagy az adatvédelmi kapcsolattartási címen. A visszavonás nem érinti a korábbi jogszerű adatkezelést, a fiók használatát vagy a vásárlást. A további küldés megakadályozásához szükséges tiltólista-adatot és az indokolt hozzájárulási bizonyítékot külön kezeljük. Ha egy hírlevél-funkció nem elérhető, abból nem történik feliratkozás. Másik márka hírlevelére csak külön feliratkozás után küldünk üzenetet. A hírlevél küldése nem előfeltétele a vásárlásnak vagy fióklétrehozásnak.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h7",
+      "kind": "heading",
+      "text": "Megkeresés, panasz és elállás",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p7",
+      "kind": "paragraph",
+      "text": "Általános megkeresésnél a szükséges kapcsolattartási adatot és az üzenet tartalmát kezeljük a válaszadáshoz; jogalap általános kérdésnél GDPR 6. cikk (1) f), szerződéskötést megelőző szükséges lépésnél b). Lezáráskor a szükségtelen általános megkeresések és rendelkezésünkre álló másolataik törlendők; további megőrzés csak konkrét kötelezettség vagy szükséges jogi igény szerint indokolt. Ez nem vonatkozik automatikusan számlákra, rendelésekre és panaszokra. Elektronikus elállási nyilatkozatnál a nyilatkozat tartalmát, azonosítóját, beérkezési időpontját és a visszaigazolás állapotát is kezeljük; visszaigazolást a megadott e-mail-címre küldünk, amikor az elektronikus funkció elérhető. A panasz- és elállási ügyben a név, elérhetőség, rendelésazonosító, nyilatkozat és az ügyintézés adatai a fogyasztói jogok biztosítását és a jogi kötelezettségek teljesítését szolgálják; jogalap a cél szerint GDPR 6. cikk (1) b), c), szükséges jogi igényvédelemnél f). Ne küldjön szükségtelen egészségügyi adatot.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h8",
+      "kind": "heading",
+      "text": "Megőrzés",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p8",
+      "kind": "paragraph",
+      "text": "A megőrzési időt az alábbi célonkénti szabályok alapján határozzuk meg. Számviteli bizonylatok és kapcsolódó számviteli nyilvántartások: a szlovák 431/2002. sz. számviteli törvény 35. §-a szerint a vonatkozó évet követő tíz évig. Egy adatnak a számlán szereplése nem indokolja minden egyéb másolat ugyanolyan megőrzését. Rendelési és teljesítési iratok: a szerződés teljesítéséig, majd csak a kapcsolódó jogszabályi megőrzési kötelezettség és a konkrét szerződéses igény érvényesítésére irányadó elévülési idő végéig; szükséges folyamatban lévő jogvita esetén annak lezárásáig. Panaszjegyzőkönyv és válasz: a magyar fogyasztóvédelmi szabályok által megkövetelt három évig, illetve az alkalmazandó további kötelezettség vagy konkrét jogvita alapján szükséges ideig. Elállási nyilatkozat és visszaigazolás: az elállás és elszámolás végrehajtásáig, majd az ezekhez kapcsolódó igények elévüléséig, illetve a számviteli iratokra külön irányadó időig. Általános megkeresés: lezáráskor töröljük a szükségtelen adatokat és rendelkezésünkre álló másolataikat; konkrét kötelezettség vagy szükséges jogi igény esetén csak az érintett adatot tartjuk meg. Vásárlói fiók: a fiók fennállásáig, törlési kérelem után a külön kötelezettséggel nem érintett adatokat töröljük. Hírlevél: hozzájárulás visszavonásáig; a visszavonás és küldési tiltás bizonyítékát csak a tiltás fenntartásához és a kapcsolódó jogi igény igazolásához szükséges ideig kezeljük, marketingküldésre nem használjuk. Technikai naplók: a konkrét hiba vagy biztonsági esemény feltárásához, elhárításához és szükséges kivizsgálásához szükséges ideig; ezek nem általános ügyfélprofil készítésére szolgálnak. Biztonsági mentések: a működési helyreállításhoz szükséges mentési ciklus idejéig, korlátozott hozzáféréssel; helyreállításkor a közben teljesített törlési kérelmeket ismét alkalmazni kell. A böngészős azonosítók élettartamát a sütitájékoztató mutatja; ez nem a teljes szerveroldali iratmegőrzési idő. Kérésére megadjuk az Ön adataira alkalmazott konkrét megőrzési szabályt és annak kezdőnapját.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h9",
+      "kind": "heading",
+      "text": "Szolgáltatók, adattovábbítás és biztonság",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p9",
+      "kind": "paragraph",
+      "text": "A személyes adatokhoz a feladatukhoz szükséges körben hozzáférhetnek az adatkezelő felhatalmazott munkatársai és következő szolgáltatói kategóriák: weboldal- és tárhelyszolgáltatók; katalógus-, kosár- és rendeléskezelők; fiókadatbázis-szolgáltató; szolgáltatási e-mail és önkéntes hírlevél szolgáltatói; fizetési szolgáltató; számlázó, könyvelő, szállításszervező és a választott fuvarozó; kötelező megkeresés esetén hatóságok. A technikai körben Vercel (weboldal), Shopify (katalógus, képkiszolgálás, kosár és rendelés), VPS-tárhely (saját integrációs kiszolgáló), MongoDB Atlas (fiókadatbázis), Resend (szolgáltatási e-mail), Mailchimp (kért márkahírlevél) és Stripe (bankkártyás fizetés) szolgáltatásait használjuk az adott működő funkció szerint. A Better Auth helyben használt szoftver, önmagában nem külön címzett. A közreműködők egyes rendszerei vagy alvállalkozói az EGT-n kívül is működhetnek. Ilyen továbbításnál az alkalmazandó GDPR-garancia lehet európai bizottsági megfelelőségi határozat, ennek hatálya alá tartozó jogosult szolgáltató, vagy általános szerződési feltétel és szükséges kiegészítő intézkedés. Ez nem jelenti, hogy minden szolgáltató minden továbbítása ugyanazon garanciával történik. Az alkalmazott továbbítási garanciáról és annak másolatáról az adatvédelmi kapcsolattartási címen kérhet tájékoztatást. A szolgáltatók nyilvános adatvédelmi és adatfeldolgozási feltételei: https://vercel.com/legal/dpa ; https://www.shopify.com/legal/dpa ; https://www.mongodb.com/legal/data-processing-agreement ; https://resend.com/legal/dpa ; https://mailchimp.com/en/legal/data-processing-addendum/ ; https://stripe.com/privacy . Biztonságos kapcsolatot, korlátozott hozzáférést és márkánként elkülönített fiókadat-kezelést alkalmazunk.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-h10",
+      "kind": "heading",
+      "text": "Jogok és jogorvoslat",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-p10",
+      "kind": "paragraph",
+      "text": "A GDPR feltételeivel kérhet hozzáférést, helyesbítést, törlést, korlátozást és adathordozást; a jogos érdeken alapuló adatkezelés ellen saját helyzetével kapcsolatos okból tiltakozhat. Közvetlen üzletszerzés ellen bármikor tiltakozhat; ilyen célra az adatot ezt követően nem kezeljük. Hozzájárulását bármikor visszavonhatja. Főszabály szerint egy hónapon belül válaszolunk; szükséges, legfeljebb két további hónapos hosszabbításról az első hónapban indokolással tájékoztatjuk. Panasszal különösen a tartózkodási helye, munkahelye vagy jogsértés helye szerinti adatvédelmi hatósághoz fordulhat. Magyarországon NAIH: https://www.naih.hu/; Szlovákiában Úrad na ochranu osobných údajov: https://dataprotection.gov.sk/. Bírósági jogorvoslat is igénybe vehető. A webáruház nem alkalmaz kizárólag automatizált, Önre jelentős joghatású döntéshozatalt; a Stripe saját csalásmegelőzése külön adatkezelés.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-measurement-h0",
+      "kind": "heading",
+      "text": "Google Analytics és önkéntes Google Ads teljesítménymérés az arvoalux.hu oldalon",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-measurement-p0",
+      "kind": "paragraph",
+      "text": "Az arvoalux.hu oldalon a Google Analytics használatához önkéntes, előzetes analitikai hozzájárulást kérünk. A Google Ads hirdetések eredményének vásárlásokhoz rendeléséhez külön hirdetési mérési választás szükséges. Jogalap mindkét célra az Ön hozzájárulása, GDPR 6. cikk (1) a). A vásárlás egyik hozzájárulástól sem függ; a hírlevél-hozzájárulás ezeket nem helyettesíti. A Sütibeállítások gombbal bármikor választhat kizárólag analitikát vagy kizárólag szükséges sütiket. A korábban kizárólag analitikára adott hozzájárulást nem értelmezzük hirdetési engedélyként. A visszavonás nem érinti a korábbi jogszerű adatkezelést.",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-measurement-h1",
+      "kind": "heading",
+      "text": "Mérési adatok, szolgáltató és megőrzés",
+      "unverified": false
+    },
+    {
+      "id": "adatkezeles-measurement-p1",
+      "kind": "paragraph",
+      "text": "A méréshez oldalútvonal, engedélyezett kampányadatok, böngészős azonosítók, eseményidőpont, vásárlási érték és pénznem, technikai rendelés- és termékazonosítók, mennyiség és ár kerülhet a Google-hoz. Hirdetési mérés választásakor ehhez hirdetési kattintásazonosító is kapcsolódhat. A Google a hálózati kérés technikai adatait is megkapja. A saját mérőkód nem továbbít nevet, e-mail-címet, telefonszámot, címet, keresési szöveget vagy szabad szöveges űrlapadatot. Személyre szabott hirdetés, Google Signals, remarketing és ügyféllista-feltöltés nincs bekapcsolva. Szolgáltató: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Írország; a Google csoport rendszereiben EGT-n kívüli, így egyesült államokbeli feldolgozás is történhet. A Google feltételei és az alkalmazandó adattovábbítási garanciák: https://business.safety.google/adsprocessorterms/ ; https://policies.google.com/privacy?hl=hu ; https://policies.google.com/privacy/frameworks?hl=hu . A jelenlegi Analytics-beállítás eseményszintű megőrzése 2 hónap, felhasználói adatoké 14 hónap, utóbbi új aktivitáskor újraindul. Az összesített standard jelentésekre ezek a törlési időtartamok nem ugyanígy vonatkoznak. A böngészős választás és mérési sütik időtartamát a Sütitájékoztató részletezi. A már átadott adatokkal kapcsolatos törlési és egyéb kérelmeket az adatvédelmi kapcsolattartási címen is benyújthatja. Ez a kiegészítés kizárólag az arvoalux.hu mérési beállítását írja le.",
+      "unverified": false
+    }
+  ]
+}

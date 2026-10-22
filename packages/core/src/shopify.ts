@@ -1,12 +1,15 @@
+import {SALE_PRODUCTS_QUERY,SALE_VARIANTS_QUERY} from "./promotions-query";
 import "server-only";
+import {restrictCatalog} from "./homedicalVisibility";
 import { sellable } from "./catalog";
 import type { Money, SearchSuggestion } from "./catalog";
+import { requestStorefront, type StorefrontCache } from "./storefront-request";
 
 const STORE = process.env.SHOPIFY_STORE_DOMAIN!;
-const API_VERSION = process.env.SHOPIFY_STOREFRONT_API_VERSION ?? process.env.SHOPIFY_API_VERSION ?? "2026-04";
+const API_VERSION = process.env.SHOPIFY_STOREFRONT_API_VERSION ?? process.env.SHOPIFY_API_VERSION ?? "2026-07";
 
-// Each brand app has its own .env. Prefer the explicit Storefront names and
-// retain the old names for backward compatibility with existing deployments.
+// Each brand app has its own .env. Only explicit Storefront token names may
+// authorize Storefront API requests; revalidation secrets are intentionally excluded.
 function tokensFor(brandHandle: string) {
   const key = brandHandle.toUpperCase().replace(/-/g, "_");
   return {
@@ -14,24 +17,14 @@ function tokensFor(brandHandle: string) {
       process.env[`SHOPIFY_PUBLIC_TOKEN_${key}`] ?? process.env.SHOPIFY_PUBLIC_TOKEN,
     privateToken:
       process.env[`SHOPIFY_STOREFRONT_PRIVATE_TOKEN_${key}`] ??
-      process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN ??
-      process.env[`SHOPIFY_PRIVATE_TOKEN_${key}`] ??
-      process.env.SHOPIFY_PRIVATE_TOKEN,
+      process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN,
   };
 }
 
-/**
- * Cache control for a Storefront read.
- * - Catalog reads (home/product/collection) are cached + tagged so a Shopify
- *   webhook can purge them on demand. This is what keeps the Storefront API
- *   from being hammered across 9 storefronts on the Basic plan's lower limits.
- * - Cart reads/mutations must always be live → pass `{ noStore: true }`.
- */
-export type StorefrontCache = {
-  noStore?: boolean;
-  revalidate?: number;
-  tags?: string[];
-};
+export function hasStorefrontToken(brandHandle: string): boolean {
+  const { publicToken, privateToken } = tokensFor(brandHandle);
+  return Boolean(publicToken || privateToken);
+}
 
 /** Shared cache-tag conventions so reads and the revalidation route agree. */
 export const cacheTags = {
@@ -45,64 +38,23 @@ export async function storefront<T>(
   variables: Record<string, unknown> = {},
   cacheOpts: StorefrontCache = {}
 ): Promise<T> {
-  const { publicToken, privateToken } = tokensFor(brandHandle);
-  const headers: Record<string, string> = { "Content-Type": "application/json" };
-  if (privateToken) headers["Shopify-Storefront-Private-Token"] = privateToken;
-  else if (publicToken) headers["X-Shopify-Storefront-Access-Token"] = publicToken;
-  else throw new Error("No Storefront API token configured. Check the app's .env.");
-
-  // Retry only transient *connection* failures (timeouts/resets), and only for
-  // cached reads — never for cart mutations (`noStore`), where a retry after the
-  // request may have reached Shopify could double-apply. GraphQL/HTTP errors are
-  // deterministic and are thrown without retry.
-  //
-  // A healthy Shopify response is ~300ms, so we abort a stalled attempt at 8s
-  // (before undici's 10s connect timeout) and cycle quickly — this rides out the
-  // short connectivity drops seen in flaky dev networks. No effect in production.
-  const maxAttempts = cacheOpts.noStore ? 1 : 2;
-  const perAttemptTimeoutMs = 6000;
-  let lastNetworkError: unknown;
-
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    const ac = new AbortController();
-    const timer = setTimeout(() => ac.abort(), perAttemptTimeoutMs);
-    let res: Response;
-    try {
-      res = await fetch(`https://${STORE}/api/${API_VERSION}/graphql.json`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ query, variables }),
-        signal: ac.signal,
-        ...(cacheOpts.noStore
-          ? { cache: "no-store" as const }
-          : {
-              next: {
-                revalidate: cacheOpts.revalidate ?? 300,
-                tags: cacheOpts.tags ?? [],
-              },
-            }),
-      });
-    } catch (err) {
-      // Network-level failure (connect timeout / abort / reset) — safe to retry.
-      lastNetworkError = err;
-      if (attempt < maxAttempts) {
-        await new Promise((r) => setTimeout(r, 400 * attempt));
-        continue;
-      }
-      throw err;
-    } finally {
-      clearTimeout(timer);
-    }
-
-    const json = await res.json();
-    if (!res.ok || json.errors) {
-      throw new Error(`Storefront API error: ${JSON.stringify(json.errors ?? json)}`);
-    }
-    return json.data as T;
-  }
-
-  // Unreachable in practice (loop either returns or throws), but keeps TS happy.
-  throw lastNetworkError ?? new Error("Storefront request failed");
+  const candidateOnly = process.env.NEXT_PUBLIC_ARVOALUX_PUBLIC_BROWSING === '1';
+  if (candidateOnly && (brandHandle !== 'arvoalux' || process.env.STOREFRONT_APP_BRAND !== 'arvoalux' ||
+      process.env.SHOPIFY_CATALOG_CHANNEL !== 'storefront-public-read' ||
+      ((process.env.VERCEL_ENV === 'production' || process.env.VERCEL_TARGET_ENV === 'production') &&
+       (process.env.ARVOALUX_BROWSING_RELEASE !== '1' || process.env.NEXT_PUBLIC_ARVOALUX_REVIEW_ONLY !== '0' || process.env.NEXT_PUBLIC_ARVOALUX_COMMERCE !== '1' || process.env.NEXT_PUBLIC_ARVOA_COMMERCE !== '1')))) throw new Error('Lux candidate binding mismatch');
+  const { publicToken, privateToken } = candidateOnly ? { publicToken: undefined, privateToken: undefined } : tokensFor(brandHandle);
+  if (!STORE) throw new Error("No Shopify store domain configured. Check the app's environment.");
+  const result = await requestStorefront<T>({
+    store: STORE,
+    apiVersion: API_VERSION,
+    query,
+    variables,
+    cacheOpts,
+    publicToken,
+    privateToken,
+  });
+  return restrictCatalog(result,brandHandle);
 }
 
 /* ---------- queries ---------- */
@@ -201,6 +153,31 @@ export const COLLECTION_PRODUCTS_QUERY = /* GraphQL */ `
   }
 `;
 
+/** ArvoaLux-only category pagination; legacy sibling documents remain unchanged. */
+export const ARVOALUX_COLLECTION_PAGE_QUERY = /* GraphQL */ `
+  ${PRODUCT_CARD}
+  query ArvoaluxCollectionPage($handle: String!, $first: Int = 48, $after: String) {
+    collection(handle: $handle) {
+      title
+      description
+      products(first: $first, after: $after, sortKey: COLLECTION_DEFAULT) {
+        nodes { ...ProductCard }
+        pageInfo { hasNextPage endCursor }
+      }
+    }
+  }
+`;
+
+export const ARVOALUX_ALL_PRODUCTS_PAGE_QUERY = /* GraphQL */ `
+  ${PRODUCT_CARD}
+  query ArvoaluxAllProductsPage($first: Int = 48, $after: String) {
+    products(first: $first, after: $after, sortKey: BEST_SELLING) {
+      nodes { ...ProductCard }
+      pageInfo { hasNextPage endCursor }
+    }
+  }
+`;
+
 /** Full-text product search across the storefront. */
 export const SEARCH_PRODUCTS_QUERY = /* GraphQL */ `
   ${PRODUCT_CARD}
@@ -227,6 +204,48 @@ export const COLLECTIONS_QUERY = /* GraphQL */ `
     }
   }
 `;
+
+/** Public-only collection query for tokenless Storefront access. */
+export const COLLECTIONS_QUERY_TOKENLESS = /* GraphQL */ `
+  query CollectionsTokenless($first: Int = 250) {
+    collections(first: $first) {
+      nodes {
+        id
+        handle
+        title
+        image { url(transform: { maxWidth: 200 }) altText }
+      }
+    }
+  }
+`;
+
+export const COLLECTIONS_PAGE_QUERY = /* GraphQL */ `
+  query CatalogCollectionsPage($after: String) {
+    collections(first: 250, after: $after, sortKey: ID) {
+      nodes { id handle title image { url(transform: { maxWidth: 200 }) altText } }
+      pageInfo { hasNextPage endCursor }
+    }
+  }
+`;
+
+/** Complete public collection inventory; no Admin/metafield credentials. */
+export async function loadCatalogCollections(brandHandle: string): Promise<import('./catalog').RawCollectionNode[]> {
+  const nodes: import('./catalog').RawCollectionNode[] = [];
+  const ids = new Set<string>();
+  const cursors = new Set<string>();
+  let after: string | undefined;
+  while (true) {
+    const data = await storefront<{ collections: { nodes: import('./catalog').RawCollectionNode[]; pageInfo: { hasNextPage: boolean; endCursor: string | null } } }>(brandHandle, COLLECTIONS_PAGE_QUERY, { after }, { tags: [cacheTags.brand(brandHandle)] });
+    for (const node of data.collections.nodes) {
+      if (ids.has(node.id)) throw new Error('Duplicate collection identity');
+      ids.add(node.id); nodes.push(node);
+    }
+    const page = data.collections.pageInfo;
+    if (!page.hasNextPage) return nodes;
+    if (!page.endCursor || cursors.has(page.endCursor) || !data.collections.nodes.length) throw new Error('Collection cursor did not advance');
+    after = page.endCursor; cursors.add(after);
+  }
+}
 
 export const PRODUCT_QUERY = /* GraphQL */ `
   query Product($handle: String!) {

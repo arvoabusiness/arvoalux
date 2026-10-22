@@ -1,0 +1,45 @@
+/* Lux-only sibling category geometry, scoped to its actual catalog ancestor and palette. */
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-note { margin: 0 0 16px; font-size: 13px; line-height: 1.5; color: #4b5563; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; align-items: start; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-card { min-width: 0; border: 1px solid var(--al-border); border-radius: 12px; background: var(--al-ivory); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-card > button { display: flex; align-items: center; gap: 12px; width: 100%; padding: 16px; text-align: left; border-radius: 12px; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-icon { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 36px; height: 36px; border: 1px solid var(--al-border); border-radius: 50%; background: white; color: var(--al-forest); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-title { flex: 1; min-width: 0; font-weight: 700; font-size: 14px; line-height: 1.4; overflow-wrap: break-word; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-title small, html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-unavailable small { display: block; font-size: 11px; font-weight: 400; line-height: 1.5; color: #4b5563; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-expanded { padding: 4px 16px 16px; border-top: 1px solid var(--al-border); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-link, html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-unavailable { display: block; min-height: 44px; padding: 10px 0; font-size: 14px; line-height: 1.5; overflow-wrap: break-word; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-link { color: var(--al-forest); text-decoration: underline; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-unavailable { color: #4b5563; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-children { padding: 0; margin: 8px 0 0; list-style: none; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-children li { border-bottom: 1px solid var(--al-border); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-drawer { position: fixed; inset: 0 auto 0 0; margin: 0; padding: 0; border: 0; height: 100dvh; max-height: 100dvh; width: 360px; max-width: 100vw; color: var(--al-ink); background: white; box-shadow: 0 8px 32px #0003; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-drawer::backdrop { background: #0005; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-drawer.has-submenu { width: 680px; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-panels { height: 100%; display: grid; grid-template-columns: 360px; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .has-submenu .source-category-panels { grid-template-columns: 360px minmax(0,1fr); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-parent-panel { min-height: 0; display: flex; flex-direction: column; border-right: 1px solid var(--al-border); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-parent-panel h2 { padding: 24px 60px 24px 20px; margin: 0; font-size: 20px; font-weight: 700; background: var(--al-ivory); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-parent-panel nav { overflow-y: auto; padding: 8px 0; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-parent-panel nav button { width: 100%; display: flex; gap: 12px; align-items: center; text-align: left; padding: 16px 20px; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-parent-panel nav button > span:first-child { flex-shrink: 0; color: var(--al-forest); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-parent-panel nav button[aria-expanded="true"], html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-parent-panel nav button:hover { background: var(--al-ivory); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-submenu { min-width: 0; overflow-y: auto; padding: 80px 24px 24px; background: var(--al-ivory); }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-submenu h3 { margin-bottom: 8px; font-size: 18px; font-weight: 700; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-back { display: flex; gap: 8px; align-items: center; min-height: 44px; margin-bottom: 16px; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: white; z-index: 1; }
+html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] [data-source-category-tree] :is(a,button):focus-visible { outline: 2px solid #111827; outline-offset: 2px; }
+@media (min-width: 1024px) { html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media (min-width: 1280px) { html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-grid { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+@media (max-width: 639px) {
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-grid { gap: 8px; }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-card { background: white; }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-card > button { gap: 8px; padding: 12px; }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-icon { width: 28px; height: 28px; background: var(--al-mist); }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-icon svg { width: 18px; height: 18px; }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-title { font-size: 13px; }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-card > button > svg { width: 12px; flex-shrink: 0; }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-drawer { width: 100vw; }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-panels, html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .has-submenu .source-category-panels { grid-template-columns: minmax(0,1fr); }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .has-submenu .source-category-parent-panel { display: none; }
+ html[data-brand="arvoalux"][data-catalog-integration="owner-catalog-v1"] .source-category-submenu { padding: 64px 16px 24px; }
+}
