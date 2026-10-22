@@ -12,7 +12,7 @@ import { formatPrice, type SearchSuggestion } from "../../catalog";
  * Storefront predictiveSearch query). Enter / the button still routes to the full
  * /search results page.
  */
-export function SearchBar({ size = "desktop" }: { size?: "desktop" | "mobile" }) {
+export function SearchBar({ size = "desktop", nativeSearch = false }: { size?: "desktop" | "mobile"; nativeSearch?: boolean }) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchSuggestion[]>([]);
   const [open, setOpen] = useState(false);
@@ -76,9 +76,10 @@ export function SearchBar({ size = "desktop" }: { size?: "desktop" | "mobile" })
 
   return (
     <div ref={boxRef} className="relative w-full" data-testid="search-bar">
-      <form onSubmit={submit}>
+      <form onSubmit={submit} action={nativeSearch ? "/search" : undefined} method={nativeSearch ? "get" : undefined}>
         <div className="relative w-full">
           <input
+            name={nativeSearch ? "q" : undefined}
             type="text"
             placeholder="Milyen terméket keresel?"
             value={query}

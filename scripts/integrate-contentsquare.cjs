@@ -98,6 +98,21 @@ function contentsquare() {
 const candidates = [process.cwd(), path.resolve(process.cwd(), '../..')];
 const root = candidates.find(dir => fs.existsSync(path.join(dir, 'apps/arvoalux/app/ga4-consent.ts')));
 if (!root) throw new Error('Current Arvoalux ga4-consent.ts source required; refusing to patch an older checkout.');
+// Larger exact-source assets are stored in bounded chunks for the API importer.
+// CLI snapshots already contain the originals and need no reconstruction.
+const assetManifest = path.join(root, 'scripts/source-assets.json');
+if (fs.existsSync(assetManifest)) {
+  const crypto = require('node:crypto');
+  for (const asset of JSON.parse(fs.readFileSync(assetManifest, 'utf8'))) {
+    if (!/^apps\/arvoalux\/public\/category-banners\/[a-z]+\.png$/.test(asset.path) ||
+        !Array.isArray(asset.parts) || !asset.parts.length || asset.parts.some(p => !/^scripts\/source-assets\/[a-z]+\.\d+\.b64$/.test(p))) throw new Error('Invalid source asset manifest');
+    const data = Buffer.concat(asset.parts.map(p => Buffer.from(fs.readFileSync(path.join(root, p), 'utf8').trim(), 'base64')));
+    if (data.length !== asset.bytes || crypto.createHash('sha256').update(data).digest('hex') !== asset.sha256) throw new Error('Source asset integrity mismatch');
+    const destination = path.join(root, asset.path);
+    fs.mkdirSync(path.dirname(destination), {recursive:true});
+    fs.writeFileSync(destination, data);
+  }
+}
 const file = path.join(root, 'apps/arvoalux/app/ga4-consent.ts');
 const source = fs.readFileSync(file, 'utf8');
 const match = source.match(/^export const ga4Consent = ("(?:[^"\\]|\\.)*");/);

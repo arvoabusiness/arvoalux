@@ -1,0 +1,32 @@
+.owner-hero.hero-section{background:#f7f4ed;padding:28px 24px;color:#263f37}
+.owner-hero .promo-season{max-width:1280px;margin:0 auto 16px;font-size:12px;line-height:18px;letter-spacing:2px;color:#78684c}
+.owner-hero .promo-mosaic{max-width:1280px;margin:auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.owner-hero .promo-tile{position:relative;isolation:isolate;overflow:hidden;border-radius:18px;min-width:0;display:flex;color:inherit;text-decoration:none;transition:transform .2s}
+.owner-hero .promo-tile:hover{transform:translateY(-3px)}
+.owner-hero .promo-photo{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;z-index:-2}
+.owner-hero .promo-tile:before{content:"";position:absolute;inset:0;z-index:-1}
+.owner-hero .promo-content{display:flex;flex-direction:column;align-items:flex-start;width:100%;height:100%;padding:28px}
+.owner-hero .promo-label{font-size:11px;line-height:16px;letter-spacing:1.6px;font-weight:700}
+.owner-hero h1,.owner-hero h2,.owner-hero p{margin:0}
+.owner-hero h1{font-size:46px;letter-spacing:-1.5px;line-height:1.08;max-width:310px;margin-top:26px;font-weight:700}
+.owner-hero h2{font-size:27px;letter-spacing:-.6px;line-height:1.15;margin-top:20px;max-width:290px;font-weight:700}
+.owner-hero p{font-size:14px;line-height:1.6;margin:14px 0 20px;max-width:280px}
+.owner-hero .promo-link{font-weight:700;font-size:13px;line-height:20px;margin-top:auto;padding-top:18px;display:flex;gap:20px;align-items:center}
+.owner-hero .promo-link>span{font-size:22px}
+.owner-hero .promo-immune{grid-column:span 4;min-height:315px;background:#d9d4b7}
+.owner-hero .promo-immune .promo-photo{object-position:85% center}
+.owner-hero .promo-immune:before{background:linear-gradient(90deg,rgba(240,231,203,.98),rgba(240,231,203,.88) 40%,rgba(240,231,203,.10))}
+.owner-hero .promo-immune .promo-link{background:#304c44;color:white;padding:12px 20px;border-radius:7px;margin-top:0;min-height:44px}
+.owner-hero .promo-sale{grid-column:span 2;background:#304c44;color:white}
+.owner-hero .promo-sale:after{content:'%';position:absolute;right:-12px;bottom:-35px;color:#ffffff09;font-size:230px;line-height:1;z-index:-1;font-weight:700}
+.owner-hero .promo-sale .promo-label{color:#e2c68a}
+.owner-hero .promo-move,.owner-hero .promo-energy,.owner-hero .promo-skin{grid-column:span 2;min-height:245px}
+.owner-hero .promo-move{background:#e4e9df}
+.owner-hero .promo-move:after{content:'↗';position:absolute;font-size:210px;right:10px;bottom:-70px;color:#304c4409;z-index:-1}
+.owner-hero .promo-energy:before{background:rgba(35,59,50,.78)}
+.owner-hero .promo-energy{color:white;background:#304c44}
+.owner-hero .promo-skin:before{background:rgba(247,238,226,.83)}
+.owner-hero .promo-tile:focus-visible{outline:3px solid #b9923f;outline-offset:3px}
+@media(min-width:651px) and (max-width:1023px){.owner-hero .promo-mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}.owner-hero .promo-tile{grid-column:span 1}.owner-hero .promo-immune{grid-column:1/-1}.owner-hero .promo-skin{grid-column:1/-1}}
+@media(max-width:650px){.owner-hero.hero-section{padding:22px 16px}.owner-hero .promo-mosaic{grid-template-columns:minmax(0,1fr);gap:12px}.owner-hero .promo-tile{grid-column:1;min-height:210px}.owner-hero .promo-immune{min-height:310px}.owner-hero .promo-content{padding:25px}.owner-hero h1{font-size:clamp(30px,10.5vw,41px)}.owner-hero h2{font-size:27px}.owner-hero .promo-sale{min-height:245px}.owner-hero .promo-season{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.owner-hero .promo-tile{transition:none}.owner-hero .promo-tile:hover{transform:none}}

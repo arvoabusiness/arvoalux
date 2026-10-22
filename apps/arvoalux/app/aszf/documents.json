@@ -1,0 +1,788 @@
+[
+  {
+    "slug": "aszf",
+    "title": "Általános Szerződési Feltételek",
+    "blocks": [
+      {
+        "id": "aszf-P001",
+        "kind": "heading",
+        "text": "1. Eladó, hatály, dokumentumok",
+        "unverified": false
+      },
+      {
+        "id": "aszf-V001",
+        "kind": "paragraph",
+        "text": "Webáruház: arvoalux.hu; hatálybalépés: 2026. október 13.; verzió: aszf-20261013-v1.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P002",
+        "kind": "paragraph",
+        "text": "Az eladó: Supreme Pharmatech Europe s.r.o.; székhely: Senný trh 3116/7, 945 01 Komárno, Szlovákia; IČO: 56139471; DIČ: 2122214820; IČ DPH: SK2122214820, a szlovák áfaszabályok 7. §-a szerinti nyilvántartás. Cégnyilvántartás: Okresný súd Nitra, Sro, 62901/N. Központi ügyfélszolgálat: info@arvoalux.hu; +36 20 931 9009; hétfőtől péntekig 09:30–16:30 (Europe/Budapest). Levelezési és visszáru-cím: Sebők Tamás, ARVOALUX.HU, 1117 Budapest, Budafoki út 111., Magyarország.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P003",
+        "kind": "paragraph",
+        "text": "A webáruház online pénztárában magánszemély fogyasztók vásárolhatnak. A szerződés és a rendelési tájékoztatás nyelve magyar. A rendelésre az elküldése előtt hozzáférhető és elfogadott dokumentumverzió irányadó; későbbi változás nem írja át a korábbi szerződést, és nem vonja el annak alapján már fennálló jogosultságokat.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P004",
+        "kind": "paragraph",
+        "text": "A szállítási/fizetési tájékoztató, elállási tájékoztató és nyilatkozatminta, valamint a panaszkezelési/szavatossági tájékoztató az ÁSZF melléklete. Adatkezelésről külön tájékoztatót adunk; annak megismerése nem jelent általános GDPR-hozzájárulást.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P005",
+        "kind": "heading",
+        "text": "2. A szerződés létrejötte",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P006",
+        "kind": "paragraph",
+        "text": "1. A termékoldalon megismerhető a termék neve, lényeges jellemzői, kiszerelése, ára és a vásárlás előtt kötelező információ.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P007",
+        "kind": "paragraph",
+        "text": "2. Regisztráció nélkül, vendégként is lehet vásárolni. A rendelési folyamatban a kosár mennyisége módosítható, a termék törölhető, és a pénztár adatai a végleges megrendelés előtt áttekinthetők és javíthatók.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P008",
+        "kind": "paragraph",
+        "text": "3. A vevő kiválasztja a rendelkezésre álló szállítási és fizetési módot. A pénztár a végleges rendelés előtt feltünteti a termékek kedvezmények utáni bruttó árát, a szállítás és az esetleges utánvét díját, valamint az összes fizetendő összeget. Utánvét esetén a bruttó 390 Ft díj a rendelés leadása előtti végösszeg része; más fizetési módnál nem számítjuk fel. Választható többletszolgáltatásért csak kifejezett választás alapján számítható fel díj.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P009",
+        "kind": "paragraph",
+        "text": "4. A végleges rendelési gomb felirata: „Fizetési kötelezettséggel járó megrendelés” vagy azonosan egyértelmű szöveg. Az utánvét sem teszi a rendelést nem kötelezővé.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P010",
+        "kind": "paragraph",
+        "text": "5. A rendelés a vevő ajánlata. A rendelés megérkezését haladéktalanul, egyetlen automatikus e-maillel igazoljuk vissza; ez a levél egyben az eladó végleges elfogadó nyilatkozata, külön manuális elfogadás nélkül. A szerződés akkor jön létre, amikor az elfogadó levél a vevő számára hozzáférhetővé válik. Ha a visszaigazolás a rendelés elküldésétől számított, elvárható időn belül, de legkésőbb 48 órán belül nem válik hozzáférhetővé, a vevő mentesül az ajánlati kötöttség vagy szerződéses kötelezettség alól. A 48 óra nem a visszaigazolás szándékos késleltetésére biztosított határidő.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P011",
+        "kind": "paragraph",
+        "text": "6. Ugyanezen e-mailhez a rendeléshez tartozó, verziózott ÁSZF-et és elállási tájékoztatót PDF-mellékletként adjuk át. A levéltörzsben nincs hosszú szerződésszöveg; a dokumentumok a weboldalon is elérhetők. Egy később átírható webes hivatkozás önmagában nem helyettesíti a tartós példányt.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P012",
+        "kind": "heading",
+        "text": "3. Ár, készlet, adó",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P013",
+        "kind": "paragraph",
+        "text": "Az árak forintban megadott, az alkalmazandó adókat tartalmazó végső fogyasztói árak; az esetleges szállítási és utánvétdíj külön, a rendelés előtt látható. A számlakibocsátó Supreme Pharmatech Europe s.r.o.; a számla a csomagban, papíron kerül átadásra. Utánvétnél bruttó 390 Ft kezelési díj fizetendő, ingyenes házhozszállítás mellett is; más fizetési módnál nincs utánvétdíj. Utánvét legfeljebb 100 000 Ft teljes beszedendő összegig választható, a határértéket beleértve; a kedvezmények utáni termékösszeg, a szállítás és az utánvétdíj együtt számít. E fölött online bankkártyás fizetés szükséges.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P014",
+        "kind": "paragraph",
+        "text": "Ha egy termék nem teljesíthető, értesítjük a vásárlót és az érintett előrefizetést visszatérítjük; helyettesítő terméket csak előzetes vásárlói jóváhagyással küldünk. Nyilvánvaló árhiba nem alapoz általános, korlátlan utólagos törlési vagy áremelési jogot.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P015",
+        "kind": "heading",
+        "text": "4. Szállítás, fizetés, kárveszély",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P016",
+        "kind": "paragraph",
+        "text": "Jelenleg kizárólag magyarországi kézbesítési címre szállítunk; ez nem állampolgársági vagy lakóhely szerinti vásárlási korlátozás. Személyes rendelésátvétel nincs. A házhozszállítás díja 1 490 Ft, ha a kedvezmények utáni bruttó termékösszeg nem éri el a 19 990 Ft-ot; 19 990 Ft-tól, a határértéket beleértve, 0 Ft. Csomagpontra vagy csomagautomatába szállítás díja 990 Ft. A házhozszállítási küszöb alapjába a szállítási díj és az utánvétdíj nem számít bele. A kárveszély főszabály szerint a fogyasztó vagy kijelölt, fuvarozótól eltérő személy birtokbavételével száll át; az önállóan megbízott, fel nem ajánlott fuvarozóra külön szabály vonatkozhat.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P017",
+        "kind": "paragraph",
+        "text": "A vállalt kézbesítési idő saját raktárból 1–3 munkanap, külső raktárból 5–7 munkanap, a rendelést elfogadó visszaigazoló e-mail hozzáférhetővé válásától számítva. A terméknél és a rendelés előtt közölt határidő irányadó. Vegyes raktárú rendelés együttes kézbesítésekor a teljes rendelésre a leghosszabb előre közölt és elfogadott termékhatáridő érvényes; például saját és külső raktári tételeknél 5–7 munkanap. Részszállításért nem számítunk fel előzetesen el nem fogadott többletdíjat. Késedelemnél a jogszabály szerinti póthatáridő és szerződésmegszüntetés joga megmarad.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P018",
+        "kind": "heading",
+        "text": "5. Elállás",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P019",
+        "kind": "paragraph",
+        "text": "A fogyasztót főszabály szerint 14 napos, indokolás nélküli elállás illeti meg; átvétel előtt is nyilatkozhat. A részletes szabályokat és a nyilatkozatmintát a 2. melléklet tartalmazza. Elállását az info@arvoalux.hu címen, postán vagy a https://arvoalux.hu/elallas oldalon elérhető online funkcióval közölheti. A funkció az elállási időszakban folyamatosan, jól láthatóan hozzáférhető; a beküldött nyilatkozat tartalmát és időpontját indokolatlan késedelem nélkül tartós adathordozón visszaigazoljuk.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P020",
+        "kind": "paragraph",
+        "text": "Nem tesszük kötelezővé a telefonos engedélykérést, az eredeti rendelési fiókot, a nyilatkozatminta kizárólagos használatát vagy az indokolást. Nem zárunk ki minden étrend-kiegészítőt automatikusan az elállásból.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P021",
+        "kind": "heading",
+        "text": "6. Hibás teljesítés, panasz és jogorvoslat",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P022",
+        "kind": "paragraph",
+        "text": "A hibás teljesítés nem azonos az indokolás nélküli elállással. A hibás áru miatti igény nem vész el pusztán a 14 nap elteltével vagy az elállási kivétel miatt. A 3. melléklet részletezi a kijavítás/kicserélés, árleszállítás/szerződésmegszüntetés feltételeit, a panaszcsatornákat és a szlovák ADR, illetve az Európai Fogyasztói Központ segítségét.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P023",
+        "kind": "heading",
+        "text": "7. Alkalmazandó jog, bíróság",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P024",
+        "kind": "paragraph",
+        "text": "Az ÁSZF nem tartalmaz jogválasztást és nem köt ki kizárólagos szlovák bíróságot. A Magyarországon szokásos tartózkodási hellyel rendelkező fogyasztóval, a Magyarországra irányuló webáruházi tevékenység körében kötött szerződésre a Róma I. rendelet 6. cikk (1) bekezdése alapján a magyar jog irányadó. Más esetben az alkalmazandó jogot a Róma I. rendelet megfelelő szabályai határozzák meg. A Brüsszel Ia rendelet 17–19. cikkének feltételei mellett a fogyasztó az eladó székhelye vagy a saját lakóhelye szerinti tagállam bíróságai előtt is indíthat eljárást; az eladó a fogyasztót főszabály szerint csak a fogyasztó lakóhelye szerinti tagállam bíróságai előtt perelheti.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P025",
+        "kind": "paragraph",
+        "text": "Az EU online vitarendezési (ODR) platformja megszűnt. A bírósági jogérvényesítés és az alkalmazandó kötelező fogyasztói jogok megmaradnak.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P026",
+        "kind": "heading",
+        "text": "8. Termékinformáció és további rendelkezések",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P027",
+        "kind": "paragraph",
+        "text": "A termékoldalakon a vásárlás előtt megismerhető terméktájékoztatás tartalmazza az összetételt, allergéneket, napi adagot és figyelmeztetéseket.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-P028",
+        "kind": "paragraph",
+        "text": "A rendelés-visszaigazolás és a rendelésnél elfogadott ÁSZF-verzió másolata az info@arvoalux.hu címen kérhető.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-T001",
+        "kind": "heading",
+        "text": "9. Elektronikus dokumentumok és tárhely",
+        "unverified": false
+      },
+      {
+        "id": "aszf-T002",
+        "kind": "paragraph",
+        "text": "A szerződés elektronikus úton jön létre. A megrendeléshez tartozó adatokat, az elfogadó visszaigazolást és az elfogadott ÁSZF-verziót elektronikusan megőrizzük. A rendelési azonosító alapján az ügyfélszolgálaton utólag másolat kérhető; az elektronikus nyilvántartás nem jelent papíralapú aláírt szerződést. Az írásba foglalás jogszabályi megítélését az elektronikus nyilatkozat tartalma, a nyilatkozattevő és időpontja azonosíthatósága határozza meg.",
+        "unverified": false
+      },
+      {
+        "id": "aszf-T003",
+        "kind": "paragraph",
+        "text": "A weboldal frontend tárhelyszolgáltatója: Vercel Inc.; a nyilvános szolgáltatási feltételekben közölt cím: 440 N Barranca Ave #4133, Covina, CA 91723, Egyesült Államok; elektronikus kapcsolat: https://vercel.com/help.",
+        "unverified": false
+      }
+    ]
+  },
+  {
+    "slug": "szallitas-fizetes",
+    "title": "1. melléklet – Szállítás és fizetés",
+    "blocks": [
+      {
+        "id": "szallitas-fizetes-P001",
+        "kind": "heading",
+        "text": "Szállítás és fizetés",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P002",
+        "kind": "paragraph",
+        "text": "Jelenleg kizárólag magyarországi kézbesítési címre fogadunk rendelést, a vevő állampolgárságától vagy lakóhelyétől függetlenül. Személyes rendelésátvétel nincs. A pénztárban felkínált házhozszállítás, csomagpont vagy csomagautomata választható. A rendelkezésre álló konkrét kézbesítési helyet a pénztárban kell kiválasztani.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P003",
+        "kind": "paragraph",
+        "text": "Házhozszállítás: 1 490 Ft, ha a kedvezmények utáni bruttó termékösszeg nem éri el a 19 990 Ft-ot; 19 990 Ft-tól, a határértéket beleértve, 0 Ft. Csomagpont vagy csomagautomata: 990 Ft. A házhozszállítási küszöb alapjába a szállítási díj és az utánvétdíj nem számít bele.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P004",
+        "kind": "paragraph",
+        "text": "Utánvétes rendelésnél bruttó 390 Ft utánvétdíj fizetendő, ingyenes alap-kiszállítás mellett is. E díjat a pénztár a végleges rendelés előtt a teljes összegbe beszámítja. A 100 000 Ft-os felső határ a termékek, a szállítás és az utánvétdíj együttes összege. Az átvételkori készpénzes vagy terminálos fizetés a ténylegesen felkínált futárszolgáltatás szerint vehető igénybe.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P005",
+        "kind": "heading",
+        "text": "Számítási példák",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P006",
+        "kind": "paragraph",
+        "text": "19 989 Ft kedvezmény utáni bruttó termékösszeg: szállítás 1 490 Ft, utánvétdíj 390 Ft; teljes összeg 21 869 Ft.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P007",
+        "kind": "paragraph",
+        "text": "19 990 Ft kedvezmény utáni bruttó termékösszeg: alap-kiszállítás 0 Ft, utánvétdíj 390 Ft; teljes összeg 20 380 Ft. Utánvét a 100 000 Ft-os limit szerint választható.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P008",
+        "kind": "paragraph",
+        "text": "19 991 Ft kedvezmény utáni bruttó termékösszeg: szállítás 0 Ft, utánvétdíj 390 Ft; teljes összeg 20 381 Ft.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P009",
+        "kind": "paragraph",
+        "text": "99 610 Ft kedvezmény utáni bruttó termékösszeg: alap-kiszállítás 0 Ft, utánvétdíj 390 Ft; teljes összeg 100 000 Ft. Utánvét a 100 000 Ft-os limit szerint választható.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P010",
+        "kind": "paragraph",
+        "text": "99 611 Ft kedvezmény utáni bruttó termékösszeg: alap-kiszállítás 0 Ft, utánvétdíj 390 Ft; teljes összeg 100 001 Ft. Utánvét nem választható, előrefizetés szükséges.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P011",
+        "kind": "paragraph",
+        "text": "A szállítás és az utánvét díja nem növeli a küszöb alapját. Kupon esetén a kedvezmény utáni bruttó termékösszeg dönt; nem az eredeti listaár.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P012",
+        "kind": "heading",
+        "text": "Kézbesítés és fizetés",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P013",
+        "kind": "paragraph",
+        "text": "A vállalt kézbesítési idő saját raktárból 1–3 munkanap, külső raktárból 5–7 munkanap, a rendelést elfogadó visszaigazoló e-mail hozzáférhetővé válásától számítva. A terméknél és a rendelés előtt közölt határidő irányadó. Vegyes raktárú rendelés együttes kézbesítésekor a teljes rendelésre a leghosszabb előre közölt és elfogadott termékhatáridő érvényes; például saját és külső raktári tételeknél 5–7 munkanap. Részszállításért nem számítunk fel előzetesen el nem fogadott többletdíjat. Késedelemnél a jogszabály szerinti póthatáridő és szerződésmegszüntetés joga megmarad.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P014",
+        "kind": "paragraph",
+        "text": "Az online pénztárban Stripe-on keresztüli bankkártyás fizetés vagy utánvét választható. Banki előre utalást jelenleg nem kínálunk.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P016",
+        "kind": "paragraph",
+        "text": "Online bankkártyás fizetésnél a Stripe fizetési felülete irányadó; a rendelés előtt a teljes fizetendő összeg látható. Utánvétnél az átvételkor rendelkezésre álló fizetési módot a választott kézbesítési szolgáltatás határozza meg.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P017",
+        "kind": "paragraph",
+        "text": "A számlakibocsátó Supreme Pharmatech Europe s.r.o.; a számla Zoho rendszerben készül. A vásárló a számlát minden rendelésnél, kizárólag a csomagban, papíron kapja meg; számla-e-mailt nem küldünk.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P018",
+        "kind": "heading",
+        "text": "Teljesítés, visszaküldés, sikertelen kézbesítés",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P020",
+        "kind": "paragraph",
+        "text": "Ha a termék nem szállítható, értesítjük a vásárlót, az érintett előrefizetést visszatérítjük, és csak előzetes vásárlói jóváhagyással helyettesítünk.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P021",
+        "kind": "paragraph",
+        "text": "Sikertelen kézbesítés után visszaérkező csomagot újra csak a vásárlóval előre egyeztetve küldünk. Az esetleges újrakézbesítési díjat és fizetési módot előzetesen közöljük, és a vásárló kifejezett elfogadásával alkalmazzuk a jogszabályok keretei között. Nincs automatikus büntetés; a fogyasztó elállási és egyéb kötelező jogai megmaradnak.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P022",
+        "kind": "paragraph",
+        "text": "Indokolás nélküli elálláskor a vásárló szervezi a postai vagy futáros visszaküldést és jogszerű előzetes tájékoztatás esetén viseli annak közvetlen költségét. Személyes leadás nincs. Hibás teljesítés miatti indokolt visszaküldésnél az eladó rendeli meg és fizeti a futárt; a vásárlónak a futárköltséget nem kell megelőlegeznie. Ez nem azonos az indokolás nélküli elállás visszaküldési költségével, és nem korlátozza a kötelező szavatossági jogokat. A részletes cím, határidők és visszatérítési szabályok az elállási, illetve panaszkezelési tájékoztatóban szerepelnek.",
+        "unverified": false
+      },
+      {
+        "id": "szallitas-fizetes-P023",
+        "kind": "paragraph",
+        "text": "A termék elveszésének/sérülésének kockázatát nem hárítjuk át pusztán a csomag futárnak adásával. Sérült csomagnál a jegyzőkönyv segíthet, de nem lehet minden igény kizárólagos feltétele. Késedelem esetén az ÁSZF szerinti törvényes jogok megmaradnak.",
+        "unverified": false
+      }
+    ]
+  },
+  {
+    "slug": "elallas-nyilatkozat",
+    "title": "2. melléklet – Elállás és nyilatkozatminta",
+    "blocks": [
+      {
+        "id": "elallas-nyilatkozat-P001",
+        "kind": "heading",
+        "text": "1. Indokolás nélküli elállás",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P002",
+        "kind": "paragraph",
+        "text": "Fogyasztóként az online kötött adásvételi szerződéstől főszabály szerint 14 napon belül, indokolás nélkül elállhat. Árunál a határidő az átvételhez igazodik: attól a naptól számít, amikor Ön vagy az Ön által megjelölt, a fuvarozótól eltérő személy az árut átveszi. Egy rendelés több, külön kézbesített termékénél az utolsó áru; több tételben/darabban szállított árunál az utolsó tétel/darab átvétele irányadó. Rendszeres szállítási szerződés esetén az első áru átvétele releváns. A szerződéskötés és az átvétel közötti időben is közölheti elállását.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P003",
+        "kind": "paragraph",
+        "text": "A határidő megtartásához elegendő az egyértelmű elállási nyilatkozatot a határidő lejárta előtt elküldeni. A határidő számításának naptári szabályait és a munkaszüneti napokat a vonatkozó jog szerint kell alkalmazni; nem szűkítjük automatikusan 14×24 órás technikai zárolással. Az elállási tájékoztatás elmulasztása a rendes elállási időt akár további 12 hónappal meghosszabbíthatja; az időközben megfelelően átadott tájékoztatáshoz külön 14 napos szabály kapcsolódik.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P004",
+        "kind": "heading",
+        "text": "2. Hogyan közölhető?",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P005",
+        "kind": "paragraph",
+        "text": "Címzett: Supreme Pharmatech Europe s.r.o. Nyilatkozat postacíme és visszáru: Sebők Tamás, ARVOALUX.HU, 1117 Budapest, Budafoki út 111., Magyarország. E-mail: info@arvoalux.hu. A cég székhelye: Senný trh 3116/7, 945 01 Komárno, Szlovákia.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P006",
+        "kind": "paragraph",
+        "text": "Használhatja az alábbi mintát, de más egyértelmű nyilatkozat is megfelelő. Nem szükséges az ok megadása, előzetes telefonos egyeztetés vagy a kereskedő engedélye. A puszta csomagátvétel-megtagadás helyett egyértelmű elállási nyilatkozatot küldjön.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P007",
+        "kind": "paragraph",
+        "text": "Elállását e-mailben, postán vagy a https://arvoalux.hu/elallas online funkcióval közölheti. Az „elállás a szerződéstől” megjelölésű funkcióban nevét, a szerződés azonosításához szükséges adatokat, elállási döntését és a visszaigazolás elektronikus elérhetőségét adja meg, majd az „elállás megerősítése” gombbal küldi el a nyilatkozatot. A beérkezést indokolatlan késedelem nélkül, tartós adathordozón visszaigazoljuk, feltüntetve a nyilatkozat tartalmát, valamint a megküldés napját és időpontját. Az e-mail-program megnyitása önmagában nem küld el nyilatkozatot.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P008",
+        "kind": "heading",
+        "text": "3. Visszaküldés",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P009",
+        "kind": "paragraph",
+        "text": "Az elállás közlését követően indokolatlan késedelem nélkül, legkésőbb 14 napon belül küldje vissza az árut postával vagy futárszolgálattal: Sebők Tamás, ARVOALUX.HU, 1117 Budapest, Budafoki út 111., Magyarország. Elég a határidőn belüli feladás. A visszaküldést a vásárló szervezi; indokolás nélküli elálláshoz az eladó nem szervez begyűjtést. Személyes visszaadás nincs. Ez kizárólag a fizikai áru visszajuttatásának rendje; az elállási nyilatkozat közlésének jogszerű módjait nem korlátozza.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P010",
+        "kind": "paragraph",
+        "text": "Indokolás nélküli elállásnál a visszaküldés közvetlen költségét a vásárló viseli, ha erről a szerződéskötés előtt megfelelő tájékoztatást kapott, és jogszabály nem ír elő eltérő költségviselést. Nincs kezelési vagy újrakészletezési büntetődíj. Ez nem érinti a jogszerűen visszatérítendő eredeti alap-kiszállítás költségét. Hibás teljesítés miatti indokolt visszaküldésnél az eladó rendeli meg és fizeti a futárt; a vásárlónak a futárköltséget nem kell megelőlegeznie. Ez nem azonos az indokolás nélküli elállás visszaküldési költségével, és nem korlátozza a kötelező szavatossági jogokat.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P011",
+        "kind": "paragraph",
+        "text": "A szükséges kipróbálást/megvizsgálást meghaladó kezelésből eredő értékcsökkenésért a fogyasztó felelhet, a jogszabályi feltételekkel. Nem alkalmazunk automatikus „bontott csomag = nulla visszatérítés” szabályt, általános újracsomagolási díjat vagy kötelező eredeti szállítódoboz-feltételt.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P012",
+        "kind": "heading",
+        "text": "4. Visszatérítés",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P013",
+        "kind": "paragraph",
+        "text": "Az elállásról való tudomásszerzéstől számított 14 napon belül, indokolatlan késedelem nélkül visszatérítjük az érintett szerződés alapján átvett összegeket, beleértve a legolcsóbb szokásos kiszállítás költségét; a fogyasztó által választott drágább kézbesítés többletköltségét nem kell megtéríteni. Árunál a visszatérítés az áru visszaérkezéséig vagy a visszaküldés hitelt érdemlő igazolásáig visszatartható, a korábbi időpontig; ez nem alkalmazható így, ha a vállalkozás vállalta a visszaszállítást.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P014",
+        "kind": "paragraph",
+        "text": "Az eredeti fizetési móddal azonos módon térítünk vissza, kivéve ha Ön kifejezetten más módba beleegyezik; emiatt Önt díj nem terhelheti. Utánvétes vásárlásnál kifejezett vásárlói beleegyezéssel, díjmentes banki átutalással térítünk vissza. Bankszámlaadat csak a visszatérítés rendezéséhez, indokoltan kérhető, nem az elállási nyilatkozat kötelező feltételeként.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P015",
+        "kind": "paragraph",
+        "text": "Az utánvétdíj nem általánosan „nem visszatéríthető”. Részleges elállásnál az érintett tételek és az alkalmazandó jog alapján kell elszámolni. Nem alkalmazunk automatikus levonást az ingyenes szállítási küszöb utólagos elvesztésére hivatkozva.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P016",
+        "kind": "heading",
+        "text": "5. Kivételek – nem minden étrend-kiegészítő kizárt",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P017",
+        "kind": "paragraph",
+        "text": "A katalógus alapján releváns lehet:",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P018",
+        "kind": "paragraph",
+        "text": "Az indokolás nélküli elállás nem gyakorolható olyan áru esetében, amely gyorsan romlandó vagy minőségét rövid ideig őrzi meg. E kivétel nem alkalmazható pusztán azért, mert az árun minőségmegőrzési dátum szerepel.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P019",
+        "kind": "paragraph",
+        "text": "Nem gyakorolható az indokolás nélküli elállás olyan zárt csomagolású áru tekintetében, amely egészségvédelmi vagy higiéniai okból az átadást követő felbontása után nem küldhető vissza. Ehhez az adott áru és annak egészségvédelmi vagy higiéniai zárása tényleges feltételeinek fenn kell állniuk; a külső szállítódoboz felnyitása önmagában nem elegendő.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P020",
+        "kind": "paragraph",
+        "text": "Az étrend-kiegészítő, kozmetikum vagy egészségügyi eszköz elnevezés önmagában nem zárja ki az elállást. Az adott árura vonatkozó kivételről, illetve a jog elvesztésének feltételeiről a vásárlás előtt külön tájékoztatást adunk. A kivételt csak annak igazolt feltételei esetén alkalmazzuk; az nem érinti a hibás teljesítésből eredő jogokat.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P021",
+        "kind": "paragraph",
+        "text": "A kivétel nem szünteti meg a hibás teljesítésből eredő jogokat. A hibás áru panaszkezelési útját a panaszkezelési tájékoztató tartalmazza.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P022",
+        "kind": "heading",
+        "text": "Elállási nyilatkozatminta",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P023",
+        "kind": "paragraph",
+        "text": "Csak akkor töltse ki és küldje el, ha el kíván állni a szerződéstől. A minta használata nem kötelező.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P024",
+        "kind": "paragraph",
+        "text": "Címzett: Supreme Pharmatech Europe s.r.o., a nyilatkozat átvételére megadott címzett: Sebők Tamás, ARVOALUX.HU",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P025",
+        "kind": "paragraph",
+        "text": "Postacím: 1117 Budapest, Budafoki út 111., Magyarország",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P026",
+        "kind": "paragraph",
+        "text": "E-mail: info@arvoalux.hu",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P027",
+        "kind": "paragraph",
+        "text": "Alulírott(ak) kijelentem/kijelentjük, hogy gyakorlom/gyakoroljuk elállási jogomat/jogunkat az alábbi termék(ek) adásvételére irányuló szerződés tekintetében:",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P028",
+        "kind": "paragraph",
+        "text": "Termék(ek) megnevezése és mennyisége: ____________________",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P029",
+        "kind": "paragraph",
+        "text": "Rendelés időpontja / átvétel időpontja*: ____________________",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P030",
+        "kind": "paragraph",
+        "text": "Rendelési azonosító, ha ismert: ____________________",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P031",
+        "kind": "paragraph",
+        "text": "Fogyasztó(k) neve: ____________________",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P032",
+        "kind": "paragraph",
+        "text": "Fogyasztó(k) címe: ____________________",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P033",
+        "kind": "paragraph",
+        "text": "Visszaigazolási e-mail / más elektronikus elérhetőség: ____________________",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P034",
+        "kind": "paragraph",
+        "text": "Fogyasztó(k) aláírása (kizárólag papíron tett nyilatkozat esetén): ____________________",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P035",
+        "kind": "paragraph",
+        "text": "Kelt: ____________________",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P036",
+        "kind": "paragraph",
+        "text": "* A nem kívánt rész törlendő.",
+        "unverified": false
+      },
+      {
+        "id": "elallas-nyilatkozat-P037",
+        "kind": "paragraph",
+        "text": "Az e-mail mező a visszaigazolást segíti; postai nyilatkozat jogszerűségét nem tesszük e-mail birtoklásától függővé.",
+        "unverified": false
+      }
+    ]
+  },
+  {
+    "slug": "panasz-szavatossag",
+    "title": "3. melléklet – Panaszkezelés, szavatosság és jótállás",
+    "blocks": [
+      {
+        "id": "panasz-szavatossag-P001",
+        "kind": "heading",
+        "text": "1. Hová fordulhat?",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P002",
+        "kind": "paragraph",
+        "text": "Eladó: Supreme Pharmatech Europe s.r.o., IČO 56139471; székhely: Senný trh 3116/7, 945 01 Komárno, Szlovákia.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P003",
+        "kind": "paragraph",
+        "text": "E-mailes panasz: info@arvoalux.hu.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P004",
+        "kind": "paragraph",
+        "text": "Telefonos panasz: +36-20/931-9009; hétfőtől péntekig 09:30–16:30 (Europe/Budapest).",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P005",
+        "kind": "paragraph",
+        "text": "Írásbeli panasz címe: Sebők Tamás, ARVOALUX.HU, 1117 Budapest, Budafoki út 111., Magyarország.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P006",
+        "kind": "paragraph",
+        "text": "Hibás termék visszaküldési címe: Sebők Tamás, ARVOALUX.HU, 1117 Budapest, Budafoki út 111., Magyarország; egyeztetés: info@arvoalux.hu. Visszáru kizárólag postával vagy futárral, személyes leadás nélkül. Hibás teljesítés miatti indokolt visszaküldésnél az eladó rendeli meg és fizeti a futárt; a vásárlónak a futárköltséget nem kell megelőlegeznie. Ez nem azonos az indokolás nélküli elállás visszaküldési költségével, és nem korlátozza a kötelező szavatossági jogokat.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P007",
+        "kind": "paragraph",
+        "text": "A bejelentéshez a vásárlást azonosító adat, a kifogás leírása és az igény megjelölése szükséges; fotó segíthet, de nem automatikus kizárólagos bizonyítási feltétel. Nem csak a számla eredeti példányával lehet a vásárlást igazolni. Sérült/gyanús élelmiszert ne fogyasszon; kérjük, őrizze meg a csomagolást és a tételazonosítót, ha rendelkezésre áll. Egészségügyi vészhelyzetet nem a webshop panaszeljárása kezel.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P008",
+        "kind": "heading",
+        "text": "2. Panasz menete és határidők",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P009",
+        "kind": "paragraph",
+        "text": "Panaszt telefonon, e-mailben és postán fogadunk; személyes panaszfelvétel nincs. A telefonos panaszt azonnal megvizsgáljuk, és szükség szerint orvosoljuk; ha nem rendezhető vagy az eredménnyel a vásárló nem ért egyet, írásban rögzítjük és tartós formában másolatot/visszaigazolást adunk. Írásbeli panaszra legkésőbb 30 napon belül érdemi, indokolt választ adunk; a rövidebb alkalmazandó kötelező határidőt betartjuk. Ez válaszadási határidő, nem minden ügy teljes rendezésének ígérete. Elutasításkor az ügyhöz tartozó hatósági/ADR-jogorvoslatról tájékoztatunk.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P010",
+        "kind": "paragraph",
+        "text": "A 30 napos válaszvállalás nem összekeverendő (a) a szlovák ADR előtti eredménytelen, 30 napos jóvátételi megkereséssel, vagy (b) a szlovák hibajavítás alapvető 30 napos felső határával és annak bizonyított objektív kivételével.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P011",
+        "kind": "heading",
+        "text": "3. Kellékszavatosság – magyar fogyasztói szabályok",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P012",
+        "kind": "paragraph",
+        "text": "A magyar jog alá tartozó fogyasztói áruadásvételnél az eladó felel a hibás teljesítésért. A kellékszavatossági igény főszabály szerint a teljesítéstől számított két év alatt évül el. Az áru teljesítésétől számított egy éven belül felismert hibáról vélelmezni kell, hogy már a teljesítéskor fennállt, kivéve, ha ez az áru természetével vagy a hiba jellegével összeegyeztethetetlen. A hibát felfedezése után késedelem nélkül közölje; a felfedezéstől számított két hónapon belüli közlés késedelem nélkülinek minősül. A 2026. július 31-ét követően kötött szerződéseknél, ha az árut kijavítással teszik szerződésszerűvé, a kellékszavatossági igény elévülési ideje egyszer tizenkét hónappal meghosszabbodik. A kijavítás vagy kicserélés közötti választásról és a javításhoz kapcsolódó hosszabbításról a szerződésszerűvé tétel előtt tájékoztatjuk. Ez nem azonos a kötelező jótállás javítás miatti hosszabbodásával.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P013",
+        "kind": "paragraph",
+        "text": "Elsődlegesen kijavítás vagy kicserélés kérhető, kivéve a lehetetlen vagy a másikhoz képest aránytalan igényt. A jogszabályi feltételek fennállásakor arányos árleszállítás vagy a szerződés megszüntetése kérhető; például ha az eladó a hibát nem rendezi megfelelően, az ismételten jelentkezik, vagy a hiba súlya azonnali jogorvoslatot indokol. Jelentéktelen hiba miatt a szerződés nem szüntethető meg; ha a fogyasztó hibás teljesítés miatt kéri a megszüntetést, az eladó bizonyítja, hogy a hiba jelentéktelen. A rendezés térítésmentes, és nem okozhat jelentős kényelmetlenséget. A szükséges szállítási költségeket hibás teljesítés esetén nem hárítjuk automatikusan a fogyasztóra.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P014",
+        "kind": "paragraph",
+        "text": "Étrend-kiegészítőnél/élelmiszernél a kijavítás rendszerint nem életszerű; a jogszabály szerinti kicserélés, árleszállítás vagy visszatérítés értékelendő. A két év nem ígéret arra, hogy a termék a minőségmegőrzési/fogyaszthatósági időn túl fogyasztható, és nem teszi az eladót felelőssé a bizonyított helytelen tárolásért. Ugyanakkor a lejárati időt sem használjuk minden hibás teljesítési igény általános kizárására.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P015",
+        "kind": "heading",
+        "text": "4. A szlovák jog alkalmazása esetén irányadó szabályok",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P016",
+        "kind": "paragraph",
+        "text": "A határon átnyúló szerződés alkalmazandó joga nem vezethető le pusztán a székhelyből. Az ÁSZF nem tartalmaz jogválasztást; a magyar fogyasztó kógens védelmét a Róma I. rendelet szerint meg kell őrizni.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P017",
+        "kind": "paragraph",
+        "text": "Kizárólag akkor, ha a szerződésre a szlovák fogyasztói adásvételi szabályok alkalmazandók, a szlovák Polgári Törvénykönyv 619–624. §-ai irányadók: az eladó az átadáskor fennálló és főszabály szerint két éven belül jelentkező hibáért felel; a felelősségi időn belül jelentkező hibánál a törvényi hibavélelem érvényesül, annak kivételeivel. A hibát a felismerésétől számított két hónapon belül, de legkésőbb a felelősségi idő végéig kell bejelenteni. A 2026. július 31. előtt kötött szerződésekből eredő igényekre a korábbi szabályokat kell alkalmazni; az e naptól kötött szerződéseknél az első javítást követően a felelősségi idő egyszer tizenkét hónappal meghosszabbodik. Ez a feltételes tájékoztatás nem jelenti a szlovák szabályok önkéntes hozzáadását a magyar jog szerinti szerződéshez.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P018",
+        "kind": "paragraph",
+        "text": "Szlovák jog alkalmazása esetén a hibabejelentésről haladéktalanul írásos igazolást adunk, amelyben feltüntetjük a hiba megszüntetésének határidejét. A közölt határidő a hibabejelentéstől számított 30 napnál csak az eladó által nem befolyásolható, objektív okból lehet hosszabb. A kijavítás vagy kicserélés megfelelő időn belül, térítésmentesen, jelentős kényelmetlenség nélkül történik. Ez nem általános felhatalmazás a panaszválasz elhalasztására.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P019",
+        "kind": "paragraph",
+        "text": "Az alkalmazandó magyar és szlovák szabályok nem választhatók önkényesen. A fogyasztó kötelező jogait az ÁSZF nem korlátozza.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P020",
+        "kind": "heading",
+        "text": "5. Termékszavatosság és jótállás",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P021",
+        "kind": "paragraph",
+        "text": "Magyar jog szerinti termékszavatosság esetén a fogyasztó a gyártóval szemben kijavítást vagy kicserélést kérhet a feltételek fennállásakor; a gyártót a forgalomba hozataltól számított két évig terheli e kötelezettség. A közvetlen gyártói jog nem szünteti meg az eladóval szembeni jogokat.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P022",
+        "kind": "paragraph",
+        "text": "A magyar kötelező jótállás a 10/2024. (VI. 28.) IM rendeletben felsorolt, legalább 10 000 Ft eladási árú új tartós fogyasztási cikkekre terjed ki. A jótállás 10 000 Ft-tól 250 000 Ft-ig két év, 250 000 Ft felett három év. Az alkalmazandó 151/2003. (IX. 22.) Korm. rendelet a feltételeinek megfelelő mikro-, kis- és középvállalkozások vásárlásaira is kiterjedhet; a céges számla nem önálló kizáró ok. A részletes kötelező jótállási tájékoztatást az alábbi kiegészítés tartalmazza. Ez nem önkéntes pénzvisszafizetési garancia, és nem korlátozza a törvényes szavatossági vagy gyártói jogokat.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-G001",
+        "kind": "heading",
+        "text": "Kötelező jótállási kiegészítés",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-G002",
+        "kind": "paragraph",
+        "text": "A magyar kötelező jótállás a 10/2024. (VI. 28.) IM rendelet 1. mellékletében felsorolt, legalább 10 000 Ft eladási árú új tartós fogyasztási cikkekre vonatkozik. Az egészségmegőrző és gyógyászati tartós termékek/eszközök — így például az inhalátor — e körbe tartozhatnak. A jótállás teljesítéséért az eladó, Supreme Pharmatech Europe s.r.o. felel. A jótállás nem érinti a jogszabályból eredő kellékszavatossági és termékszavatossági jogokat.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-G003",
+        "kind": "paragraph",
+        "text": "A jótállási idő 10 000 Ft-tól 250 000 Ft-ig két év, 250 000 Ft felett három év. A határidő az áru átadásával, illetve a jogszabály szerinti üzembe helyezéssel kezdődik; ha a fogyasztó az átadástól számított hat hónapon túl helyezteti üzembe a terméket, a kezdőnap az átadás napja. Javítás esetén az időtartam a javításra átadástól azzal az idővel hosszabbodik meg, amely alatt a terméket a hiba miatt rendeltetésszerűen nem lehetett használni.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-G004",
+        "kind": "paragraph",
+        "text": "A jótállási igényt az eladónál az info@arvoalux.hu címen vagy a megadott panaszkezelési elérhetőségeken jelentheti be. Ez nem korlátozza a jogszabály szerint igénybe vehető további helyeket, így az eladó székhelyét, telephelyét, fióktelepét vagy a jótállási jegyen feltüntetett javítószolgálatot. A jótállási jegy hiánya vagy hibás kiállítása nem szünteti meg a jótállást. A felbontott csomagolás visszaadása nem követelhető a jogérvényesítés feltételeként.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-G005",
+        "kind": "paragraph",
+        "text": "A legfeljebb 100 000 Ft eladási árú terméknél nem kötelező külön jótállási jegyet kiállítani, de a termék azonosítását, a jótállási jogokat, azok határidejét, helyét és feltételeit, valamint a békéltető testülethez fordulás lehetőségét a jótállás végéig olvasható formában megadjuk. Az átadáskor felhívjuk figyelmét, hogy e körben a jogok az ellenérték megfizetését igazoló bizonylattal érvényesíthetők. A magasabb árú érintett termékhez magyar nyelvű jótállási jegyet adunk. Elektronikus átadás esetén a jogszabály szerinti határidőt és a jótállás végéig biztosítandó hozzáférést teljesítjük; ez nem változtatja meg a számla papíros átadásának rendjét.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-G006",
+        "kind": "paragraph",
+        "text": "A kijavítás/kicserélés, árleszállítás és szerződésmegszüntetés jogszabályi feltételei mellett az alábbi külön szabályok érvényesülnek. Ha a jótállási időn belül megállapítjuk, hogy a termék nem javítható, az Ön eltérő rendelkezése hiányában nyolc napon belül kicseréljük; ha csere nem lehetséges, a vételárat nyolc napon belül visszatérítjük. Három javítást követő újabb meghibásodásnál ugyanezek a csere- és visszafizetési szabályok irányadók. Ha a kijavítás a jótállási igény közlésétől számított harmincadik napig nem történik meg, az Ön eltérő rendelkezése hiányában az ezt követő nyolc napon belül kicseréljük a terméket, ennek lehetetlensége esetén ugyanezen határidőn belül visszatérítjük a vételárat. A rendelet 5. § (8) bekezdésében felsorolt járművekre ezek a külön szabályok nem vonatkoznak.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-G007",
+        "kind": "paragraph",
+        "text": "Ha a rendeltetésszerű használatot akadályozó meghibásodás miatt a vásárlástól, illetve üzembe helyezéstől számított három munkanapon belül csereigényt jelent be, nem hivatkozunk aránytalan többletköltségre: a terméket nyolc napon belül kicseréljük, vagy ha csere nem lehetséges, a vételárat haladéktalanul visszatérítjük. A rögzített bekötésű, 10 kg-nál súlyosabb vagy tömegközlekedésen kézipoggyászként nem szállítható terméket — a járművek kivételével — az üzemeltetés helyén javítjuk; ha ez nem lehetséges, a szükséges le-/felszerelésről és el-/visszaszállításról az eladó vagy a megfelelő javítószolgálat gondoskodik.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-G008",
+        "kind": "paragraph",
+        "text": "Fogyasztói jogvita esetén békéltető testület eljárása is kezdeményezhető; a határon átnyúló panaszhoz az ÁSZF szlovák ADR- és Európai Fogyasztói Központ-tájékoztatása is használható. A fórumok nem helyettesítik és nem zárják ki a bírósági jogérvényesítést.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P023",
+        "kind": "paragraph",
+        "text": "Az eladó nem vállal külön 30 napos önkéntes pénzvisszafizetési vagy elégedettségi garanciát. Ez nem korlátozza a jogszabályon alapuló elállási, szavatossági és jótállási jogokat, és nem érinti a gyártó esetleges külön garanciáját. A változás a korábban létrejött szerződésekhez kapcsolódó vállalásokat nem írja felül.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P024",
+        "kind": "heading",
+        "text": "6. Békés vitarendezés és határon átnyúló segítség",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P025",
+        "kind": "paragraph",
+        "text": "Először kérjük, közölje kifogását az eladóval; ez nem zárja el a jogszabályi hatósági vagy bírósági utat. A szlovák ADR szabályok a szlovák kereskedő és más uniós tagállamban élő fogyasztó közti vitákra is kiterjednek. Ha az eladó a jóvátételi kérést elutasította, vagy annak elküldésétől számított 30 napon belül nem válaszolt, ADR kezdeményezhető. A SOI tájékoztatása további befogadási korlátokat is nevesít, például az egyéves benyújtási időt és a 20 eurót meg nem haladó számszerűsíthető vitánál az elutasítás lehetőségét; ezért nem ígérünk minden ügyre automatikus befogadást.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P026",
+        "kind": "paragraph",
+        "text": "Általános, nem más külön szerv hatáskörébe tartozó fogyasztói adásvételi vitánál releváns szlovák ADR-szerv:",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P027",
+        "kind": "paragraph",
+        "text": "Slovenská obchodná inšpekcia (SOI), ústredný inšpektorát, Odbor pre medzinárodné vzťahy a alternatívne riešenie spotrebiteľských sporov; Bajkalská 21/A, p. p. 29, 827 99 Bratislava 27; e-mail ars@soi.sk, adr@soi.sk; tájékoztató: https://www.soi.sk/alternativne-riesenie-spotrebitelskych-sporov . A közölt eljárási nyelvek szlovák és angol; az eljárás díjmentes. Az adott ügy hatáskörét külön kell megítélni; ez nem élelmiszer-felügyeleti cím.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P028",
+        "kind": "paragraph",
+        "text": "Magyarországi fogyasztó határon átnyúló panaszánál az Európai Fogyasztói Központ Magyarország segítsége kérhető: https://nkfh.gov.hu/europai-fogyasztoi-kozpont . Ez segítségnyújtási/egyeztetési út, nem bíróság és nem automatikusan kötelező döntés. Az adott ügyre hatáskörrel és illetékességgel rendelkező vitarendezési fórumot az alkalmazandó szabályok szerint kell meghatározni.",
+        "unverified": false
+      },
+      {
+        "id": "panasz-szavatossag-P029",
+        "kind": "paragraph",
+        "text": "Az EU régi ODR-platformja megszűnt; az 524/2013/EU rendelet 2025-07-20-tól hatályon kívül van. A bírósági jogorvoslat megmarad; megfelelő fogyasztói szerződésnél saját lakóhely szerinti fórum is rendelkezésre állhat.",
+        "unverified": false
+      }
+    ]
+  }
+]

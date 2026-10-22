@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LuxCategoryDrawer } from "./LuxCategoryDrawer";
 import Link from "next/link";
 import { ChevronRight, ChevronDown, X, Package } from "lucide-react";
 import { buildCategoryTree, type CollectionSummary } from "../../catalog";
@@ -9,13 +10,16 @@ export function CategoryDrawer({
   open,
   onClose,
   collections,
+  brandHandle,
 }: {
   open: boolean;
   onClose: () => void;
   collections: CollectionSummary[];
+  brandHandle?: string;
 }) {
   const [expanded, setExpanded] = useState<string | null>(null);
 
+  if (brandHandle === "arvoalux") return <LuxCategoryDrawer open={open} onClose={onClose} collections={collections} />;
   if (!open) return null;
 
   const tree = buildCategoryTree(collections);

@@ -111,5 +111,14 @@ export const healthGoals: HealthGoal[] = [
   },
 ];
 
-export const healthGoalBySlug = (slug: string): HealthGoal | undefined =>
-  healthGoals.find((g) => g.slug === slug);
+// This correction is authorized for ArvoaLux only; sibling content stays unchanged.
+export const healthGoalsForBrand = (brandHandle?: string): HealthGoal[] =>
+  brandHandle === "arvoalux"
+    ? healthGoals.map((goal) => goal.slug === "alvas-stressz" ? {
+        ...goal,
+        intro: "Az Alvás & stressz kategória termékei. Az összetevőket és a használati tudnivalókat az egyes termékek adatlapján találja.",
+      } : goal)
+    : healthGoals;
+
+export const healthGoalBySlug = (slug: string, brandHandle?: string): HealthGoal | undefined =>
+  healthGoalsForBrand(brandHandle).find((g) => g.slug === slug);

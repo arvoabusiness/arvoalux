@@ -3,7 +3,7 @@ import { ShoppingBag } from "lucide-react";
 // Import the pure helpers/types from catalog (no `server-only`) so this card can
 // render inside client components like PaginatedProductGrid.
 import { formatPrice, discountPercent, type ProductCard as ProductCardData } from "../../catalog";
-import { addToCart } from "../../cart";
+import { CartAddButton } from "../CommerceCart";
 
 /**
  * Product tile for grids. The whole card is a link to the PDP via an absolute
@@ -29,7 +29,11 @@ export function ProductCard({
     >
       <Link
         href={`/products/${product.handle}`}
-        className="absolute inset-0 z-0"
+        // ArvoaLux: keep the link above the positioned image. The later z-10
+        // cart form remains above this link in paint order and independently usable.
+        className={brandHandle === "arvoalux"
+          ? "absolute inset-0 z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand"
+          : "absolute inset-0 z-0"}
         aria-label={product.title}
       />
 
@@ -68,8 +72,8 @@ export function ProductCard({
         <h3 className="text-sm font-semibold text-gray-900 leading-tight mt-0.5 mb-2 line-clamp-2 group-hover:text-brand transition-colors">
           {product.title}
         </h3>
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-baseline gap-2">
+        <div className={brandHandle === "arvoalux" ? "commerce-card-price flex flex-wrap items-center justify-between gap-2" : "commerce-card-price flex items-center justify-between gap-2"}>
+          <div className={brandHandle === "arvoalux" ? "flex flex-wrap items-baseline gap-2" : "flex items-baseline gap-2"}>
             <span className="text-base font-bold text-gray-900">
               {formatPrice(price.amount, price.currencyCode)}
             </span>
@@ -79,22 +83,7 @@ export function ProductCard({
               </span>
             )}
           </div>
-          {variantId && (
-            <form action={addToCart} className="relative z-10">
-              <input type="hidden" name="variantId" value={variantId} />
-              <input type="hidden" name="brand" value={brandHandle} />
-              <input type="hidden" name="quantity" value="1" />
-              <button
-                type="submit"
-                disabled={!product.availableForSale}
-                className="w-9 h-9 rounded-full bg-brand hover:bg-brand-dark text-brand-fg flex items-center justify-center flex-shrink-0 transition-colors disabled:opacity-40"
-                data-testid={`add-to-cart-${product.handle}`}
-                aria-label="Kosárba"
-              >
-                <ShoppingBag className="w-4 h-4" />
-              </button>
-            </form>
-          )}
+          {variantId && <CartAddButton variantId={variantId} available={product.availableForSale} className="relative z-10 w-9 h-9 rounded-full bg-brand text-brand-fg flex items-center justify-center disabled:opacity-40" testId={`add-to-cart-${product.handle}`} />}
         </div>
       </div>
     </div>

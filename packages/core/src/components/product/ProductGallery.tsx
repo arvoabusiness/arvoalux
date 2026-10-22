@@ -9,7 +9,7 @@ export function ProductGallery({ images, title }: { images: Img[]; title: string
   const [selected, setSelected] = useState(0);
 
   return (
-    <div>
+    <div className="product-gallery">
       <div className="aspect-[100/85] rounded-2xl overflow-hidden border border-gray-100 mb-3 bg-white">
         {images[selected] ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -20,11 +20,13 @@ export function ProductGallery({ images, title }: { images: Img[]; title: string
           </div>
         )}
       </div>
-      {images.length > 1 && (
+      {images.length > 0 && (
         <div className="flex gap-2 overflow-x-auto pb-1">
           {images.map((img, i) => (
             <button
               key={i}
+              aria-label={`Termékkép ${i+1}`}
+              aria-pressed={i===selected}
               onClick={() => setSelected(i)}
               className={`flex-shrink-0 w-16 h-16 rounded-lg border-2 overflow-hidden ${i === selected ? "border-brand" : "border-gray-200"}`}
             >

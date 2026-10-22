@@ -7,10 +7,12 @@ import Link from "next/link";
  */
 export function BrandWordmark({
   name,
+  brandHandle,
   size = "md",
   link = true,
 }: {
   name: string;
+  brandHandle?: string;
   size?: "sm" | "md" | "lg";
   link?: boolean;
 }) {
@@ -21,7 +23,12 @@ export function BrandWordmark({
   } as const;
   const s = sizes[size] ?? sizes.md;
 
-  const mark = (
+  const mark = brandHandle === "arvoalux" ? (
+    // Supplied owner-approved asset, not a re-typeset approximation.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/brand/arvoa-lux-forest.png" alt="Arvoa Lux" data-testid="brand-wordmark"
+      className={`arvoalux-logo arvoalux-logo-${size}`} />
+  ) : (
     <span className="inline-flex flex-col" data-testid="brand-wordmark">
       <span className={`${s.text} font-heading font-extrabold tracking-[0.08em] text-brand leading-none uppercase`}>
         {name}

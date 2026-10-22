@@ -1,0 +1,2 @@
+// Owner-confirmed typical supplier procurement; no physical-stock assertion.
+export const goodwillBackorderProductIds=new Set(["gid://shopify/Product/16020690633087", "gid://shopify/Product/16020690665855", "gid://shopify/Product/16020690829695", "gid://shopify/Product/16020690862463", "gid://shopify/Product/16020690895231", "gid://shopify/Product/16020690927999", "gid://shopify/Product/16020691353983", "gid://shopify/Product/16020691616127", "gid://shopify/Product/16020691845503", "gid://shopify/Product/16020691878271", "gid://shopify/Product/16020691911039"]);

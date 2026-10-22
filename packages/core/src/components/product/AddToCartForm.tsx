@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ShoppingBag, Minus, Plus } from "lucide-react";
-import { addToCart } from "../../cart";
+import { useCartActions } from "../CommerceCart";
 import { formatPrice, type Money } from "../../catalog";
 
 type Variant = {
@@ -21,12 +21,14 @@ export function AddToCartForm({
   variants: Variant[];
   available: boolean;
 }) {
+  const cart = useCartActions();
   const [variantId, setVariantId] = useState(variants[0]?.id ?? "");
   const [quantity, setQuantity] = useState(1);
   const hasChoices = variants.length > 1;
 
+
   return (
-    <form action={addToCart} className="space-y-6">
+    <form onSubmit={e => { e.preventDefault(); void cart.change({action:"add",variantId,quantity}); }} className="space-y-6">
       <input type="hidden" name="brand" value={brandHandle} />
       <input type="hidden" name="variantId" value={variantId} />
       <input type="hidden" name="quantity" value={quantity} />
@@ -61,13 +63,13 @@ export function AddToCartForm({
             <Minus className="w-4 h-4" />
           </button>
           <span className="w-12 text-center font-semibold text-lg">{quantity}</span>
-          <button type="button" onClick={() => setQuantity((q) => q + 1)} className="h-12 w-12 flex items-center justify-center text-gray-700 hover:bg-gray-50 rounded-r-xl" aria-label="Növelés">
+          <button type="button" onClick={() => setQuantity((q) => Math.min(99, q + 1))} className="h-12 w-12 flex items-center justify-center text-gray-700 hover:bg-gray-50 rounded-r-xl" aria-label="Növelés">
             <Plus className="w-4 h-4" />
           </button>
         </div>
         <button
           type="submit"
-          disabled={!available || !variantId}
+          disabled={!available || !variantId || cart.busy}
           className="flex-1 h-12 bg-brand hover:bg-brand-dark text-brand-fg font-bold text-base rounded-xl flex items-center justify-center gap-2 transition-colors disabled:opacity-40"
           data-testid="add-to-cart-btn"
         >

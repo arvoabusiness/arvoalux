@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { SourceCategoryHome } from "./SourceCategoryTree";
 import { ChevronRight, Package } from "lucide-react";
 import type { Brand } from "../../types";
 import {
   storefront,
+  loadCatalogCollections,
   COLLECTIONS_QUERY,
+  COLLECTIONS_QUERY_TOKENLESS,
   cacheTags,
   visibleCollections,
   buildCategoryTree,
@@ -14,17 +17,23 @@ import {
 export async function HomepageCategorySection({ brand }: { brand: Brand }) {
   let collections: CollectionSummary[] = [];
   try {
+    if (brand.handle === "arvoalux") { collections = visibleCollections(await loadCatalogCollections(brand.handle)); } else {
     const data = await storefront<{ collections: { nodes: RawCollectionNode[] } }>(
       brand.handle,
       COLLECTIONS_QUERY,
       { first: 250 },
-      { tags: [cacheTags.brand(brand.handle)] }
+      {
+        tags: [cacheTags.brand(brand.handle)],
+        tokenlessQuery: COLLECTIONS_QUERY_TOKENLESS,
+      }
     );
     collections = visibleCollections(data.collections.nodes);
+    }
   } catch {
     collections = [];
   }
 
+  if (brand.handle === "arvoalux") return <SourceCategoryHome collections={collections} />;
   if (collections.length === 0) return null;
 
   // Show the real top-level categories: parents that actually have

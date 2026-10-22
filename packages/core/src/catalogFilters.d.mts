@@ -1,0 +1,16 @@
+import type {ProductCard} from './catalog';
+export type FacetField='category'|'age'|'skin'|'form'|'vegan'|'sensitivity'|'area'|'brand';
+export type FilterState=Record<FacetField,string[]> & {sort:string;limit:number;min:string;max:string};
+export type FilterAttributes=Record<string,Record<FacetField,string[]>>;
+export type FilterMetadata={id:string;title:string;vendor:string|null;descriptionHtml:string;collections:{nodes:{id:string;handle:string;title:string}[];pageInfo:{hasNextPage:boolean;endCursor:string|null}}};
+export type FacetOption={value:string;label:string;count:number};
+export type Facets=Record<FacetField,FacetOption[]>;
+export const FACET_FIELDS:FacetField[];
+export const SORT_OPTIONS:string[];
+export const PAGE_SIZES:number[];
+export function defaultFilterState():FilterState;
+export function parseFilterState(params?:Record<string,string|string[]|undefined>):FilterState;
+export function productFacets(product:ProductCard,metadata?:FilterMetadata):Record<FacetField,string[]>;
+export function filterProducts(products:ProductCard[],attributes:FilterAttributes,state:FilterState,omit?:string):ProductCard[];
+export function sortProducts(products:ProductCard[],sort:string):ProductCard[];
+export function filterHref(base:string,state:FilterState):string;

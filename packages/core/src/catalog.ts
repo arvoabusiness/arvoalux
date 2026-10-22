@@ -28,7 +28,7 @@ export type CollectionSummary = {
 
 /** Raw collection node as returned by COLLECTIONS_QUERY — parent arrives as a metafield object. */
 export type RawCollectionNode = Omit<CollectionSummary, "parent"> & {
-  parent: { value: string | null } | null;
+  parent?: { value: string | null } | null;
 };
 
 /** A top-level category with its direct subcategories, built from the flat list. */

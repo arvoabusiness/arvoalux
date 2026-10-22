@@ -1,0 +1,9 @@
+"use client";
+import {useId,useRef,useState} from 'react';
+type Detail={label:string;value:string};type Leaflet={label:string;href:string};
+export function ProductDetailsTabs({descriptionHtml,details,leaflets}:{descriptionHtml:string;details:Detail[];leaflets:Leaflet[]}){
+ const [selected,setSelected]=useState(0);const uid=useId();const refs=useRef<(HTMLButtonElement|null)[]>([]);const labels=['Termék leírás','Termék adatok','Betegtájékoztató'];
+ return <section className="product-details-tabs" data-testid="product-details-tabs"><div className="product-tab-list" role="tablist" aria-label="Termékinformációk">{labels.map((label,n)=><button key={label} ref={el=>{refs.current[n]=el;}} type="button" role="tab" id={`${uid}-tab-${n}`} aria-controls={`${uid}-panel-${n}`} aria-selected={selected===n} tabIndex={selected===n?0:-1} onClick={()=>setSelected(n)} onKeyDown={e=>{let next=n;if(e.key==='ArrowRight')next=(n+1)%3;else if(e.key==='ArrowLeft')next=(n+2)%3;else if(e.key==='Home')next=0;else if(e.key==='End')next=2;else return;e.preventDefault();setSelected(next);refs.current[next]?.focus();}}>{label}</button>)}</div>
+ {labels.map((label,n)=><div key={label} role="tabpanel" id={`${uid}-panel-${n}`} aria-labelledby={`${uid}-tab-${n}`} hidden={selected!==n} tabIndex={0} className="product-tab-panel">{n===0?(descriptionHtml?<div className="prose prose-sm max-w-none" data-testid="product-description" dangerouslySetInnerHTML={{__html:descriptionHtml}}/>:<p>A termék leírása jelenleg nem érhető el.</p>):n===1?<dl className="product-data-table">{details.map(d=><div key={d.label}><dt>{d.label}</dt><dd>{d.value}</dd></div>)}</dl>:leaflets.length?<ul>{leaflets.map(l=><li key={l.href}><a href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a></li>)}</ul>:<p data-testid="leaflet-unavailable">Ehhez a termékhez jelenleg nincs elérhető betegtájékoztató.</p>}</div>)}
+ </section>;
+}
