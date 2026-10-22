@@ -106,6 +106,6 @@ const original = JSON.parse(match[1]);
 if (!original.includes("panel.id='arvoalux-cookie-consent'") || !original.includes("data-choice=")) throw new Error('Consent UI changed; inspect integration before deploying.');
 if (!original.includes('window.__arvoaContentsquare')) {
   const next = original + '\n;(' + contentsquare.toString() + ')();\n';
-  fs.writeFileSync(file, source.replace(match[0], 'export const ga4Consent = ' + JSON.stringify(next) + ';'));
+  fs.writeFileSync(file, source.replace(match[0], () => 'export const ga4Consent = ' + JSON.stringify(next) + ';'));
 }
 console.log('Arvoalux Contentsquare integration ready: 3b98b4ad2adf5');
