@@ -1,0 +1,228 @@
+<!doctype html><html lang="hu" data-brand="biobarat"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>BioBarát — Pénztár</title><link rel="stylesheet" href="/checkout-ui/checkout.css"><link rel="stylesheet" href="/checkout-ui/leaflet.css"></head><body><div id="root"></div><script id="arvoa-checkout-analytics">(function () {
+ 'use strict';
+ if (window.__arvoaGa4Consent) return;
+ window.__arvoaGa4Consent = true;
+ var id='G-9D0EDV070D', key='biobarat:analytics-consent:v1', loaded=false, adsConfigured=false, ttl=90*86400000;
+ window.dataLayer=window.dataLayer||[];
+ function gtag(){if(arguments[0]==='event'){if(typeof window.__arvoaSyncConsent==='function')window.__arvoaSyncConsent();}window.dataLayer.push(arguments);}
+ window.gtag=gtag;
+ window.__arvoaAdvancedConsent=true;
+ gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+ /* arvoa-consent-source-v2: preference failures must not revive an older grant. */
+ var consentWriteFailed=false,consentFailureAt=0,consentChannel=null,consentBlockCookie='__Host-arvoa-consent-block-biobarat';
+ function consentCookieBlocked(){
+  try{return document.cookie.split(';').some(function(part){return part.trim()===consentBlockCookie+'=1'})}catch(_){return true}
+ }
+ function consentBlocked(){return consentWriteFailed||consentCookieBlocked()}
+ if(consentCookieBlocked()){consentWriteFailed=true;consentFailureAt=Date.now();}
+ window.__arvoaConsentBlocked=consentBlocked;
+ function recoverConsent(){
+  if(!consentWriteFailed||consentCookieBlocked())return false;
+  try{var c=JSON.parse(localStorage.getItem(key)),age=Date.now()-(c&&c.at);
+   if(c&&c.version===2&&typeof c.at==='number'&&Number.isFinite(c.at)&&c.at>consentFailureAt&&age>=0&&age<ttl&&typeof c.analytics==='boolean'&&typeof c.adsMeasurement==='boolean'&&(!c.adsMeasurement||c.analytics)){
+    consentWriteFailed=false;return true;
+   }
+  }catch(_){}return false;
+ }
+ function syncConsent(){
+  var recovered=recoverConsent(),blocked=consentBlocked(),current=window.__arvoaGoogleConsent||{};
+  if(blocked&&!consentWriteFailed){consentWriteFailed=true;consentFailureAt=Date.now();}
+  if(blocked&&(current.analytics||current.ads))apply(null);
+  if(recovered){var c=saved();apply(c);panel.hidden=!!c;}
+  consentError.hidden=!blocked;if(blocked)panel.hidden=false;
+ }
+ window.__arvoaSyncConsent=syncConsent;
+ try{if(typeof BroadcastChannel==='function'){
+  consentChannel=new BroadcastChannel('arvoa-consent-biobarat');
+  consentChannel.onmessage=function(event){var value=event&&event.data;if(!value||value.type!=='blocked'||typeof value.at!=='number'||!Number.isFinite(value.at)||value.at>Date.now())return;consentWriteFailed=true;consentFailureAt=Math.max(consentFailureAt,value.at);syncConsent();};
+ }}catch(_){}
+ function saveChoice(choice){
+  try{
+   var encoded=JSON.stringify(choice);localStorage.setItem(key,encoded);
+   if(localStorage.getItem(key)!==encoded)throw new Error('Consent preference not saved');
+   document.cookie=consentBlockCookie+'=; Max-Age=0; path=/; SameSite=Lax; Secure';
+   consentWriteFailed=false;if(consentBlocked())throw new Error('Consent preference still blocked');
+   return true;
+  }catch(_){
+   consentWriteFailed=true;consentFailureAt=Date.now();
+   try{localStorage.removeItem(key)}catch(_){}
+   // Necessary preference state only: a constant blocker, never an identifier.
+   try{document.cookie=consentBlockCookie+'=1; Max-Age=7776000; path=/; SameSite=Lax; Secure'}catch(_){}
+   try{if(consentChannel)consentChannel.postMessage({type:'blocked',at:consentFailureAt})}catch(_){}
+   return false;
+  }
+ }
+ function saved(){
+  if(consentBlocked())return null;
+  try {var s=JSON.parse(localStorage.getItem(key)),age=Date.now()-(s&&s.at);
+   if(!s||typeof s.at!=='number'||!Number.isFinite(s.at)||age<0||age>=ttl||typeof s.analytics!=='boolean'||![1,2].includes(s.version))return null;
+   return {analytics:s.analytics,adsMeasurement:s.version===2&&s.analytics===true&&s.adsMeasurement===true,version:s.version};
+  }catch(_){return null;}
+ }
+ function cleanCookies(pattern){document.cookie.split(';').forEach(function(c){var name=c.trim().split('=')[0];if(!pattern.test(name))return;
+  ['', '; domain='+location.hostname, '; domain=.biobarat.eu'].forEach(function(domain){document.cookie=name+'=; Max-Age=0; path=/'+domain+'; SameSite=Lax';});
+ });}
+ function measuredLocation(ads){
+  var url=new URL(location.href),clean=new URL(url.origin+url.pathname);
+  if(!ads&&!(window.__arvoaGoogleConsent||{}).analytics)return clean.href;
+  var fixed={utm_source:'google',utm_medium:'cpc',utm_campaign:'biobarat_pmax_hu_curated'};
+  Object.keys(fixed).forEach(function(k){var v=url.searchParams.get(k);if(v===fixed[k]||(k==='utm_campaign'&&v==='biobarat_pmax_hu_4marka'))clean.searchParams.set(k,v);});
+  ['utm_id','utm_content'].forEach(function(k){var v=url.searchParams.get(k);if(v&&/^\d{1,30}$/.test(v))clean.searchParams.set(k,v);});
+  if(ads)['gclid','gbraid','wbraid'].forEach(function(k){var v=url.searchParams.get(k);if(v&&/^[A-Za-z0-9_-]{1,256}$/.test(v))clean.searchParams.set(k,v);});
+  return clean.href;
+ }
+ function apply(choice){
+ var wasAnalytics=!!(window.__arvoaGoogleConsent&&window.__arvoaGoogleConsent.analytics);
+  var analytics=!!(choice&&choice.version===2&&choice.analytics===true),ads=analytics&&choice.adsMeasurement===true;
+  window['ga-disable-'+id]=false;
+  window.__arvoaGoogleConsent={analytics:analytics,ads:ads};
+  gtag('consent','update',{analytics_storage:analytics?'granted':'denied',ad_storage:ads?'granted':'denied',ad_user_data:ads?'granted':'denied',ad_personalization:'denied'});
+  gtag('set','ads_data_redaction',!ads);
+  gtag('set','url_passthrough',false);
+  gtag('set',{page_location:measuredLocation(ads),page_referrer:(function(){try{return new URL(document.referrer).origin+'/'}catch(_){return ''}})()});
+  queueMicrotask(function(){document.dispatchEvent(new Event('arvoa:consent'))});
+  if(!ads)cleanCookies(/^_gcl(?:_|$)/);
+  if(!analytics)cleanCookies(/^_ga(?:_|$)/);
+  gtag('config',"AW-18507278051",{groups:'biobarat_ads',allow_ad_personalization_signals:false,send_page_view:!adsConfigured,page_location:measuredLocation(ads)});adsConfigured=true;
+  var config={allow_google_signals:false,allow_ad_personalization_signals:false,cookie_expires:7776000,page_location:measuredLocation(ads)};
+  if(loaded){config.send_page_view=analytics&&!wasAnalytics;gtag('config',id,config);return;}
+  loaded=true;gtag('js',new Date());gtag('config',id,config);
+  var tag=document.createElement('script');tag.async=true;tag.id='biobarat-ga4-tag';tag.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(tag);
+ }
+ var panel=document.createElement('section');panel.id='biobarat-cookie-consent';panel.setAttribute('aria-label','Sütibeállítások');
+ panel.style.cssText='position:fixed;bottom:72px;left:12px;right:12px;max-width:680px;max-height:70vh;overflow:auto;margin:auto;z-index:9999;background:#fff;color:#17251e;border:1px solid #cbd5cc;border-radius:14px;padding:18px;box-shadow:0 6px 25px #0003;font:14px/1.5 system-ui';
+ panel.innerHTML='<strong>Te döntesz a sütikről</strong><p>Analitikai és hirdetési sütiket csak engedélyeddel használunk. A Google Analytics a weboldal használatát és a vásárlásokat méri; a hirdetési mérés a vásárlásokat és értéküket Google Ads-kattintásokhoz kapcsolja. A Google engedély nélkül is kap korlátozott, sütik nélküli mérési jelzéseket. Nincs személyre szabott hirdetés vagy remarketing. Bármelyik választással vásárolhatsz; döntésed később módosítható. <a href="/sutik" style="text-decoration:underline">Sütitájékoztató</a> · <a href="/adatkezeles" style="text-decoration:underline">Adatkezelés</a></p><div style="display:flex;gap:12px;flex-wrap:wrap"><button type="button" data-choice="both">Analitika és hirdetési mérés</button><button type="button" data-choice="analytics">Csak analitika</button><button type="button" data-choice="none">Csak szükséges sütik</button></div>';
+ var consentError=document.createElement('p');consentError.id='biobarat-consent-error';consentError.setAttribute('role','alert');consentError.hidden=!consentBlocked();consentError.textContent='A sütibeállítást nem sikerült menteni. Az analitikai és hirdetési sütik ezen az oldalon ki vannak kapcsolva. Próbáld újra.';panel.appendChild(consentError);
+ panel.querySelectorAll('button').forEach(function(button){button.style.cssText='padding:10px 14px;border:1px solid #365a44;border-radius:8px;background:#fff;color:#17251e;font:inherit;cursor:pointer';button.onclick=function(){
+  var choice={analytics:button.dataset.choice!=='none',adsMeasurement:button.dataset.choice==='both',at:Date.now(),version:2};
+  var savedChoice=saveChoice(choice);
+  consentError.hidden=savedChoice;apply(savedChoice?choice:null);panel.hidden=savedChoice;
+ };});
+ var settings=document.createElement('button');settings.type='button';settings.textContent='Sütibeállítások';settings.id='biobarat-cookie-settings';settings.style.cssText='position:fixed;bottom:68px;left:12px;z-index:9998;padding:5px 9px;border:1px solid #cbd5cc;border-radius:8px;background:#fff;color:#17251e;font:12px system-ui;cursor:pointer';
+ settings.onclick=function(){panel.hidden=false;panel.querySelector('button').focus();};
+ document.body.appendChild(settings);document.body.appendChild(panel);
+ var choice=saved();panel.hidden=!!(choice&&choice.version===2);apply(choice);
+ window.addEventListener('storage',function(event){if(event.key===key||event.key===null){recoverConsent();var c=saved();apply(c);consentError.hidden=!consentBlocked();panel.hidden=!!(c&&c.version===2);}});
+ window.addEventListener('focus',syncConsent);window.addEventListener('pageshow',syncConsent);window.setInterval(syncConsent,1000);
+ window.setInterval(function(){var c=saved();if(!c&&window['ga-disable-'+id]===false){apply(null);panel.hidden=false;}},60000);
+})();
+
+
+(function(){
+ 'use strict';if(window.__arvoaAdvancedPurchase)return;window.__arvoaAdvancedPurchase=true;
+ var seen=Object.create(null),brand="biobarat",gid="G-9D0EDV070D",ads="AW-18507278051/tZvZCIC3vq4dEOPN-vhE";
+ window.__arvoaGooglePurchaseSeen=window.__arvoaGooglePurchaseSeen||Object.create(null);
+ function claim(key,storage){if(seen[key])return false;if(storage){try{if(localStorage.getItem(key)){seen[key]=true;return false}localStorage.setItem(key,'claimed')}catch(_){}}seen[key]=true;return true}
+ function emit(key,kind,fn){var run=function(){if(typeof window.__arvoaSyncConsent==='function')window.__arvoaSyncConsent();var c=window.__arvoaGoogleConsent||{};if(claim(key,c[kind]===true))fn()};if(navigator.locks)navigator.locks.request(key,run).catch(function(){});else run()}
+ function receive(d){if(typeof window.__arvoaSyncConsent==='function')window.__arvoaSyncConsent();
+  var paid=brand==='arvoalux'?d&&d.measurementState==='paid':d&&d.state==='paid';
+  var processing=brand==='arvoalux'?d&&d.measurementState==='processing':d&&d.state==='cod_placed'&&d.payment==='cod';
+  var a=paid?d&&d.analyticsPurchase:processing?(d.analyticsProcessing||d.analyticsPurchase):null;
+  if(!a||typeof a.transaction_id!=='string'||!new RegExp('^'+brand+':[0-9]+$').test(a.transaction_id)||a.currency!=='HUF'||typeof a.value!=='number'||!Number.isFinite(a.value)||a.value<0||!Array.isArray(a.items)||!a.items.length||a.items.length>100||a.items.some(function(x){return !x||!/^\d+$/.test(String(x.item_id))||typeof x.price!=='number'||!Number.isFinite(x.price)||x.price<0||!Number.isInteger(x.quantity)||x.quantity<1})||typeof window.gtag!=='function')return;
+  var c=window.__arvoaGoogleConsent||{analytics:false,ads:false},event=paid?'purchase':'order_processing';
+  // Real successful responses only. Consent Mode determines cookieless vs consented transport.
+  if(paid)emit('arvoa:ads:'+ads.split('/')[0]+':'+a.transaction_id,'ads',function(){window.gtag('event','conversion',{send_to:ads,transaction_id:a.transaction_id,value:a.value,currency:'HUF',allow_ad_personalization_signals:false})});
+  // Lux retains its authoritative consented server-claim publisher. No parallel consented GA4 publisher.
+  if((brand!=='arvoalux'||!c.analytics)&&!(paid&&c.analytics&&d.measurementPublisher==='durable_server_v1'))emit('arvoa:'+event+':'+a.transaction_id,brand==='arvoalux'?'anonymous':'analytics',function(){
+   if(paid&&d.measurementPublisher==='durable_server_v1'&&(window.__arvoaGoogleConsent||{}).analytics)return;
+   if(brand==='arvoalux'&&(window.__arvoaGoogleConsent||{}).analytics)return;
+   var sk=event+':'+a.transaction_id;if(window.__arvoaGooglePurchaseSeen[sk])return;window.__arvoaGooglePurchaseSeen[sk]=true;
+   window.gtag('event',event,{send_to:gid,transaction_id:a.transaction_id,value:a.value,currency:'HUF',shipping:a.shipping,tax:a.tax,items:a.items.map(function(x){return {item_id:String(x.item_id),price:x.price,quantity:x.quantity}})});
+  });
+ }
+ var original=window.fetch;window.fetch=function(input,options){var u;try{u=new URL(typeof input==='string'?input:input.url,location.href)}catch(_){return original.apply(this,arguments)}var relevant=u.origin===location.origin&&['/api/checkout/session','/api/checkout/status'].includes(u.pathname);return original.apply(this,arguments).then(function(response){if(relevant&&response.ok)response.clone().json().then(receive).catch(function(){});return response})};
+})();
+</script>
+<script>
+(function(){
+ 'use strict';if(window.__arvoaSourceV1)return;window.__arvoaSourceV1=true;
+ var brand='biobarat',key=brand+':source:v1',consentKey=brand+':analytics-consent:v1',ttl=30*86400000,pending=null,lastHref=null,lastGrant=null,entryHref=location.href,entryReferrer=document.referrer;
+ function revocationPending(){if(revocationsInFlight>0||revocationFailed)return true;try{return !!localStorage.getItem(brand+':revoke-pending')}catch(_){return true}}
+ function readConsent(){try{if(typeof window.__arvoaConsentBlocked==='function'&&window.__arvoaConsentBlocked())return null;var c=JSON.parse(localStorage.getItem(consentKey));return c&&c.version===2&&typeof c.at==='number'&&Date.now()>=c.at&&Date.now()-c.at<90*86400000&&typeof c.analytics==='boolean'?c:null}catch(_){return null}}
+ function token(v,max){return typeof v==='string'&&new RegExp('^[A-Za-z0-9_.-]{1,'+max+'}$').test(v)?v:null}
+ function own(o,keys){if(!o||![Object.prototype,null].includes(Object.getPrototypeOf(o))||Reflect.ownKeys(o).length!==keys.length)return null;var s={};for(var k of keys){var d=Object.getOwnPropertyDescriptor(o,k);if(!d||!('value'in d))return null;s[k]=d.value}return s}
+ function touch(ads,useReferrer,entry){var u=new URL(entry?entryHref:location.href),q=u.searchParams,s=token(q.get('utm_source'),80),m=token(q.get('utm_medium'),80),r;try{r=useReferrer?new URL(entry?entryReferrer:document.referrer).hostname:''}catch(_){r=''}
+  var clicks={gclid:ads?token(q.get('gclid'),256):null,gbraid:ads?token(q.get('gbraid'),256):null,wbraid:ads?token(q.get('wbraid'),256):null};
+  if(ads&&(clicks.gclid||clicks.gbraid||clicks.wbraid)){s='google';m='cpc'}
+  if(!ads&&(!s||!m)&&['gclid','gbraid','wbraid'].some(function(k){return q.has(k)})){s='unknown';m='unknown'}
+  if(!s||!m){if(!useReferrer)return null;if(r&&(/(^|\.)biobarat\.eu$/.test(r)||r==='checkout.stripe.com'||r==='hooks.stripe.com'))return null;if(r&&/(^|\.)(google\.[a-z.]+|bing.com|search.yahoo.com)$/.test(r)){s=r.includes('google.')?'google':r.includes('bing')?'bing':'yahoo';m='organic'}else if(r){s=token(r,80);m='referral'}else{s='direct';m='none'}}
+  if(!s)return null;return {at:Math.floor(Date.now()/1000),source:s,medium:m,campaign:token(q.get('utm_campaign'),80),campaignId:token(q.get('utm_id'),80),content:token(q.get('utm_content'),80),gclid:clicks.gclid,gbraid:clicks.gbraid,wbraid:clicks.wbraid};
+ }
+ function validTouch(v,ads){var t=own(v,['at','source','medium','campaign','campaignId','content','gclid','gbraid','wbraid']);if(!t||!Number.isInteger(t.at)||Date.now()-t.at*1000<0||Date.now()-t.at*1000>=ttl||!token(t.source,80)||!token(t.medium,80))return null;for(var k of ['campaign','campaignId','content','gclid','gbraid','wbraid']){if(t[k]!==null&&!token(t[k],k.includes('braid')||k==='gclid'?256:80))return null;if(!ads&&['gclid','gbraid','wbraid'].includes(k))t[k]=null}return t}
+ function stored(c){try{var s=own(JSON.parse(localStorage.getItem(key)),['first','last']);if(!s)return null;var f=validTouch(s.first,c.adsMeasurement===true),l=validTouch(s.last,c.adsMeasurement===true);return f||l?{first:f||l,last:l||f}:null}catch(_){return null}}
+ function update(){
+  var c=readConsent();
+  if(!c||c.analytics!==true){try{localStorage.removeItem(key)}catch(_){};pending=null;lastHref=null;lastGrant=null;return}
+  var href=location.href;
+  if(href===lastHref&&lastGrant===c.at)return;
+  var s=stored(c),initial=lastHref===null,t=touch(c.adsMeasurement===true,initial,initial);
+  // Keep the original landing in memory only until consent, including SPA navigation.
+  // Explicit campaign labels are analytics; click identifiers still require advertising consent.
+  if(initial&&t){if(!s)s={first:t,last:t};else if(t.source!=='direct')s.last=t;t=href!==entryHref?touch(c.adsMeasurement===true,false,false):null;}
+  lastHref=href;lastGrant=c.at;
+  if(t){if(!s)s={first:t,last:t};else if(t.source!=='direct')s.last=t}
+  if(s){try{localStorage.setItem(key,JSON.stringify(s))}catch(_){}}
+ }
+ // Navigation must preserve the latest evidenced touch, never reapply the original referrer.
+ function navigated(){try{update()}catch(_){}}
+ ['pushState','replaceState'].forEach(function(name){
+  try{var native=history[name];if(typeof native!=='function')return;
+   history[name]=function(){var result=native.apply(this,arguments);navigated();return result};
+  }catch(_){}
+ });
+ window.addEventListener('popstate',navigated);
+ window.addEventListener('pageshow',navigated);
+
+ function snapshot(){navigated();var c=readConsent();if(revocationPending()||!c||c.analytics!==true)return null;var s=stored(c);if(!s)return null;return {version:1,analytics:true,ads:c.adsMeasurement===true,consentAt:Math.floor(c.at/1000),first:s.first,last:s.last,clientId:null,sessionId:null}}
+ function context(){var s=snapshot();if(!s||typeof window.gtag!=='function')return Promise.resolve(s);return new Promise(function(resolve){var done=false,remaining=2;function finish(){if(done)return;done=true;resolve(s)}setTimeout(finish,1500);['client_id','session_id'].forEach(function(k){window.gtag('get','G-9D0EDV070D',k,function(v){if(done)return;if(typeof v==='number'&&Number.isSafeInteger(v))v=String(v);if(typeof v==='string'&&(k==='client_id'?/^\d{1,20}\.\d{1,20}$/:/^\d{1,12}$/).test(v))s[k==='client_id'?'clientId':'sessionId']=v;if(!--remaining)finish()})})})}
+ var original=window.fetch,revocationsInFlight=0,revocationFailed=false,revocationStamp=null;
+ function revoke(){pending=null;lastHref=null;lastGrant=null;revocationStamp=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);try{localStorage.removeItem(key);localStorage.setItem(brand+':revoke-pending',revocationStamp)}catch(_){};if(!revocationsInFlight)revocationFailed=false;revocationsInFlight++;return original('/api/checkout/status',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({consentRevoked:true})}).then(function(r){return r.ok?r.json():null}).then(function(d){if(!d||!d.revoked)revocationFailed=true}).catch(function(){revocationFailed=true}).then(function(){revocationsInFlight--;if(!revocationsInFlight&&!revocationFailed){try{if(localStorage.getItem(brand+':revoke-pending')===revocationStamp)localStorage.removeItem(brand+':revoke-pending')}catch(_){}}})}
+ var lastConsent=readConsent();update();try{if(revocationPending())revoke()}catch(_){};
+ function consentChanged(){
+  var c=readConsent(),downgrade=!!(c&&c.analytics===true&&lastConsent&&lastConsent.adsMeasurement===true&&c.adsMeasurement!==true);
+  // Analytics permission remains: retain only validated source labels, never click IDs.
+  var retained=downgrade?stored(c):null;
+  if(!c||c.analytics!==true||downgrade)revoke();
+  lastConsent=c;
+  if(retained){var current=readConsent();if(current&&current.analytics===true&&current.at===c.at&&current.adsMeasurement===c.adsMeasurement){try{localStorage.setItem(key,JSON.stringify(retained));lastHref=location.href;lastGrant=c.at}catch(_){}}}
+  update()
+ }
+ document.addEventListener('arvoa:consent',consentChanged);window.addEventListener('storage',function(e){if(e.key===consentKey||e.key===null)consentChanged()});
+ function allowed(){var c=readConsent();return !!(c&&c.analytics===true&&!revocationPending()&&!window['ga-disable-G-9D0EDV070D'])}
+  window.fetch=function(input,options){var args=arguments,u;try{u=new URL(typeof input==='string'?input:input.url,location.href)}catch(_){return original.apply(this,args)}var relevant=u.origin===location.origin&&['/api/checkout/session','/api/checkout/status'].includes(u.pathname);
+  if(!relevant)return original.apply(this,args);
+  var body;try{body=JSON.parse(options&&options.body)}catch(_){body=null}
+  var sentContext=null;var prep=u.pathname==='/api/checkout/session'&&body?Promise.resolve().then(context).catch(function(){return null}):Promise.resolve(null);
+  return prep.then(function(c){var opt=options,current=readConsent();if(body&&u.pathname==='/api/checkout/session'){body=Object.assign({},body);delete body.attribution;delete body.measurementConsent;if(current)body.measurementConsent={version:2,analytics:current.analytics===true,ads:current.analytics===true&&current.adsMeasurement===true,at:Math.floor(current.at/1000)};opt=Object.assign({},options,{body:JSON.stringify(body)})}if(c&&(!current||current.analytics!==true||c.consentAt!==Math.floor(current.at/1000)||c.ads!==(current.adsMeasurement===true)||revocationPending()))c=null;if(c){sentContext=c;opt=Object.assign({},options,{body:JSON.stringify(Object.assign({},body,{attribution:c}))})}return original.call(window,input,opt)}).then(function(r){try{var current=readConsent();if(u.pathname==='/api/checkout/session'&&(!allowed()||sentContext&&(!current||sentContext.consentAt!==Math.floor(current.at/1000)||sentContext.ads!==(current.adsMeasurement===true))))revoke();}catch(_){}return r});
+ };
+ // Diagnostic snapshot exposes no customer data and never generates an identifier.
+ Object.defineProperty(window,'arvoaAttributionSnapshot',{value:snapshot,writable:false,configurable:false});
+})();
+
+</script>
+<script>(function(){
+ 'use strict';
+ if(window.__arvoaGa4FunnelV1)return;window.__arvoaGa4FunnelV1=true;
+ var brand='biobarat',id='G-9D0EDV070D',key=brand+':analytics-consent:v1',view=null,viewSent=null,checkout=null,checkoutSent=false;
+ function consent(){try{var c=JSON.parse(localStorage.getItem(key)),age=Date.now()-(c&&c.at);return c&&c.version===2&&c.analytics===true&&typeof c.at==='number'&&Number.isFinite(age)&&age>=0&&age<90*86400000&&!localStorage.getItem(brand+':revoke-pending')?c.at:null}catch(_){return null}}
+ function allowed(){return window.__arvoaAdvancedConsent===true&&typeof window.gtag==='function'}
+ function item(v,name,quantity,money){if(!v||!/^gid:\/\/shopify\/ProductVariant\/\d+$/.test(v.id)||typeof name!=='string'||!name.trim()||!Number.isInteger(quantity)||quantity<1||quantity>500||!money||money.currencyCode!=='HUF'||money.amount==null||String(money.amount).trim()==='')return null;var price=Number(money.amount);if(!Number.isFinite(price)||price<0)return null;return {item_id:v.id.split('/').pop(),item_name:name.slice(0,200),item_variant:typeof v.title==='string'?v.title.slice(0,100):'',price:price,quantity:quantity}}
+ function send(name,items){if(typeof window.__arvoaSyncConsent==='function')window.__arvoaSyncConsent();if(!allowed()||!items.length||items.some(function(x){return !x}))return false;var value=items.reduce(function(n,x){return n+x.price*x.quantity},0);if(!Number.isFinite(value))return false;try{window.gtag('event',name,{send_to:id,currency:'HUF',value:Math.round(value*100)/100,items:items});return true}catch(_){return false}}
+ function flush(){if(view&&view.path===location.pathname&&viewSent!==view.key&&send('view_item',[view.item]))viewSent=view.key;if(checkout&&!checkoutSent&&send('begin_checkout',checkout))checkoutSent=true}
+ document.addEventListener('arvoa:product-view',function(e){try{var d=e.detail;if(!d||!/^\/products\//.test(location.pathname))return;var x=item(d.variant,d.name,1,d.variant&&d.variant.price);if(!x)return;var k=location.pathname+'|'+x.item_id;view={path:location.pathname,key:k,item:x};flush()}catch(_){}});
+ document.addEventListener('arvoa:product-leave',function(){view=null;viewSent=null});
+ document.addEventListener('arvoa:consent',function(){queueMicrotask(flush)});
+ window.addEventListener('storage',function(e){if(e.key===key||e.key===null)queueMicrotask(flush)});
+ var original=window.fetch;
+ window.fetch=function(input,options){var url,body=null,grant=consent(),method=String(options&&options.method||input&&input.method||'GET').toUpperCase();try{url=new URL(typeof input==='string'?input:input.url,location.href);if(options&&typeof options.body==='string')body=JSON.parse(options.body)}catch(_){}
+  var relevant=url&&url.origin===location.origin&&url.pathname==='/api/cart';
+  return original.apply(this,arguments).then(function(response){if(relevant&&response.ok){try{response.clone().json().then(function(d){try{var c=d&&d.cart;if(!c||!Array.isArray(c.lines))return;
+   if(method==='POST'&&body&&body.action==='add'&&allowed()){
+    var line=c.lines.find(function(l){return l.merchandise&&l.merchandise.id===body.variantId});if(!line||!Number.isInteger(body.quantity)||body.quantity>line.quantity)return;
+    var x=item(line.merchandise,line.merchandise.product&&line.merchandise.product.title,body.quantity,line.cost&&line.cost.amountPerQuantity);if(x)send('add_to_cart',[x]);
+   }
+   if(method==='GET'&&/^\/(checkout|checkout-ui)(\/|$)/.test(location.pathname)&&c.lines.length&&c.lines.length<=100){checkout=c.lines.map(function(l){return item(l.merchandise,l.merchandise&&l.merchandise.product&&l.merchandise.product.title,l.quantity,l.cost&&l.cost.amountPerQuantity)});flush()}
+  }catch(_){}}).catch(function(){})}catch(_){}}return response});
+ };
+})();
+</script><script src="/checkout-ui/checkout.js"></script></body></html>
